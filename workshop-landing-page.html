@@ -9,6 +9,7 @@
     <meta property="og:description" content="Learn to communicate effectively in virtual settings with practical tools you can use right away.">
     <meta property="og:type" content="website">
     <link rel="icon" type="image/x-icon" href="https://www.robertoferraro.net/favicon.ico">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
     
     <style>
         * {
@@ -36,15 +37,17 @@
         }
         
         .workshop-title {
-            font-size: 2.5em;
-            margin-bottom: 20px;
+            font-family: 'Poppins', Arial, sans-serif;
+            font-size: 2.2em;
+            font-weight: 500;
+            letter-spacing: 0;
             color: #1a1a1a;
-            font-weight: 700;
+            margin-bottom: 20px;
         }
         
         .workshop-subtitle {
             font-size: 1.3em;
-            color: #666;
+            color: #1a1a1a;
             margin-bottom: 30px;
         }
         
@@ -61,16 +64,16 @@
         }
         
         .video-container {
+            aspect-ratio: 16 / 9;
             max-width: 800px;
             margin: 0 auto 60px;
             position: relative;
-            padding-bottom: 56.25%;
-            height: 0;
             overflow: hidden;
             border-radius: 12px;
             box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            background: #000;
         }
-        
+
         .video-container iframe {
             position: absolute;
             top: 0;
@@ -79,7 +82,6 @@
             height: 100%;
             border: none;
         }
-        
         .benefits-section {
             background-color: #f8f9fa;
             padding: 60px 40px;
@@ -136,9 +138,40 @@
         
         .testimonial {
             padding: 30px;
-            background: #f8f9fa;
+            background: #f2f2f2;
             border-radius: 12px;
             position: relative;
+        }
+        
+        .testimonial-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .testimonial-photo {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 15px;
+            border: 2px solid #e0e0e0;
+        }
+        
+        .testimonial-info {
+            flex: 1;
+        }
+        
+        .testimonial-name {
+            font-weight: 600;
+            color: #1a1a1a;
+            margin-bottom: 2px;
+            font-size: 1.1em;
+        }
+        
+        .testimonial-handle {
+            color: #666;
+            font-size: 0.9em;
         }
         
         .testimonial::before {
@@ -154,6 +187,7 @@
             margin-bottom: 15px;
             font-style: italic;
             line-height: 1.8;
+            padding-left: 20px;
         }
         
         .testimonial-author {
@@ -163,8 +197,8 @@
         }
         
         .pricing-section {
-            background-color: #1a1a1a;
-            color: white;
+            background-color: #f2f2f2;
+            color: #1a1a1a;
             padding: 60px 40px;
             border-radius: 16px;
             margin-bottom: 40px;
@@ -198,7 +232,7 @@
         }
         
         .pricing-card.featured {
-            border: 3px solid #4CAF50;
+            border: 3px solid #8c8c8c;
             position: relative;
         }
         
@@ -207,7 +241,7 @@
             top: -15px;
             left: 50%;
             transform: translateX(-50%);
-            background: #4CAF50;
+            background: #8c8c8c;
             color: white;
             padding: 5px 20px;
             border-radius: 20px;
@@ -241,7 +275,7 @@
             content: "✓";
             position: absolute;
             left: 0;
-            color: #4CAF50;
+            color: #8c8c8c;
             font-weight: bold;
         }
         
@@ -257,7 +291,7 @@
         }
         
         .cta-button:hover {
-            background: #333;
+            background: #FFCC00;
         }
         
         .pricing-card .cta-button {
@@ -266,11 +300,11 @@
         }
         
         .featured .cta-button {
-            background: #4CAF50;
+            background: #8c8c8c;
         }
         
         .featured .cta-button:hover {
-            background: #45a049;
+            background: #FFCC00;
         }
         
         .workshop-details {
@@ -347,12 +381,13 @@
         
         <div class="workshop-intro">
             <p>Spending hours in virtual meetings can be exhausting <span class="emoji">😩</span></p>
-            <p>You know the feeling—wondering if people are paying attention, struggling to sound confident through the screen, or just wishing you could connect better in those tiny Zoom boxes.</p>
+            <p>You know the feeling—wondering if people are paying attention, struggling to sound confident through the screen, or just wishing you could connect better in those tiny Zoom boxes.</p>           
+            <br>
             <p><strong>I've been there too.</strong></p>
+            <br>
             <p>Since 2020, I've spent over 5,000 hours in virtual meetings. Along the way, I've learned that being effective online is about so much more than just having a great microphone or camera (and you know how I LOVE a good tech setup <span class="emoji">🤖</span>).</p>
         </div>
-        
-        <!-- Video Section - Replace ojPvNyMOFZg with your actual YouTube video ID -->
+    
         <div class="video-container">
             <iframe src="https://www.youtube.com/embed/ojPvNyMOFZg" 
                     title="Workshop Teaser" 
@@ -388,16 +423,103 @@
             <div class="testimonials-grid">
                 <!-- Replace these with actual testimonials -->
                 <div class="testimonial">
+                    <div class="testimonial-header">
+                        <img src="https://via.placeholder.com/60" alt="Maria S." class="testimonial-photo">
+                        <div class="testimonial-info">
+                            <p class="testimonial-name">Maria S.</p>
+                            <p class="testimonial-handle">@maria_project</p>
+                        </div>
+                    </div>
                     <p class="testimonial-text">Roberto's workshop completely changed how I approach virtual meetings. I feel more confident and my team actually stays engaged now!</p>
                     <p class="testimonial-author">— Maria S., Project Manager</p>
                 </div>
                 <div class="testimonial">
+                    <div class="testimonial-header">
+                        <img src="https://via.placeholder.com/60" alt="David L." class="testimonial-photo">
+                        <div class="testimonial-info">
+                            <p class="testimonial-name">David L.</p>
+                            <p class="testimonial-handle">@david_sales</p>
+                        </div>
+                    </div>
                     <p class="testimonial-text">The tips on body language and camera positioning were game-changers. I've received so many compliments on my presence in meetings.</p>
                     <p class="testimonial-author">— David L., Sales Director</p>
                 </div>
                 <div class="testimonial">
+                    <div class="testimonial-header">
+                        <img src="https://via.placeholder.com/60" alt="Anna K." class="testimonial-photo">
+                        <div class="testimonial-info">
+                            <p class="testimonial-name">Anna K.</p>
+                            <p class="testimonial-handle">@anna_hr</p>
+                        </div>
+                    </div>
                     <p class="testimonial-text">Fun, interactive, and immediately applicable. I started using the techniques the very next day with amazing results.</p>
                     <p class="testimonial-author">— Anna K., HR Lead</p>
+                </div>
+                <div class="testimonial">
+                    <div class="testimonial-header">
+                        <img src="https://via.placeholder.com/60" alt="Sarah M." class="testimonial-photo">
+                        <div class="testimonial-info">
+                            <p class="testimonial-name">Sarah M.</p>
+                            <p class="testimonial-handle">@sarah_consultant</p>
+                        </div>
+                    </div>
+                    <p class="testimonial-text">As a consultant, first impressions are everything. This workshop gave me the tools to make every client meeting count.</p>
+                    <p class="testimonial-author">— Sarah M., Business Consultant</p>
+                </div>
+                <div class="testimonial">
+                    <div class="testimonial-header">
+                        <img src="https://via.placeholder.com/60" alt="James R." class="testimonial-photo">
+                        <div class="testimonial-info">
+                            <p class="testimonial-name">James R.</p>
+                            <p class="testimonial-handle">@james_tech</p>
+                        </div>
+                    </div>
+                    <p class="testimonial-text">The technical setup tips alone were worth the price. My audio and video quality improved dramatically!</p>
+                    <p class="testimonial-author">— James R., Tech Lead</p>
+                </div>
+                <div class="testimonial">
+                    <div class="testimonial-header">
+                        <img src="https://via.placeholder.com/60" alt="Lisa T." class="testimonial-photo">
+                        <div class="testimonial-info">
+                            <p class="testimonial-name">Lisa T.</p>
+                            <p class="testimonial-handle">@lisa_teacher</p>
+                        </div>
+                    </div>
+                    <p class="testimonial-text">Teaching online was a struggle until I learned these techniques. My students are much more engaged now.</p>
+                    <p class="testimonial-author">— Lisa T., Online Educator</p>
+                </div>
+                <div class="testimonial">
+                    <div class="testimonial-header">
+                        <img src="https://via.placeholder.com/60" alt="Michael P." class="testimonial-photo">
+                        <div class="testimonial-info">
+                            <p class="testimonial-name">Michael P.</p>
+                            <p class="testimonial-handle">@mike_startup</p>
+                        </div>
+                    </div>
+                    <p class="testimonial-text">Pitching to investors online was nerve-wracking. Roberto's advice helped me present with confidence and clarity.</p>
+                    <p class="testimonial-author">— Michael P., Startup Founder</p>
+                </div>
+                <div class="testimonial">
+                    <div class="testimonial-header">
+                        <img src="https://via.placeholder.com/60" alt="Emma W." class="testimonial-photo">
+                        <div class="testimonial-info">
+                            <p class="testimonial-name">Emma W.</p>
+                            <p class="testimonial-handle">@emma_design</p>
+                        </div>
+                    </div>
+                    <p class="testimonial-text">The workshop was packed with actionable tips. I immediately applied the lighting and background advice.</p>
+                    <p class="testimonial-author">— Emma W., UX Designer</p>
+                </div>
+                <div class="testimonial">
+                    <div class="testimonial-header">
+                        <img src="https://via.placeholder.com/60" alt="Carlos D." class="testimonial-photo">
+                        <div class="testimonial-info">
+                            <p class="testimonial-name">Carlos D.</p>
+                            <p class="testimonial-handle">@carlos_remote</p>
+                        </div>
+                    </div>
+                    <p class="testimonial-text">Working remotely, I needed to stand out in team meetings. This workshop gave me the edge I was looking for.</p>
+                    <p class="testimonial-author">— Carlos D., Remote Developer</p>
                 </div>
             </div>
         </div>
@@ -406,13 +528,11 @@
             <h2 class="pricing-title">Choose Your Experience</h2>
             <div class="pricing-grid">
                 <div class="pricing-card">
-                    <h3>Single Ticket</h3>
+                    <h3>Attend The Workshop</h3>
                     <div class="price"><span class="price-currency">€</span>10</div>
                     <ul class="pricing-features">
-                        <li>Full workshop access</li>
-                        <li>Interactive exercises</li>
-                        <li>Q&A session</li>
-                        <li>Key takeaways summary</li>
+                        <li>Access to Live Session</li>
+                        <li>Show your commitment with this symbolic price</li>
                     </ul>
                     <a href="https://lu.ma/6wa8dsd1" class="cta-button">Get Your Ticket</a>
                 </div>
@@ -422,37 +542,32 @@
                     <h3>With Recording</h3>
                     <div class="price"><span class="price-currency">€</span>19</div>
                     <ul class="pricing-features">
-                        <li>Everything in Single Ticket</li>
-                        <li>Workshop recording</li>
-                        <li>Bonus resources</li>
-                        <li>Email follow-up tips</li>
-                        <li>Lifetime access to materials</li>
+                        <li>Everything in Access to Live Session</li>
+                        <li>Become a workshop patron</li>
+                        <li>Session recording</li>
+                        <li>Action guide with key highlights</li>
                     </ul>
-                    <a href="https://lu.ma/6wa8dsd1" class="cta-button">Get Recording Access</a>
+                    <a href="https://lu.ma/6wa8dsd1" class="cta-button">Plus Recording And Resources</a>
                 </div>
                 
                 <div class="pricing-card">
                     <h3>With Coaching</h3>
-                    <div class="price">Custom</div>
+                    <div class="price"><span class="price-currency">€</span>150</div>
                     <ul class="pricing-features">
                         <li>Everything in Recording package</li>
-                        <li>1-on-1 coaching session</li>
+                        <li>45 minutes personal coaching session</li>
                         <li>Personalized feedback</li>
-                        <li>Custom action plan</li>
-                        <li>30-day email support</li>
                     </ul>
-                    <a href="https://lu.ma/6wa8dsd1" class="cta-button">Apply for Coaching</a>
+                    <a href="https://lu.ma/6wa8dsd1" class="cta-button">Plus 1:1 Coaching</a>
                 </div>
             </div>
         </div>
         
         <div class="workshop-details">
             <h3>Workshop Details</h3>
-            <div class="detail-item">📅 <strong>When:</strong> Check upcoming dates on registration page</div>
+            <div class="detail-item">📅 <strong>When:</strong> September 2nd 16:00 CET</div>
             <div class="detail-item">⏰ <strong>Duration:</strong> 90 minutes of interactive learning</div>
             <div class="detail-item">👥 <strong>Format:</strong> Small group (max 20 participants)</div>
-            <div class="detail-item">💻 <strong>Platform:</strong> Zoom (camera & mic required)</div>
-            <div class="detail-item">🌍 <strong>Language:</strong> English</div>
         </div>
         
         <div class="final-cta">
@@ -462,9 +577,5 @@
             <a href="https://lu.ma/6wa8dsd1" class="cta-button">Reserve Your Spot Now</a>
         </div>
     </section>
-    
-    <footer class="footer">
-        <p>© 2025 Roberto Ferraro | <a href="https://www.robertoferraro.net">Back to Main Site</a></p>
-    </footer>
 </body>
 </html>
