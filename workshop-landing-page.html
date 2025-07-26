@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Master Virtual Meetings Workshop - Roberto Ferraro</title>
+    <meta name="description" content="Transform your online presence and make every virtual interaction count. Join Roberto Ferraro's workshop to master virtual communication.">
+    <meta property="og:title" content="Master Virtual Meetings: From Boring to Brilliant - Roberto Ferraro">
+    <meta property="og:description" content="Learn to communicate effectively in virtual settings with practical tools you can use right away.">
+    <meta property="og:type" content="website">
+    <link rel="icon" type="image/x-icon" href="https://www.robertoferraro.net/favicon.ico">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #ffffff;
+        }
+        
+        .workshop-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+        
+        .workshop-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .workshop-title {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            color: #1a1a1a;
+            font-weight: 700;
+        }
+        
+        .workshop-subtitle {
+            font-size: 1.3em;
+            color: #666;
+            margin-bottom: 30px;
+        }
+        
+        .workshop-intro {
+            max-width: 800px;
+            margin: 0 auto 60px;
+            text-align: center;
+            font-size: 1.1em;
+            line-height: 1.8;
+        }
+        
+        .emoji {
+            font-size: 1.2em;
+        }
+        
+        .video-container {
+            max-width: 800px;
+            margin: 0 auto 60px;
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+        
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        .benefits-section {
+            background-color: #f8f9fa;
+            padding: 60px 40px;
+            border-radius: 16px;
+            margin-bottom: 60px;
+        }
+        
+        .benefits-title {
+            font-size: 2em;
+            text-align: center;
+            margin-bottom: 40px;
+            color: #1a1a1a;
+        }
+        
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .benefit-item {
+            padding: 20px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        
+        .benefit-item h3 {
+            margin-bottom: 10px;
+            color: #1a1a1a;
+            font-size: 1.2em;
+        }
+        
+        .testimonials-section {
+            margin-bottom: 60px;
+        }
+        
+        .testimonials-title {
+            font-size: 2em;
+            text-align: center;
+            margin-bottom: 40px;
+            color: #1a1a1a;
+        }
+        
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .testimonial {
+            padding: 30px;
+            background: #f8f9fa;
+            border-radius: 12px;
+            position: relative;
+        }
+        
+        .testimonial::before {
+            content: '"';
+            font-size: 3em;
+            color: #e0e0e0;
+            position: absolute;
+            top: 10px;
+            left: 20px;
+        }
+        
+        .testimonial-text {
+            margin-bottom: 15px;
+            font-style: italic;
+            line-height: 1.8;
+        }
+        
+        .testimonial-author {
+            font-weight: 600;
+            color: #666;
+            text-align: right;
+        }
+        
+        .pricing-section {
+            background-color: #1a1a1a;
+            color: white;
+            padding: 60px 40px;
+            border-radius: 16px;
+            margin-bottom: 40px;
+        }
+        
+        .pricing-title {
+            font-size: 2em;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .pricing-card {
+            background: white;
+            color: #1a1a1a;
+            padding: 40px 30px;
+            border-radius: 12px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        
+        .pricing-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .pricing-card.featured {
+            border: 3px solid #4CAF50;
+            position: relative;
+        }
+        
+        .featured-badge {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #4CAF50;
+            color: white;
+            padding: 5px 20px;
+            border-radius: 20px;
+            font-size: 0.9em;
+        }
+        
+        .price {
+            font-size: 3em;
+            font-weight: 700;
+            margin: 20px 0;
+        }
+        
+        .price-currency {
+            font-size: 0.5em;
+            vertical-align: super;
+        }
+        
+        .pricing-features {
+            list-style: none;
+            margin: 30px 0;
+            padding: 0;
+        }
+        
+        .pricing-features li {
+            margin: 15px 0;
+            padding-left: 25px;
+            position: relative;
+        }
+        
+        .pricing-features li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #4CAF50;
+            font-weight: bold;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            padding: 15px 40px;
+            background: #1a1a1a;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: background 0.3s ease;
+        }
+        
+        .cta-button:hover {
+            background: #333;
+        }
+        
+        .pricing-card .cta-button {
+            width: 100%;
+            margin-top: 20px;
+        }
+        
+        .featured .cta-button {
+            background: #4CAF50;
+        }
+        
+        .featured .cta-button:hover {
+            background: #45a049;
+        }
+        
+        .workshop-details {
+            max-width: 800px;
+            margin: 60px auto;
+            text-align: center;
+        }
+        
+        .workshop-details h3 {
+            font-size: 1.5em;
+            margin-bottom: 20px;
+        }
+        
+        .detail-item {
+            margin: 15px 0;
+            font-size: 1.1em;
+        }
+        
+        .final-cta {
+            text-align: center;
+            margin: 60px 0;
+            padding: 40px;
+            background: #f8f9fa;
+            border-radius: 16px;
+        }
+        
+        .final-cta h2 {
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+        
+        .final-cta p {
+            font-size: 1.2em;
+            margin-bottom: 30px;
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: #666;
+            border-top: 1px solid #e0e0e0;
+        }
+        
+        .footer a {
+            color: #1a1a1a;
+            text-decoration: none;
+        }
+        
+        .footer a:hover {
+            text-decoration: underline;
+        }
+        
+        @media (max-width: 768px) {
+            .workshop-title {
+                font-size: 2em;
+            }
+            
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <section class="workshop-section">
+        <div class="workshop-header">
+            <h1 class="workshop-title">Master Virtual Meetings: From Boring to Brilliant (and Fun)</h1>
+            <p class="workshop-subtitle">Transform your online presence and make every virtual interaction count</p>
+        </div>
+        
+        <div class="workshop-intro">
+            <p>Spending hours in virtual meetings can be exhausting <span class="emoji">😩</span></p>
+            <p>You know the feeling—wondering if people are paying attention, struggling to sound confident through the screen, or just wishing you could connect better in those tiny Zoom boxes.</p>
+            <p><strong>I've been there too.</strong></p>
+            <p>Since 2020, I've spent over 5,000 hours in virtual meetings. Along the way, I've learned that being effective online is about so much more than just having a great microphone or camera (and you know how I LOVE a good tech setup <span class="emoji">🤖</span>).</p>
+        </div>
+        
+        <!-- Video Section - Replace ojPvNyMOFZg with your actual YouTube video ID -->
+        <div class="video-container">
+            <iframe src="https://www.youtube.com/embed/ojPvNyMOFZg" 
+                    title="Workshop Teaser" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen>
+            </iframe>
+        </div>
+        
+        <div class="benefits-section">
+            <h2 class="benefits-title">🎯 What's in it for you?</h2>
+            <div class="benefits-grid">
+                <div class="benefit-item">
+                    <h3>Memorable First Impressions</h3>
+                    <p>Learn how to make a stronger, more memorable impression from the moment you join a call.</p>
+                </div>
+                <div class="benefit-item">
+                    <h3>Engaging Communication</h3>
+                    <p>Discover how to use your voice, gestures, and presence to keep people engaged.</p>
+                </div>
+                <div class="benefit-item">
+                    <h3>Avoid Common Pitfalls</h3>
+                    <p>Avoid common mistakes that can derail even the best-prepared sessions.</p>
+                </div>
+                <div class="benefit-item">
+                    <h3>Technical Mastery</h3>
+                    <p>And yes, we'll talk about the all-important technical setup, too!</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="testimonials-section">
+            <h2 class="testimonials-title">What Past Participants Say</h2>
+            <div class="testimonials-grid">
+                <!-- Replace these with actual testimonials -->
+                <div class="testimonial">
+                    <p class="testimonial-text">Roberto's workshop completely changed how I approach virtual meetings. I feel more confident and my team actually stays engaged now!</p>
+                    <p class="testimonial-author">— Maria S., Project Manager</p>
+                </div>
+                <div class="testimonial">
+                    <p class="testimonial-text">The tips on body language and camera positioning were game-changers. I've received so many compliments on my presence in meetings.</p>
+                    <p class="testimonial-author">— David L., Sales Director</p>
+                </div>
+                <div class="testimonial">
+                    <p class="testimonial-text">Fun, interactive, and immediately applicable. I started using the techniques the very next day with amazing results.</p>
+                    <p class="testimonial-author">— Anna K., HR Lead</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="pricing-section">
+            <h2 class="pricing-title">Choose Your Experience</h2>
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <h3>Single Ticket</h3>
+                    <div class="price"><span class="price-currency">€</span>10</div>
+                    <ul class="pricing-features">
+                        <li>Full workshop access</li>
+                        <li>Interactive exercises</li>
+                        <li>Q&A session</li>
+                        <li>Key takeaways summary</li>
+                    </ul>
+                    <a href="https://lu.ma/6wa8dsd1" class="cta-button">Get Your Ticket</a>
+                </div>
+                
+                <div class="pricing-card featured">
+                    <span class="featured-badge">Most Popular</span>
+                    <h3>With Recording</h3>
+                    <div class="price"><span class="price-currency">€</span>19</div>
+                    <ul class="pricing-features">
+                        <li>Everything in Single Ticket</li>
+                        <li>Workshop recording</li>
+                        <li>Bonus resources</li>
+                        <li>Email follow-up tips</li>
+                        <li>Lifetime access to materials</li>
+                    </ul>
+                    <a href="https://lu.ma/6wa8dsd1" class="cta-button">Get Recording Access</a>
+                </div>
+                
+                <div class="pricing-card">
+                    <h3>With Coaching</h3>
+                    <div class="price">Custom</div>
+                    <ul class="pricing-features">
+                        <li>Everything in Recording package</li>
+                        <li>1-on-1 coaching session</li>
+                        <li>Personalized feedback</li>
+                        <li>Custom action plan</li>
+                        <li>30-day email support</li>
+                    </ul>
+                    <a href="https://lu.ma/6wa8dsd1" class="cta-button">Apply for Coaching</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="workshop-details">
+            <h3>Workshop Details</h3>
+            <div class="detail-item">📅 <strong>When:</strong> Check upcoming dates on registration page</div>
+            <div class="detail-item">⏰ <strong>Duration:</strong> 90 minutes of interactive learning</div>
+            <div class="detail-item">👥 <strong>Format:</strong> Small group (max 20 participants)</div>
+            <div class="detail-item">💻 <strong>Platform:</strong> Zoom (camera & mic required)</div>
+            <div class="detail-item">🌍 <strong>Language:</strong> English</div>
+        </div>
+        
+        <div class="final-cta">
+            <h2>Ready to Transform Your Virtual Presence?</h2>
+            <p>Join me and discover how to make every virtual interaction count. <span class="emoji">🚀</span></p>
+            <p><strong>Limited spots available for better interaction!</strong></p>
+            <a href="https://lu.ma/6wa8dsd1" class="cta-button">Reserve Your Spot Now</a>
+        </div>
+    </section>
+    
+    <footer class="footer">
+        <p>© 2025 Roberto Ferraro | <a href="https://www.robertoferraro.net">Back to Main Site</a></p>
+    </footer>
+</body>
+</html>
