@@ -26,14 +26,14 @@
         }e
         
         .workshop-section {
-            max-width: 1200px;
+            max-width: 600px;
             margin: 0 auto;
             padding: 60px 20px;
         }
         
         .workshop-header {
             text-align: center;
-            margin-bottom: 60px;
+            margin-bottom: 30px;
         }
         
         .workshop-title {
@@ -53,11 +53,40 @@
         }
         
         .workshop-intro {
-            max-width: 1200px;
+            max-width: 750px;
             margin: 0 auto 60px;
             text-align: center;
             font-size: 1.1em;
             line-height: 1.8;
+        }
+        
+        .illustrations-section {
+            max-width: 1200px;
+            margin: 60px auto 30px;
+            padding: 0 20px;
+        }
+        
+        .illustrations-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin: 0 auto;
+        }
+        
+        .illustration-item {
+            text-align: center;
+        }
+        
+        .illustration-image {
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .illustration-image:hover {
+            transform: translateY(-5px);
         }
         
         .emoji {
@@ -199,6 +228,23 @@
             text-align: right;
         }
         
+        .group-photo-section {
+            margin: 30px 0;
+            text-align: center;
+        }
+        
+        .group-photo-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .group-photo {
+            max-width: 100%;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+        
         .pricing-section {
             background-color: #f2f2f2;
             color: #1a1a1a;
@@ -322,7 +368,7 @@
         
         .workshop-details {
             max-width: 800px;
-            margin: 60px auto;
+            margin: 30px auto 30px;
             text-align: center;
         }
         
@@ -375,6 +421,11 @@
                 font-size: 2em;
             }
             
+            .illustrations-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+            }
+            
             .benefits-grid {
                 grid-template-columns: 1fr;
                 justify-items: center;
@@ -401,11 +452,37 @@
 </head>
 <body>
     <section class="workshop-section">
-        <div class="workshop-header">
-            <h1 class="workshop-title">Master Virtual Meetings: From Boring to Brilliant (and Fun)</h1>
-            <p class="workshop-subtitle">Transform your online presence and make every virtual interaction count</p>
+
+        <div class="illustrations-section">
+            <div class="illustrations-grid">
+                <div class="illustration-item">
+                    <img src="https://images.squarespace-cdn.com/content/v1/65475ce2202bcd1c4fd1c5c8/450c68ff-292e-47f9-92ce-b1a332dca935/emoji+cool+fearful+-+everyone+is+afraid.png" alt="Emoji Cool vs Fearful – Everyone Is Afraid" class="illustration-image">
+                </div>
+                <div class="illustration-item">
+                    <img src="https://images.squarespace-cdn.com/content/v1/65475ce2202bcd1c4fd1c5c8/47f92778-a84f-434c-85c7-421e98214da5/clock+time+-+holding+silence.png" alt="Clock Time – Holding Silence" class="illustration-image">
+                </div>
+                <div class="illustration-item">
+                    <img src="https://images.squarespace-cdn.com/content/v1/65475ce2202bcd1c4fd1c5c8/43ee4cf8-6088-4a4a-bc1f-f6e2196628bf/loudspeaker+small+big+-+words+body.png" alt="Loudspeaker – Words vs Body" class="illustration-image">
+                </div>
+                <div class="illustration-item">
+                    <img src="https://images.squarespace-cdn.com/content/v1/65475ce2202bcd1c4fd1c5c8/f5b002f8-8af1-45d5-9e6e-855b534e80ed/emoji+cool+happy+sad+sweat+-+just+smile+vs+be+authentic.png" alt="Emoji – Just Smile vs Be Authentic" class="illustration-image">
+                </div>
+            </div>
         </div>
-        
+
+        <div class="workshop-header">
+            <h1 class="workshop-title">Master Virtual Meetings: From Boring to Brilliant & Fun</h1>
+            <p class="workshop-subtitle">Transform your online presence and make every virtual interaction count</p>
+            <a
+            href="https://lu.ma/event/evt-nXszqLJju39H8K0"
+            class="luma-checkout--button cta-button"
+            data-luma-action="checkout"
+            data-luma-event-id="evt-nXszqLJju39H8K0"
+          >
+            Reserve Your Spot Now
+          </a>    
+        </div>
+
         <div class="workshop-intro">
             <p>Spending hours in virtual meetings can be exhausting <span class="emoji">😩</span></p>
             <p>You know the feeling: wondering if people are paying attention, struggling to sound confident through the screen, or just wishing you could connect better in those tiny Zoom boxes.</p>           
@@ -445,6 +522,12 @@
             </div>
         </div>
         
+        <div class="group-photo-section">
+            <div class="group-photo-container">
+                <img src="https://images.squarespace-cdn.com/content/v1/65475ce2202bcd1c4fd1c5c8/52b40b3b-2743-48b9-afde-b0d58f3736c6/group+photo+-+final.png?format=1500w" alt="Group Photo" class="group-photo">
+            </div>
+        </div>
+        
         <div class="testimonials-section">
             <h2 class="testimonials-title">What Past Participants Say</h2>
             <div class="testimonials-grid">
@@ -456,7 +539,7 @@
                             <p class="testimonial-handle">@corinataban</p>
                         </div>
                     </div>
-                    <p class="testimonial-text">I attended Roberto's virtual communication workshop and it was engaging, insightful, and packed with practical tools that can be applied immediately. Roberto has a unique talent for making complex concepts accessible and fun, blending psychology, storytelling, and performance techniques to help participants elevate their virtual presence.</p>
+                    <p class="testimonial-text">I attended Roberto's virtual communication workshop and it was <strong>engaging, insightful, and packed with practical tools</strong> that can be applied immediately. Roberto has a unique talent for making complex concepts accessible and fun, blending psychology, storytelling, and performance techniques to help participants elevate their virtual presence.</p>
                     <p class="testimonial-author">— Corina Taban</p>
                 </div>
                 <div class="testimonial">
@@ -467,7 +550,7 @@
                             <p class="testimonial-handle">@junhanchin</p>
                         </div>
                     </div>
-                    <p class="testimonial-text">Roberto's virtual communication workshop was really actionable. He gave us techniques and solutions suitable for different levels of implementation, from easy to advanced. His presentation was clear and easy to follow. I would attend future workshops by Roberto.</p>
+                    <p class="testimonial-text">Roberto's virtual communication workshop was really actionable. He gave us techniques and solutions suitable for different levels of implementation, <strong>from easy to advanced</strong>. His presentation was clear and easy to follow. I would attend future workshops by Roberto.</p>
                     <p class="testimonial-author">— Jun Han Chin</p>
                 </div>
                 <div class="testimonial">
@@ -478,7 +561,7 @@
                             <p class="testimonial-handle">@annejannier</p>
                         </div>
                     </div>
-                    <p class="testimonial-text">Roberto's workshop on virtual communication is worth every minute. He shares years of practice and helps you fix many things that make you dread Zoom calls. I cannot recommend it enough.</p>
+                    <p class="testimonial-text">Roberto's workshop on virtual communication <strong>is worth every minute</strong>. He shares years of practice and helps you fix many things that make you dread Zoom calls. I cannot recommend it enough.</p>
                     <p class="testimonial-author">— Anne Jannier</p>
                 </div>
                 <div class="testimonial">
@@ -489,7 +572,7 @@
                             <p class="testimonial-handle">@francescofusco</p>
                         </div>
                     </div>
-                    <p class="testimonial-text">Roberto's energy and positive attitude are contagious. I came out of the workshop energized and inspired, with lots of new ideas to incorporate into my day-to-day routine. Not to mention, Roberto's illustrations are just legendary! I'm looking forward to checking out what he comes up with next! 🙌</p>
+                    <p class="testimonial-text">Roberto's energy and positive attitude are contagious. I came out of the workshop <strong>energized and inspired</strong>, with lots of new ideas to incorporate into my day-to-day routine. Not to mention, Roberto's illustrations are just legendary! I'm looking forward to checking out what he comes up with next! 🙌</p>
                     <p class="testimonial-author">— Francesco Fusco</p>
                 </div>
                 <div class="testimonial">
@@ -500,7 +583,7 @@
                             <p class="testimonial-handle">@corinne-dufraisse</p>
                         </div>
                     </div>
-                    <p class="testimonial-text">I had the privilege of attending a virtual communication workshop led by Roberto and the session was stunning. Not only did we get hints and tips on how to improve our communication, but we were once again made aware of how important the connection to people is. The workshop was awsomwly led, Roberto's energy and approach are inspiring, and the group participation was really good even though people didn't know each other.</p>
+                    <p class="testimonial-text">I had the privilege of attending a virtual communication workshop led by Roberto and the session was stunning. Not only did we get hints and tips on how to improve our communication, but we were once again made aware of how important the connection to people is. The workshop was awsomwly led, Roberto's <strong>energy and approach are inspiring</strong>, and the group participation was really good even though people didn't know each other.</p>
                     <p class="testimonial-author">— Corinne Dufraisse</p>
                 </div>
                 <div class="testimonial">
@@ -511,7 +594,7 @@
                             <p class="testimonial-handle">@alexander-mcadam</p>
                         </div>
                     </div>
-                    <p class="testimonial-text">I had the pleasure of attending a workshop with Roberto on virtual communication, and it was truly enlightening. His insights were sharp, his approach engaging, and his energy infectious. Roberto creates an inspiring atmosphere that leaves participants motivated and equipped with practical knowledge.</p>
+                    <p class="testimonial-text">I had the pleasure of attending a workshop with Roberto on virtual communication, and it was truly enlightening. His insights were sharp, his approach engaging, and his energy infectious. Roberto creates an inspiring atmosphere that leaves participants <strong>motivated and equipped with practical knowledge</strong>.</p>
                     <p class="testimonial-author">— Alex McAdam</p>
                 </div>
                 <div class="testimonial">
@@ -522,7 +605,7 @@
                             <p class="testimonial-handle">@c-biondi</p>
                         </div>
                     </div>
-                    <p class="testimonial-text">I joined Roberto's virtual communication workshop and really enjoyed it. It was fun, practical, and easy to follow with his amazing illustrations :) He showed science-backed ideas and performance tricks to make things simple. Voice Warm ups and body language tips were my favourite! I highly recommend it!</p>
+                    <p class="testimonial-text">I joined Roberto's virtual communication workshop and really enjoyed it. It was <strong>fun, practical, and easy to follow</strong> with his amazing illustrations :) He showed science-backed ideas and performance tricks to make things simple. Voice Warm ups and body language tips were my favourite! I highly recommend it!</p>
                     <p class="testimonial-author">— Cinzia Biondi</p>
                 </div>
                 <div class="testimonial">
@@ -533,7 +616,7 @@
                             <p class="testimonial-handle">@sahir-maharaj</p>
                         </div>
                     </div>
-                    <p class="testimonial-text">I had the pleasure of attending a virtual communication workshop led by Roberto Ferraro that was both practical and highly relatable. The session offered realistic tips on preparation and structuring communication in virtual settings, which I found immediately applicable to my work. It also emphasized the importance of tone, engagement, and intentionality - key aspects that are often overlooked but make a noteworthy difference in virtual interactions.</p>
+                    <p class="testimonial-text">I had the pleasure of attending a virtual communication workshop led by Roberto Ferraro that was both practical and highly relatable. The session offered realistic tips on preparation and structuring communication in virtual settings, which I found <strong>immediately applicable to my work</strong>. It also emphasized the importance of tone, engagement, and intentionality - key aspects that are often overlooked but make a noteworthy difference in virtual interactions.</p>
                     <p class="testimonial-author">— Sahir Maharaj</p>
                 </div>
                 <div class="testimonial">
@@ -544,7 +627,7 @@
                             <p class="testimonial-handle">@nadyaichinomiya</p>
                         </div>
                     </div>
-                    <p class="testimonial-text">I recently attended Roberto's "Virtual Communication" workshop. I teach courses online at Sony Pictures and UCLA Extension and am always trying to find ways to improve the experience for the learners. Roberto's material was thoughtfully prepared and he delivered the content with humility and the intention to deliver as much value as possible.</p>
+                    <p class="testimonial-text">I recently attended Roberto's "Virtual Communication" workshop. I teach courses online at Sony Pictures and UCLA Extension and am always trying to find ways to improve the experience for the learners. Roberto's material was thoughtfully prepared and he <strong>delivered the content with humility and the intention</strong> to deliver as much value as possible.</p>
                     <p class="testimonial-author">— Nadya Ichinomiya</p>
                 </div>
             </div>
@@ -617,6 +700,23 @@
             <div class="detail-item">👥 <strong>Format:</strong> Small group (max 20 participants)</div>
         </div>
         
+        <div class="illustrations-section">
+            <div class="illustrations-grid">
+                <div class="illustration-item">
+                    <img src="https://images.squarespace-cdn.com/content/v1/65475ce2202bcd1c4fd1c5c8/849c899c-bd71-4689-b87e-9dc6763dd913/scales+-+ideas+in+your+brain+in+practice.png" alt="Scales – Ideas in Brain vs in Practice" class="illustration-image">
+                </div>
+                <div class="illustration-item">
+                    <img src="https://images.squarespace-cdn.com/content/v1/65475ce2202bcd1c4fd1c5c8/1f598164-6934-400c-b42d-30f1748f52f1/venn+diagram+two+-+myth+reality+playful+serious.png" alt="Venn Diagram – Myth & Reality, Playful & Serious" class="illustration-image">
+                </div>
+                <div class="illustration-item">
+                    <img src="https://images.squarespace-cdn.com/content/v1/65475ce2202bcd1c4fd1c5c8/7e2a8b7d-8436-49b0-8fa1-0cee0cb134c3/coal+diamond+-+anxiety+vs+I+care.png" alt="Coal Diamond – Anxiety vs I Care" class="illustration-image">
+                </div>
+                <div class="illustration-item">
+                    <img src="https://images.squarespace-cdn.com/content/v1/65475ce2202bcd1c4fd1c5c8/33badf80-ac70-4082-8419-e9cb075d3f42/line+chart+-+subtract+smart+complicated+language.png" alt="Line Chart – Subtract Smart Complicated Language" class="illustration-image">
+                </div>
+            </div>
+        </div>
+
         <div class="final-cta">
             <h2>Ready to Transform Your Virtual Presence?</h2>
             <p>Join me and discover how to make every virtual interaction count. <span class="emoji">🚀</span></p>
