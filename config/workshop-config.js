@@ -6,6 +6,13 @@ const WORKSHOP_CONFIG = {
     eventId: '6wa8dsd1',
     eventUrl: 'https://lu.ma/6wa8dsd1',
     
+    // UTM Parameters for tracking
+    utmParams: {
+        source: 'landing',
+        medium: 'website',
+        campaign: 'virtual-meetings-workshop'
+    },
+    
     // Workshop Information
     title: 'Master Virtual Meetings: From Boring to Brilliant & Fun',
     subtitle: 'Transform your online meetings and make every interaction count!',
@@ -27,7 +34,9 @@ const WORKSHOP_CONFIG = {
                 'Access to Live Session',
                 'Pay a symbolic commitment price'
             ],
-            buttonText: 'Get Your Ticket'
+            buttonText: 'Get Your Ticket',
+            ticketId: 'basic', // Luma ticket identifier
+            utmContent: 'basic-ticket'
         },
         recording: {
             title: 'With Recording',
@@ -40,7 +49,9 @@ const WORKSHOP_CONFIG = {
                 'Session recording',
                 'Action guide with key highlights'
             ],
-            buttonText: 'Plus Recording And Resources'
+            buttonText: 'Plus Recording And Resources',
+            ticketId: 'recording', // Luma ticket identifier
+            utmContent: 'recording-ticket'
         },
         coaching: {
             title: 'With Coaching',
@@ -51,7 +62,9 @@ const WORKSHOP_CONFIG = {
                 '45 minutes personal coaching session',
                 'Personalized feedback'
             ],
-            buttonText: 'Plus 1:1 Coaching'
+            buttonText: 'Plus 1:1 Coaching',
+            ticketId: 'coaching', // Luma ticket identifier
+            utmContent: 'coaching-ticket'
         }
     },
     
@@ -68,10 +81,34 @@ const WORKSHOP_CONFIG = {
     }
 };
 
+// Helper function to build Luma URL with parameters
+function buildLumaUrl(ticketId = null, utmContent = null) {
+    const baseUrl = WORKSHOP_CONFIG.eventUrl;
+    const params = new URLSearchParams();
+    
+    // Add UTM parameters
+    params.append('utm_source', WORKSHOP_CONFIG.utmParams.source);
+    params.append('utm_medium', WORKSHOP_CONFIG.utmParams.medium);
+    params.append('utm_campaign', WORKSHOP_CONFIG.utmParams.campaign);
+    
+    if (utmContent) {
+        params.append('utm_content', utmContent);
+    }
+    
+    // Add ticket selection parameter (Luma uses 'ticket' parameter)
+    if (ticketId) {
+        params.append('ticket', ticketId);
+    }
+    
+    const queryString = params.toString();
+    return queryString ? `${baseUrl}?${queryString}` : baseUrl;
+}
+
 // Export for use in other files (if using modules)
 if (typeof module !== 'undefined' && module.exports) {
-    module.exports = WORKSHOP_CONFIG;
+    module.exports = { WORKSHOP_CONFIG, buildLumaUrl };
 }
 
 // Make available globally for inline use
-window.WORKSHOP_CONFIG = WORKSHOP_CONFIG; 
+window.WORKSHOP_CONFIG = WORKSHOP_CONFIG;
+window.buildLumaUrl = buildLumaUrl; 

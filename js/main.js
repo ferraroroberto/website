@@ -70,9 +70,10 @@ function populateWorkshopDetails() {
         if (durationElement) durationElement.textContent = config.duration;
         if (formatElement) formatElement.textContent = config.format;
         
-        // Update all CTA buttons with the correct event URL
-        document.querySelectorAll('.cta-button').forEach(button => {
-            button.href = config.eventUrl;
+        // Update all CTA buttons with the correct event URL (excluding pricing cards which are handled separately)
+        document.querySelectorAll('.cta-button:not([data-pricing-card])').forEach(button => {
+            const defaultUrl = window.buildLumaUrl();
+            button.href = defaultUrl;
             button.target = '_blank';
             button.rel = 'noopener noreferrer';
         });
@@ -155,7 +156,11 @@ function populatePricing() {
             const pricing = window.WORKSHOP_CONFIG.pricing;
             const config = window.WORKSHOP_CONFIG;
             
-            pricingContainer.innerHTML = Object.values(pricing).map(plan => `
+            pricingContainer.innerHTML = Object.values(pricing).map(plan => {
+                // Build URL with ticket selection and UTM parameters
+                const ticketUrl = window.buildLumaUrl(plan.ticketId, plan.utmContent);
+                
+                return `
                 <div class="pricing-card ${plan.featured ? 'featured' : ''}">
                     ${plan.featured ? '<span class="featured-badge">Most Popular</span>' : ''}
                     <h3>${plan.title}</h3>
@@ -164,15 +169,17 @@ function populatePricing() {
                         ${plan.features.map(feature => `<li>${feature}</li>`).join('')}
                     </ul>
                     <a
-                      href="${config.eventUrl}"
+                      href="${ticketUrl}"
                       class="cta-button"
+                      data-pricing-card="true"
                       target="_blank"
                       rel="noopener noreferrer"
                     >
                       ${plan.buttonText}
                     </a>
                 </div>
-            `).join('');
+            `;
+            }).join('');
         }
     }
 }
