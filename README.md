@@ -239,6 +239,89 @@ Centralized configuration including:
 </div>
 ```
 
+## Advanced: Responsive Dynamic-Height Iframe Embedding
+
+### Overview
+Complete solution for embedding this Netlify-hosted page into Squarespace (or any other platform) with responsive, scroll-free behavior and automatic height adjustment.
+
+### Goal
+Embed the custom page into a Squarespace site using an `<iframe>` while ensuring:
+- ✅ Mobile responsiveness
+- ✅ No awkward scrolling behavior  
+- ✅ Full content visibility without cut-off
+- ✅ Automatic synchronization with GitHub (via Netlify builds)
+
+### Implementation
+
+#### Step 1: Embed the iframe in Squarespace
+Add this code to a Squarespace Code Block:
+
+```html
+<div id="iframe-container" style="width: 100%;">
+  <iframe 
+    id="autoResizingIframe"
+    src="https://virtualcommunication.robertoferraro.net/index.html"
+    style="width: 100%; border: none;"
+    scrolling="no"
+    allowfullscreen
+    loading="lazy">
+  </iframe>
+</div>
+
+<script>
+  window.addEventListener('message', function(event) {
+    if (event.data && event.data.type === 'setHeight') {
+      const iframe = document.getElementById('autoResizingIframe');
+      if (iframe && event.data.height) {
+        iframe.style.height = event.data.height + 'px';
+      }
+    }
+  });
+</script>
+```
+
+**Features:**
+- Sets up an iframe that can grow dynamically in height
+- Listens for messages from the iframe content that report actual content height
+- Enables seamless integration without scrollbars
+
+#### Step 2: Send iframe height from the Netlify page
+Add this script before `</body>` in the Netlify-hosted page (`index.html`):
+
+```html
+<script>
+  function sendHeight() {
+    const height = document.documentElement.scrollHeight || document.body.scrollHeight;
+    parent.postMessage({ type: 'setHeight', height: height }, '*');
+  }
+
+  window.addEventListener('load', sendHeight);
+  window.addEventListener('resize', sendHeight);
+  setInterval(sendHeight, 1000); // fallback for dynamic content changes
+</script>
+```
+
+**Features:**
+- Measures the height of the entire page and sends it to the parent site
+- Uses `postMessage` for secure cross-origin communication
+- `setInterval` ensures height stays updated even with dynamic content changes
+
+### Result
+- ✅ Seamless integration of Netlify content in Squarespace
+- ✅ Full height support without scrollbars or content clipping
+- ✅ Works on both desktop and mobile
+- ✅ Content stays in sync automatically with GitHub via Netlify builds
+
+### Security Improvements (Optional)
+- Replace `'*'` in `postMessage(..., '*')` with your Squarespace domain for added security
+- Add `<meta name="viewport" content="width=device-width, initial-scale=1.0">` to your Netlify page's `<head>` for better responsive layout
+
+### Technical Notes
+- **Cross-Origin Communication**: Uses `postMessage` API for secure parent-child iframe communication
+- **Dynamic Height Detection**: Monitors both `documentElement.scrollHeight` and `body.scrollHeight` for maximum compatibility
+- **Event-Driven Updates**: Responds to both `load` and `resize` events for optimal performance
+- **Fallback Mechanism**: `setInterval` ensures height updates even with dynamically changing content
+
 ## Contributing
 
 ### Code Style
