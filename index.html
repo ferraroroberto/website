@@ -306,7 +306,8 @@
         }
         
         .pricing-card.featured {
-            border: 3px solid #8c8c8c;
+            border: 3px solid #FFCC00;
+            background: #FFF9E6;
             position: relative;
         }
         
@@ -321,11 +322,12 @@
             top: -15px;
             left: 50%;
             transform: translateX(-50%);
-            background: #8c8c8c;
-            color: white;
+            background: #FFCC00;
+            color: #1a1a1a;
             padding: 5px 20px;
             border-radius: 20px;
             font-size: 0.9em;
+            font-weight: bold;
         }
         
         .price {
@@ -363,6 +365,10 @@
             text-align: center;
         }
         
+        .featured .pricing-features li::before {
+            color: #FFCC00;
+        }
+        
         .cta-button {
             display: inline-block;
             padding: 15px 40px;
@@ -384,11 +390,18 @@
         }
         
         .featured .cta-button {
-            background: #8c8c8c;
+            background: #FFCC00;
+            color: #1a1a1a;
         }
         
         .featured .cta-button:hover {
-            background: #FFCC00;
+            background: #1a1a1a;
+            color: white;
+        }
+        
+        .featured .cta-button:active {
+            background: #1a1a1a;
+            color: white;
         }
         
         .workshop-details {
