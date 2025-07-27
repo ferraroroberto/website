@@ -1,0 +1,33 @@
+{
+  "name": "master-virtual-meetings-workshop",
+  "version": "1.0.0",
+  "description": "Landing page for Roberto Ferraro's Master Virtual Meetings workshop",
+  "main": "index.html",
+  "scripts": {
+    "start": "python -m http.server 8000",
+    "serve": "npx http-server -p 8000",
+    "validate": "npx html-validate index.html",
+    "lint:css": "npx stylelint css/*.css",
+    "lint:js": "npx eslint js/*.js config/*.js data/*.js"
+  },
+  "keywords": [
+    "workshop",
+    "landing-page",
+    "virtual-meetings",
+    "communication",
+    "roberto-ferraro"
+  ],
+  "author": "Roberto Ferraro",
+  "license": "MIT",
+  "devDependencies": {
+    "http-server": "^14.1.1",
+    "html-validate": "^8.15.0",
+    "stylelint": "^15.11.0",
+    "eslint": "^8.56.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/robertoferraro/notion-automation.git"
+  },
+  "homepage": "https://www.robertoferraro.net/virtual-communication-workshop"
+} 
