@@ -10,499 +10,20 @@
     <meta property="og:type" content="website">
     <link rel="icon" type="image/x-icon" href="https://www.robertoferraro.net/favicon.ico">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
-    
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background-color: #ffffff;
-        }e
-        
-        .workshop-section {
-            max-width: 600px;
-            margin: 0 auto;
-            padding: 60px 20px;
-        }
-        
-        .workshop-header {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-        
-        .workshop-title {
-            font-family: 'Poppins', Arial, sans-serif;
-            font-size: 2.2em;
-            font-weight: 550;
-            letter-spacing: 0;
-            color: #1a1a1a;
-            margin-top: 40px;
-            margin-bottom: 20px;
-        }
-        
-        .workshop-subtitle {
-            font-size: 1.3em;
-            color: #1a1a1a;
-            margin-bottom: 30px;
-        }
-        
-        .workshop-intro {
-            max-width: 750px;
-            margin: 0 auto 60px;
-            text-align: center;
-            font-size: 1.1em;
-            line-height: 1.8;
-        }
-        
-        .illustrations-section {
-            max-width: 1200px;
-            margin: 60px auto 30px;
-            padding: 0 20px;
-        }
-        
-        .illustrations-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 20px;
-            margin: 0 auto;
-        }
-        
-        .illustration-item {
-            text-align: center;
-        }
-        
-        .illustration-image {
-            width: 100%;
-            height: auto;
-            border-radius: 12px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
-        }
-        
-        .illustration-image:hover {
-            transform: translateY(-5px);
-        }
-        
-        .emoji {
-            font-size: 1.2em;
-        }
-        
-        .video-container {
-            aspect-ratio: 16 / 9;
-            max-width: 1200px;
-            margin: 0 auto 30px;
-            position: relative;
-            overflow: hidden;
-            border-radius: 12px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-            background: #000;
-        }
-
-        .video-container iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
-        .benefits-section {
-            background-color: #f2f2f2;
-            padding: 30px 30px;
-            border-radius: 16px;
-            margin-bottom: 30px;
-        }
-        
-        .benefits-title {
-            font-size: 2em;
-            text-align: center;
-            margin-bottom: 40px;
-            color: #1a1a1a;
-        }
-        
-        .benefits-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 30px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        
-        .benefit-item {
-            padding: 20px;
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-            text-align: center;
-        }
-        
-        .benefit-item h3 {
-            margin-bottom: 10px;
-            color: #1a1a1a;
-            font-size: 1.2em;
-        }
-        
-        .testimonials-section {
-            margin-bottom: 60px;
-        }
-        
-        .testimonials-title {
-            font-size: 2em;
-            text-align: center;
-            margin-bottom: 40px;
-            color: #1a1a1a;
-        }
-        
-        .testimonials-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        
-        .testimonial {
-            padding: 30px;
-            background: #f2f2f2;
-            border-radius: 12px;
-            position: relative;
-        }
-        
-        .testimonial-header {
-            display: flex;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-        
-        .testimonial-photo {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            object-fit: cover;
-            margin-right: 15px;
-            border: 2px solid #e0e0e0;
-        }
-        
-        .testimonial-info {
-            flex: 1;
-        }
-        
-        .testimonial-name {
-            font-weight: 600;
-            color: #1a1a1a;
-            margin-bottom: 0;
-            font-size: 1.1em;
-        }
-        
-        .testimonial-handle {
-            color: #666;
-            font-size: 0.9em;
-            margin-top: 0;
-        }
-        
-        .testimonial::before {
-            content: '"';
-            font-size: 3em;
-            color: #e0e0e0;
-            position: absolute;
-            top: 10px;
-            left: 20px;
-        }
-        
-        .testimonial-text {
-            margin-bottom: 15px;
-            font-style: italic;
-            line-height: 1.8;
-            padding-left: 20px;
-        }
-        
-        .testimonial-author {
-            font-weight: 600;
-            color: #666;
-            text-align: right;
-        }
-        
-        .testimonial-linkedin {
-            width: 25px;
-            height: 25px;
-            background-color: #0077b5;
-            border-radius: 4px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: background-color 0.3s ease;
-            margin-left: auto;
-            position: relative;
-        }
-        
-        .testimonial-linkedin:hover {
-            background-color: #005885;
-        }
-        
-        .testimonial-linkedin::before {
-            content: "in";
-            color: white;
-            font-weight: bold;
-            font-size: 18px;
-            font-family: Arial, sans-serif;
-        }
-        
-        .group-photo-section {
-            margin: 30px 0;
-            text-align: center;
-        }
-        
-        .group-photo-container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        
-        .group-photo {
-            max-width: 100%;
-            height: auto;
-            border-radius: 12px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-        }
-        
-        .pricing-section {
-            background-color: #f2f2f2;
-            color: #1a1a1a;
-            padding: 30px 30px;
-            border-radius: 16px;
-            margin-bottom: 30px;
-        }
-        
-        .pricing-title {
-            font-size: 2em;
-            text-align: center;
-            margin-bottom: 40px;
-        }
-        
-        .pricing-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        
-        .pricing-card {
-            background: white;
-            color: #1a1a1a;
-            padding: 40px 30px;
-            border-radius: 12px;
-            text-align: center;
-            transition: transform 0.3s ease;
-        }
-        
-        .pricing-card:hover {
-            transform: translateY(-5px);
-        }
-        
-        .pricing-card.featured {
-            border: 3px solid #8c8c8c;
-            position: relative;
-        }
-        
-        .pricing-card h3 {
-            font-size: 1.3em;
-            margin-bottom: 10px;
-            line-height: 1.2;
-        }
-        
-        .featured-badge {
-            position: absolute;
-            top: -15px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: #8c8c8c;
-            color: white;
-            padding: 5px 20px;
-            border-radius: 20px;
-            font-size: 0.9em;
-        }
-        
-        .price {
-            font-size: 3em;
-            font-weight: 700;
-            margin: 20px 0;
-        }
-        
-        .price-currency {
-            font-size: 0.5em;
-            vertical-align: super;
-        }
-        
-        .pricing-features {
-            list-style: none;
-            margin: 30px 0;
-            padding: 0;
-        }
-        
-        .pricing-features li {
-            margin: 15px 0;
-            padding-left: 30px;
-            position: relative;
-            text-align: left;
-        }
-        
-        .pricing-features li::before {
-            content: "✓";
-            position: absolute;
-            left: 0;
-            top: 0;
-            color: #8c8c8c;
-            font-weight: bold;
-            width: 20px;
-            text-align: center;
-        }
-        
-        .cta-button {
-            display: inline-block;
-            padding: 15px 40px;
-            background: #1a1a1a;
-            color: white;
-            text-decoration: none;
-            border-radius: 8px;
-            font-weight: 600;
-            transition: background 0.3s ease;
-        }
-        
-        .cta-button:hover {
-            background: #FFCC00;
-        }
-        
-        .pricing-card .cta-button {
-            width: 100%;
-            margin-top: 20px;
-        }
-        
-        .featured .cta-button {
-            background: #8c8c8c;
-        }
-        
-        .featured .cta-button:hover {
-            background: #FFCC00;
-        }
-        
-        .workshop-details {
-            max-width: 800px;
-            margin: 30px auto 30px;
-            text-align: center;
-        }
-        
-        .workshop-details h3 {
-            font-size: 1.5em;
-            margin-bottom: 20px;
-        }
-        
-        .detail-item {
-            margin: 15px 0;
-            font-size: 1.1em;
-        }
-        
-        .final-cta {
-            text-align: center;
-            margin: 60px 0;
-            padding: 40px;
-            background: #f8f9fa;
-            border-radius: 16px;
-        }
-        
-        .final-cta h2 {
-            font-size: 2em;
-            margin-bottom: 20px;
-        }
-        
-        .final-cta p {
-            font-size: 1.2em;
-            margin-bottom: 30px;
-        }
-        
-        .footer {
-            text-align: center;
-            padding: 40px 20px;
-            color: #666;
-            border-top: 1px solid #e0e0e0;
-        }
-        
-        .footer a {
-            color: #1a1a1a;
-            text-decoration: none;
-        }
-        
-        .footer a:hover {
-            text-decoration: underline;
-        }
-        
-        @media (max-width: 768px) {
-            .workshop-title {
-                font-size: 2em;
-            }
-            
-            .illustrations-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 15px;
-            }
-            
-            .benefits-grid {
-                grid-template-columns: 1fr;
-                justify-items: center;
-            }
-            
-            .pricing-grid {
-                grid-template-columns: 1fr;
-                justify-items: center;
-            }
-            
-            .testimonials-grid {
-                grid-template-columns: 1fr;
-                justify-items: center;
-            }
-            
-            .benefit-item,
-            .pricing-card,
-            .testimonial {
-                max-width: 400px;
-                width: 100%;
-            }
-
-            .workshop-section {
-                padding-left: 20px;
-                padding-right: 20px;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
     <section class="workshop-section">
 
         <div class="illustrations-section">
-            <div class="illustrations-grid">
-                <div class="illustration-item">
-                    <img src="https://images.squarespace-cdn.com/content/v1/65475ce2202bcd1c4fd1c5c8/849c899c-bd71-4689-b87e-9dc6763dd913/scales+-+ideas+in+your+brain+in+practice.png" alt="Scales – Ideas in Brain vs in Practice" class="illustration-image">
-                </div>
-                <div class="illustration-item">
-                    <img src="https://images.squarespace-cdn.com/content/v1/65475ce2202bcd1c4fd1c5c8/1f598164-6934-400c-b42d-30f1748f52f1/venn+diagram+two+-+myth+reality+playful+serious.png" alt="Venn Diagram – Myth & Reality, Playful & Serious" class="illustration-image">
-                </div>
-                <div class="illustration-item">
-                    <img src="https://images.squarespace-cdn.com/content/v1/65475ce2202bcd1c4fd1c5c8/7e2a8b7d-8436-49b0-8fa1-0cee0cb134c3/coal+diamond+-+anxiety+vs+I+care.png" alt="Coal Diamond – Anxiety vs I Care" class="illustration-image">
-                </div>
-                <div class="illustration-item">
-                    <img src="https://images.squarespace-cdn.com/content/v1/65475ce2202bcd1c4fd1c5c8/33badf80-ac70-4082-8419-e9cb075d3f42/line+chart+-+subtract+smart+complicated+language.png" alt="Line Chart – Subtract Smart Complicated Language" class="illustration-image">
-                </div>
+            <div class="illustrations-grid" id="top-illustrations">
+                <!-- Top illustrations will be populated by JavaScript -->
             </div>
         </div>
 
         <div class="workshop-header">
-            <h1 class="workshop-title">Master Virtual Meetings: From Boring to Brilliant & Fun</h1>
-            <p class="workshop-subtitle">Transform your online meetings and make every interaction count!</p>
+            <h1 class="workshop-title" id="workshop-title">Master Virtual Meetings: From Boring to Brilliant & Fun</h1>
+            <p class="workshop-subtitle" id="workshop-subtitle">Transform your online meetings and make every interaction count!</p>
             <a
             href="https://lu.ma/event/evt-nXszqLJju39H8K0"
             class="luma-checkout--button cta-button"
@@ -524,7 +45,7 @@
         </div>
     
         <div class="video-container">
-            <iframe src="https://www.youtube.com/embed/ojPvNyMOFZg" 
+            <iframe id="workshop-video" 
                     title="Workshop Teaser" 
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                     allowfullscreen>
@@ -533,227 +54,41 @@
         
         <div class="benefits-section">
             <h2 class="benefits-title">What will you get?</h2>
-            <div class="benefits-grid">
-                <div class="benefit-item">
-                    <h3>Memorable First Impressions</h3>
-                    <p>Learn how to make a stronger, more memorable impression from the moment you join a call.</p>
-                </div>
-                <div class="benefit-item">
-                    <h3>Engaging Communication</h3>
-                    <p>Discover how to use your voice, gestures, and presence to keep people engaged.</p>
-                </div>
-                <div class="benefit-item">
-                    <h3>Avoid Common Pitfalls</h3>
-                    <p>Avoid common mistakes that can derail even the best-prepared sessions.</p>
-                </div>
-                <div class="benefit-item">
-                    <h3>Technical Mastery</h3>
-                    <p>And yes, we'll talk about the all-important technical setup, too!</p>
-                </div>
+            <div class="benefits-grid" id="benefits-grid">
+                <!-- Benefits will be populated by JavaScript -->
             </div>
         </div>
         
         <div class="group-photo-section">
             <div class="group-photo-container">
-                <img src="https://images.squarespace-cdn.com/content/v1/65475ce2202bcd1c4fd1c5c8/52b40b3b-2743-48b9-afde-b0d58f3736c6/group+photo+-+final.png?format=1500w" alt="Group Photo" class="group-photo">
+                <img id="group-photo" alt="Group Photo" class="group-photo">
             </div>
         </div>
         
         <div class="testimonials-section">
             <h2 class="testimonials-title">Past Participants Say</h2>
-            <div class="testimonials-grid">
-                <div class="testimonial">
-                    <div class="testimonial-header">
-                        <img src="https://images.squarespace-cdn.com/content/v1/65475ce2202bcd1c4fd1c5c8/e26e2145-6fd9-4239-9d74-4d81f4dd138b/corinataban.jpg" alt="Corina Taban" class="testimonial-photo">
-                        <div class="testimonial-info">
-                            <p class="testimonial-name">Corina Taban</p>
-                            <p class="testimonial-handle">@corinataban</p>
-                        </div>
-                        <div class="testimonial-linkedin"></div>
-                    </div>
-                    <p class="testimonial-text">I attended Roberto's virtual communication workshop and it was <strong>engaging, insightful, and packed with practical tools</strong> that can be applied immediately. Roberto has a unique talent for making complex concepts accessible and fun, blending psychology, storytelling, and performance techniques to help participants elevate their virtual presence.</p>
-                    <p class="testimonial-author">— Corina Taban</p>
-                </div>
-                <div class="testimonial">
-                    <div class="testimonial-header">
-                        <img src="https://images.squarespace-cdn.com/content/v1/65475ce2202bcd1c4fd1c5c8/c266aecc-2489-467d-ad0a-891be70b9ec1/junhanchin.jpg" alt="Jun Han Chin" class="testimonial-photo">
-                        <div class="testimonial-info">
-                            <p class="testimonial-name">Jun Han Chin</p>
-                            <p class="testimonial-handle">@junhanchin</p>
-                        </div>
-                        <div class="testimonial-linkedin"></div>
-                    </div>
-                    <p class="testimonial-text">Roberto's virtual communication workshop was really actionable. He gave us techniques and solutions suitable for different levels of implementation, <strong>from easy to advanced</strong>. His presentation was clear and easy to follow. I would attend future workshops by Roberto.</p>
-                    <p class="testimonial-author">— Jun Han Chin</p>
-                </div>
-                <div class="testimonial">
-                    <div class="testimonial-header">
-                        <img src="https://images.squarespace-cdn.com/content/v1/65475ce2202bcd1c4fd1c5c8/d2ee8211-95bc-4a04-963b-220148cde121/annejannier.jpg" alt="Anne Jannier" class="testimonial-photo">
-                        <div class="testimonial-info">
-                            <p class="testimonial-name">Anne Jannier</p>
-                            <p class="testimonial-handle">@annejannier</p>
-                        </div>
-                        <div class="testimonial-linkedin"></div>
-                    </div>
-                    <p class="testimonial-text">Roberto's workshop on virtual communication <strong>is worth every minute</strong>. He shares years of practice and helps you fix many things that make you dread Zoom calls. I cannot recommend it enough.</p>
-                    <p class="testimonial-author">— Anne Jannier</p>
-                </div>
-                <div class="testimonial">
-                    <div class="testimonial-header">
-                        <img src="https://images.squarespace-cdn.com/content/v1/65475ce2202bcd1c4fd1c5c8/65749fc0-2ba6-4e32-9096-c9c0e88a6461/francescofusco.jpg" alt="Francesco Fusco" class="testimonial-photo">
-                        <div class="testimonial-info">
-                            <p class="testimonial-name">Francesco Fusco</p>
-                            <p class="testimonial-handle">@francescofusco</p>
-                        </div>
-                        <div class="testimonial-linkedin"></div>
-                    </div>
-                    <p class="testimonial-text">Roberto's energy and positive attitude are contagious. I came out of the workshop <strong>energized and inspired</strong>, with lots of new ideas to incorporate into my day-to-day routine. Not to mention, Roberto's illustrations are just legendary! I'm looking forward to checking out what he comes up with next! 🙌</p>
-                    <p class="testimonial-author">— Francesco Fusco</p>
-                </div>
-                <div class="testimonial">
-                    <div class="testimonial-header">
-                        <img src="https://images.squarespace-cdn.com/content/v1/65475ce2202bcd1c4fd1c5c8/cc24728f-c07a-40a6-8de0-7bf9898f2df5/corinne-dufraisse-a1b349a.jpg" alt="Corinne Dufraisse" class="testimonial-photo">
-                        <div class="testimonial-info">
-                            <p class="testimonial-name">Corinne Dufraisse</p>
-                            <p class="testimonial-handle">@corinne-dufraisse</p>
-                        </div>
-                        <div class="testimonial-linkedin"></div>
-                    </div>
-                    <p class="testimonial-text">I had the privilege of attending a virtual communication workshop led by Roberto and the session was stunning. Not only did we get hints and tips on how to improve our communication, but we were once again made aware of how important the connection to people is. The workshop was awsomwly led, Roberto's <strong>energy and approach are inspiring</strong>, and the group participation was really good even though people didn't know each other.</p>
-                    <p class="testimonial-author">— Corinne Dufraisse</p>
-                </div>
-                <div class="testimonial">
-                    <div class="testimonial-header">
-                        <img src="https://images.squarespace-cdn.com/content/v1/65475ce2202bcd1c4fd1c5c8/4b2bf711-4316-49ab-a235-114b095ab6e1/alexander-mcadam.jpg" alt="Alex McAdam" class="testimonial-photo">
-                        <div class="testimonial-info">
-                            <p class="testimonial-name">Alex McAdam</p>
-                            <p class="testimonial-handle">@alexander-mcadam</p>
-                        </div>
-                        <div class="testimonial-linkedin"></div>
-                    </div>
-                    <p class="testimonial-text">I had the pleasure of attending a workshop with Roberto on virtual communication, and it was truly enlightening. His insights were sharp, his approach engaging, and his energy infectious. Roberto creates an inspiring atmosphere that leaves participants <strong>motivated and equipped with practical knowledge</strong>.</p>
-                    <p class="testimonial-author">— Alex McAdam</p>
-                </div>
-                <div class="testimonial">
-                    <div class="testimonial-header">
-                        <img src="https://images.squarespace-cdn.com/content/v1/65475ce2202bcd1c4fd1c5c8/d76b5349-c2a9-4bed-a78d-cf39eccf4139/c-biondi.jpg" alt="Cinzia Biondi" class="testimonial-photo">
-                        <div class="testimonial-info">
-                            <p class="testimonial-name">Cinzia Biondi</p>
-                            <p class="testimonial-handle">@c-biondi</p>
-                        </div>
-                        <div class="testimonial-linkedin"></div>
-                    </div>
-                    <p class="testimonial-text">I joined Roberto's virtual communication workshop and really enjoyed it. It was <strong>fun, practical, and easy to follow</strong> with his amazing illustrations :) He showed science-backed ideas and performance tricks to make things simple. Voice Warm ups and body language tips were my favourite! I highly recommend it!</p>
-                    <p class="testimonial-author">— Cinzia Biondi</p>
-                </div>
-                <div class="testimonial">
-                    <div class="testimonial-header">
-                        <img src="https://images.squarespace-cdn.com/content/v1/65475ce2202bcd1c4fd1c5c8/e40e11d4-563b-44b7-915e-c2729461095a/sahir-maharaj.jpg" alt="Sahir Maharaj" class="testimonial-photo">
-                        <div class="testimonial-info">
-                            <p class="testimonial-name">Sahir Maharaj</p>
-                            <p class="testimonial-handle">@sahir-maharaj</p>
-                        </div>
-                        <div class="testimonial-linkedin"></div>
-                    </div>
-                    <p class="testimonial-text">I had the pleasure of attending a virtual communication workshop led by Roberto Ferraro that was both practical and highly relatable. The session offered realistic tips on preparation and structuring communication in virtual settings, which I found <strong>immediately applicable to my work</strong>. It also emphasized the importance of tone, engagement, and intentionality - key aspects that are often overlooked but make a noteworthy difference in virtual interactions.</p>
-                    <p class="testimonial-author">— Sahir Maharaj</p>
-                </div>
-                <div class="testimonial">
-                    <div class="testimonial-header">
-                        <img src="https://images.squarespace-cdn.com/content/v1/65475ce2202bcd1c4fd1c5c8/458e5676-36b2-4009-9771-aafdc44c22fe/nadyaichinomiya.jpg" alt="Nadya Ichinomiya" class="testimonial-photo">
-                        <div class="testimonial-info">
-                            <p class="testimonial-name">Nadya Ichinomiya</p>
-                            <p class="testimonial-handle">@nadyaichinomiya</p>
-                        </div>
-                        <div class="testimonial-linkedin"></div>
-                    </div>
-                    <p class="testimonial-text">I recently attended Roberto's "Virtual Communication" workshop. I teach courses online at Sony Pictures and UCLA Extension and am always trying to find ways to improve the experience for the learners. Roberto's material was thoughtfully prepared and he <strong>delivered the content with humility and the intention</strong> to deliver as much value as possible.</p>
-                    <p class="testimonial-author">— Nadya Ichinomiya</p>
-                </div>
+            <div class="testimonials-grid" id="testimonials-grid">
+                <!-- Testimonials will be populated by JavaScript -->
             </div>
         </div>
 
         <div class="pricing-section">
             <h2 class="pricing-title">Choose Your Experience</h2>
-            <div class="pricing-grid">
-                <div class="pricing-card">
-                    <h3>Attend The Workshop</h3>
-                    <div class="price"><span class="price-currency">€</span>10</div>
-                    <ul class="pricing-features">
-                        <li>Access to Live Session</li>
-                        <li>Pay a symbolic commitment price</li>
-                    </ul>
-                    <a
-                      href="https://lu.ma/event/evt-nXszqLJju39H8K0"
-                      class="luma-checkout--button cta-button"
-                      data-luma-action="checkout"
-                      data-luma-event-id="evt-nXszqLJju39H8K0"
-                    >
-                      Get Your Ticket
-                    </a>
-                </div>
-                
-                <div class="pricing-card featured">
-                    <span class="featured-badge">Most Popular</span>
-                    <h3>With Recording</h3>
-                    <div class="price"><span class="price-currency">€</span>19</div>
-                    <ul class="pricing-features">
-                        <li>Everything in Access to Live Session</li>
-                        <li>Become a workshop patron</li>
-                        <li>Session recording</li>
-                        <li>Action guide with key highlights</li>
-                    </ul>
-                    <a
-                      href="https://lu.ma/event/evt-nXszqLJju39H8K0"
-                      class="luma-checkout--button cta-button"
-                      data-luma-action="checkout"
-                      data-luma-event-id="evt-nXszqLJju39H8K0"
-                    >
-                      Plus Recording And Resources
-                    </a>
-                </div>
-                
-                <div class="pricing-card">
-                    <h3>With Coaching</h3>
-                    <div class="price"><span class="price-currency">€</span>150</div>
-                    <ul class="pricing-features">
-                        <li>Everything in Recording package</li>
-                        <li>45 minutes personal coaching session</li>
-                        <li>Personalized feedback</li>
-                    </ul>
-                    <a
-                      href="https://lu.ma/event/evt-nXszqLJju39H8K0"
-                      class="luma-checkout--button cta-button"
-                      data-luma-action="checkout"
-                      data-luma-event-id="evt-nXszqLJju39H8K0"
-                    >
-                      Plus 1:1 Coaching
-                    </a>
-                </div>
+            <div class="pricing-grid" id="pricing-grid">
+                <!-- Pricing cards will be populated by JavaScript -->
             </div>
         </div>
         
         <div class="workshop-details">
             <h3>Workshop Details</h3>
-            <div class="detail-item">📅 <strong>When:</strong> September 2nd 16:00 CET</div>
-            <div class="detail-item">⏰ <strong>Duration:</strong> 90 minutes of interactive learning</div>
-            <div class="detail-item">👥 <strong>Format:</strong> Small group (max 20 participants)</div>
+            <div class="detail-item">📅 <strong>When:</strong> <span id="workshop-date">September 2nd 16:00 CET</span></div>
+            <div class="detail-item">⏰ <strong>Duration:</strong> <span id="workshop-duration">90 minutes of interactive learning</span></div>
+            <div class="detail-item">👥 <strong>Format:</strong> <span id="workshop-format">Small group (max 20 participants)</span></div>
         </div>
         
         <div class="illustrations-section">
-            <div class="illustrations-grid">
-                <div class="illustration-item">
-                    <img src="https://images.squarespace-cdn.com/content/v1/65475ce2202bcd1c4fd1c5c8/450c68ff-292e-47f9-92ce-b1a332dca935/emoji+cool+fearful+-+everyone+is+afraid.png" alt="Emoji Cool vs Fearful – Everyone Is Afraid" class="illustration-image">
-                </div>
-                <div class="illustration-item">
-                    <img src="https://images.squarespace-cdn.com/content/v1/65475ce2202bcd1c4fd1c5c8/47f92778-a84f-434c-85c7-421e98214da5/clock+time+-+holding+silence.png" alt="Clock Time – Holding Silence" class="illustration-image">
-                </div>
-                <div class="illustration-item">
-                    <img src="https://images.squarespace-cdn.com/content/v1/65475ce2202bcd1c4fd1c5c8/43ee4cf8-6088-4a4a-bc1f-f6e2196628bf/loudspeaker+small+big+-+words+body.png" alt="Loudspeaker – Words vs Body" class="illustration-image">
-                </div>
-                <div class="illustration-item">
-                    <img src="https://images.squarespace-cdn.com/content/v1/65475ce2202bcd1c4fd1c5c8/f5b002f8-8af1-45d5-9e6e-855b534e80ed/emoji+cool+happy+sad+sweat+-+just+smile+vs+be+authentic.png" alt="Emoji – Just Smile vs Be Authentic" class="illustration-image">
-                </div>
+            <div class="illustrations-grid" id="bottom-illustrations">
+                <!-- Bottom illustrations will be populated by JavaScript -->
             </div>
         </div>
 
@@ -773,5 +108,10 @@
     </section>
     
     <script id="luma-checkout" src="https://embed.lu.ma/checkout-button.js"></script>
+    <script src="config/workshop-config.js"></script>
+    <script src="data/testimonials.js"></script>
+    <script src="data/benefits.js"></script>
+    <script src="data/illustrations.js"></script>
+    <script src="js/main.js"></script>
 </body>
 </html>
