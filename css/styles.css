@@ -16,7 +16,7 @@ body {
 .workshop-section {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 60px 20px;
+    padding: 30px 20px;
 }
 
 .workshop-header {
@@ -32,7 +32,7 @@ body {
     color: #1a1a1a;
     margin-top: 40px;
     margin-bottom: 20px;
-}
+}   
 
 .workshop-subtitle {
     font-size: 1.3em;
@@ -51,7 +51,7 @@ body {
 /* ===== ILLUSTRATIONS SECTION ===== */
 .illustrations-section {
     max-width: 1200px;
-    margin: 60px auto 30px;
+    margin: 30px auto 30px;
     padding: 0 20px;
 }
 
@@ -300,9 +300,13 @@ body {
     transform: translateY(-5px);
 }
 
+
+
 .pricing-card.featured {
-    border: 3px solid #8c8c8c;
+    border: 3px solid #FFCC00;
     position: relative;
+    background: rgba(255, 204, 0, 0.15);
+    color: #1a1a1a;
 }
 
 .pricing-card h3 {
@@ -316,8 +320,8 @@ body {
     top: -15px;
     left: 50%;
     transform: translateX(-50%);
-    background: #8c8c8c;
-    color: white;
+    background: #FFCC00;
+    color: #1a1a1a;
     padding: 5px 20px;
     border-radius: 20px;
     font-size: 0.9em;
@@ -372,6 +376,18 @@ body {
 
 .cta-button:hover {
     background: #FFCC00;
+    color: #1a1a1a;
+}
+
+.pricing-card:not(.featured) .cta-button:hover {
+    background: #FFCC00;
+    color: #1a1a1a;
+}
+
+.workshop-header .cta-button:hover,
+.final-cta .cta-button:hover {
+    background: #FFCC00;
+    color: #1a1a1a;
 }
 
 .pricing-card .cta-button {
@@ -379,12 +395,14 @@ body {
     margin-top: 20px;
 }
 
-.featured .cta-button {
-    background: #8c8c8c;
+.pricing-card.featured .cta-button {
+    background: #FFCC00;
+    color: #1a1a1a;
 }
 
-.featured .cta-button:hover {
-    background: #FFCC00;
+.pricing-card.featured .cta-button:hover {
+    background: #1a1a1a;
+    color: white;
 }
 
 /* ===== WORKSHOP DETAILS ===== */
