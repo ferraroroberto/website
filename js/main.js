@@ -165,7 +165,7 @@ function populatePricing() {
                         ${plan.features.map(feature => `<li>${feature}</li>`).join('')}
                     </ul>
                     <a
-                      href="${config.eventUrl}"
+                      href="${window.buildLumaUrl()}"
                       class="cta-button"
                       target="_blank"
                       rel="noopener noreferrer"
