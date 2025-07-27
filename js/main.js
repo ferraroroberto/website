@@ -72,7 +72,8 @@ function populateWorkshopDetails() {
         
         // Update all CTA buttons with the correct event URL
         document.querySelectorAll('.cta-button').forEach(button => {
-            button.href = config.eventUrl;
+            const urlWithUtm = window.buildLumaUrl();
+            button.href = urlWithUtm;
             button.target = '_blank';
             button.rel = 'noopener noreferrer';
         });
