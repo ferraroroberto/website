@@ -3,8 +3,8 @@
 
 const WORKSHOP_CONFIG = {
     // Event Details
-    eventId: 'evt-nXszqLJju39H8K0',
-    eventUrl: 'https://lu.ma/event/evt-nXszqLJju39H8K0',
+    eventId: '6wa8dsd1',
+    eventUrl: 'https://lu.ma/6wa8dsd1',
     
     // Workshop Information
     title: 'Master Virtual Meetings: From Boring to Brilliant & Fun',
@@ -57,7 +57,6 @@ const WORKSHOP_CONFIG = {
     
     // External Resources
     favicon: 'https://www.robertoferraro.net/favicon.ico',
-    lumaScript: 'https://embed.lu.ma/checkout-button.js',
     
     // SEO
     meta: {

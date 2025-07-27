@@ -73,7 +73,8 @@ function populateWorkshopDetails() {
         // Update all CTA buttons with the correct event URL
         document.querySelectorAll('.cta-button').forEach(button => {
             button.href = config.eventUrl;
-            button.setAttribute('data-luma-event-id', config.eventId);
+            button.target = '_blank';
+            button.rel = 'noopener noreferrer';
         });
     }
 }
@@ -164,9 +165,9 @@ function populatePricing() {
                     </ul>
                     <a
                       href="${config.eventUrl}"
-                      class="luma-checkout--button cta-button"
-                      data-luma-action="checkout"
-                      data-luma-event-id="${config.eventId}"
+                      class="cta-button"
+                      target="_blank"
+                      rel="noopener noreferrer"
                     >
                       ${plan.buttonText}
                     </a>
