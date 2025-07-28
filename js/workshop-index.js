@@ -67,7 +67,7 @@ function populateWorkshopsGrid() {
                     
                     <div class="workshop-cta">
                         ${workshop.status === 'active' 
-                            ? `<a href="${workshop.ctaUrl}" class="cta-button ${workshop.colorScheme}">${workshop.ctaText}</a>`
+                            ? `<a href="${workshop.ctaUrl}" class="cta-button ${workshop.colorScheme}" target="_blank" rel="noopener noreferrer">${workshop.ctaText}</a>`
                             : `<span class="cta-button ${workshop.colorScheme}" style="opacity: 0.6; cursor: not-allowed;">Coming Soon</span>`
                         }
                     </div>
