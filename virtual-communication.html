@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Master Virtual Meetings Workshop - Roberto Ferraro</title>
+    <meta name="description" content="Transform your online presence and make every virtual interaction count. Join Roberto Ferraro's workshop to master virtual communication.">
+    <meta property="og:title" content="Master Virtual Meetings: From Boring to Brilliant - Roberto Ferraro">
+    <meta property="og:description" content="Learn to communicate effectively in virtual settings with practical tools you can use right away.">
+    <meta property="og:type" content="website">
+    <link rel="icon" type="image/x-icon" href="https://www.robertoferraro.net/favicon.ico">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <section class="workshop-section">
+
+        <div class="illustrations-section">
+            <div class="illustrations-grid" id="top-illustrations">
+                <!-- Top illustrations will be populated by JavaScript -->
+            </div>
+        </div>
+
+        <div class="workshop-header">
+            <h1 class="workshop-title" id="workshop-title">Master Virtual Meetings: From Boring to Brilliant & Fun</h1>
+            <p class="workshop-subtitle" id="workshop-subtitle">Transform your online meetings and make every interaction count!</p>
+            <a
+            href="https://lu.ma/6wa8dsd1"
+            class="cta-button"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Reserve Your Spot Now
+          </a>    
+        </div>
+
+        <div class="workshop-intro">
+            <p>Virtual meetings can be <strong>exhausting</strong>. You know the feeling: wondering if people are paying attention, struggling to sound confident through the screen, or just wishing you could connect better in those tiny Zoom boxes <span class="emoji">😩</span></p>           
+            <br>
+            <p><strong>I've been there too.</strong></p>
+            <br>
+            <p>Since 2020, I've spent over <strong>5,000 hours in virtual meetings</strong>. Along the way, I've learned that being effective online is about so much more than just having a great microphone or camera, and I LOVE a good tech setup <span class="emoji">🤖</span></p>
+            <br>
+            <p>In this workshop, I'll share how to make virtual meetings <strong> effective, engaging, and fun!</strong></p>
+        </div>
+    
+        <div class="video-container">
+            <iframe id="workshop-video" 
+                    title="Workshop Teaser" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen>
+            </iframe>
+        </div>
+        
+        <div class="benefits-section">
+            <h2 class="benefits-title">What will you get?</h2>
+            <div class="benefits-grid" id="benefits-grid">
+                <!-- Benefits will be populated by JavaScript -->
+            </div>
+        </div>
+        
+        <div class="group-photo-section">
+            <div class="group-photo-container">
+                <img id="group-photo" alt="Group Photo" class="group-photo">
+            </div>
+        </div>
+        
+        <div class="testimonials-section">
+            <h2 class="testimonials-title">Past Participants Say</h2>
+            <div class="testimonials-grid" id="testimonials-grid">
+                <!-- Testimonials will be populated by JavaScript -->
+            </div>
+        </div>
+
+        <div class="pricing-section">
+            <h2 class="pricing-title">Choose Your Experience</h2>
+            <div class="pricing-grid" id="pricing-grid">
+                <!-- Pricing cards will be populated by JavaScript -->
+            </div>
+        </div>
+        
+        <div class="workshop-details">
+            <h3>Workshop Details</h3>
+            <div class="detail-item">📅 <strong>When:</strong> <span id="workshop-date">September 2nd 16:00 CET</span></div>
+            <div class="detail-item">⏰ <strong>Duration:</strong> <span id="workshop-duration">90 minutes of interactive learning</span></div>
+            <div class="detail-item">👥 <strong>Format:</strong> <span id="workshop-format">Small group (max 20 participants)</span></div>
+        </div>
+        
+        <div class="illustrations-section">
+            <div class="illustrations-grid" id="bottom-illustrations">
+                <!-- Bottom illustrations will be populated by JavaScript -->
+            </div>
+        </div>
+
+        <div class="final-cta">
+            <h2>Ready to Transform Your Virtual Presence?</h2>
+            <p>Join me and discover how to make every virtual interaction count. <span class="emoji">🚀</span></p>
+            <p><strong>Limited spots available for better interaction!</strong></p>
+            <a
+              href="https://lu.ma/6wa8dsd1"
+              class="cta-button"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Reserve Your Spot Now
+            </a>
+        </div>
+    </section>
+    
+    <script src="config/workshop-config.js"></script>
+    <script src="data/testimonials.js"></script>
+    <script src="data/benefits.js"></script>
+    <script src="data/illustrations.js"></script>
+    <script src="js/main.js"></script>
+    
+    <script>
+      function sendHeight() {
+        const height = document.documentElement.scrollHeight || document.body.scrollHeight;
+        parent.postMessage({ type: 'setHeight', height: height }, '*');
+      }
+
+      window.addEventListener('load', sendHeight);
+      window.addEventListener('resize', sendHeight);
+      setInterval(sendHeight, 1000); // fallback for dynamic content changes
+    </script>
+</body>
+</html>
