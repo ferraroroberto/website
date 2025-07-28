@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Leadership Workshop - Roberto Ferraro</title>
+    <meta name="description" content="Master the skills to lead teams and organizations in the digital era. Join Roberto Ferraro's workshop to become an effective digital leader.">
+    <meta property="og:title" content="Digital Leadership: Lead with Impact in the Virtual World - Roberto Ferraro">
+    <meta property="og:description" content="Develop the essential leadership skills needed to inspire, motivate, and guide teams effectively in virtual and hybrid work environments.">
+    <meta property="og:type" content="website">
+    <link rel="icon" type="image/x-icon" href="https://www.robertoferraro.net/favicon.ico">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <section class="workshop-section">
+
+        <div class="illustrations-section">
+            <div class="illustrations-grid" id="top-illustrations">
+                <!-- Top illustrations will be populated by JavaScript -->
+            </div>
+        </div>
+
+        <div class="workshop-header">
+            <h1 class="workshop-title" id="workshop-title">Digital Leadership: Lead with Impact in the Virtual World</h1>
+            <p class="workshop-subtitle" id="workshop-subtitle">Master the skills to lead teams and organizations in the digital era!</p>
+            <a
+            href="https://lu.ma/digital-leadership-demo"
+            class="cta-button"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Reserve Your Spot Now
+          </a>    
+        </div>
+
+        <div class="workshop-intro">
+            <p>Leading teams in the digital age can be <strong>challenging</strong>. You know the struggle: trying to maintain team morale through screens, struggling to build trust remotely, or just wishing you could inspire your team as effectively as in person <span class="emoji">😤</span></p>           
+            <br>
+            <p><strong>I've been there too.</strong></p>
+            <br>
+            <p>Over the years, I've worked with leaders across various industries to develop <strong>effective digital leadership strategies</strong>. I've learned that great leadership in the digital world requires new skills and approaches <span class="emoji">🎯</span></p>
+            <br>
+            <p>In this workshop, I'll share how to lead teams <strong>effectively, inspirationally, and successfully in the digital era!</strong></p>
+        </div>
+    
+        <div class="video-container">
+            <iframe id="workshop-video" 
+                    title="Workshop Teaser" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen>
+            </iframe>
+        </div>
+        
+        <div class="benefits-section">
+            <h2 class="benefits-title">What will you get?</h2>
+            <div class="benefits-grid" id="benefits-grid">
+                <!-- Benefits will be populated by JavaScript -->
+            </div>
+        </div>
+        
+        <div class="group-photo-section">
+            <div class="group-photo-container">
+                <img id="group-photo" alt="Group Photo" class="group-photo">
+            </div>
+        </div>
+        
+        <div class="testimonials-section">
+            <h2 class="testimonials-title">Past Participants Say</h2>
+            <div class="testimonials-grid" id="testimonials-grid">
+                <!-- Testimonials will be populated by JavaScript -->
+            </div>
+        </div>
+
+        <div class="pricing-section">
+            <h2 class="pricing-title">Choose Your Experience</h2>
+            <div class="pricing-grid" id="pricing-grid">
+                <!-- Pricing cards will be populated by JavaScript -->
+            </div>
+        </div>
+        
+        <div class="workshop-details">
+            <h3>Workshop Details</h3>
+            <div class="detail-item">📅 <strong>When:</strong> <span id="workshop-date">Coming Soon</span></div>
+            <div class="detail-item">⏰ <strong>Duration:</strong> <span id="workshop-duration">90 minutes of interactive learning</span></div>
+            <div class="detail-item">👥 <strong>Format:</strong> <span id="workshop-format">Small group (max 20 participants)</span></div>
+        </div>
+        
+        <div class="illustrations-section">
+            <div class="illustrations-grid" id="bottom-illustrations">
+                <!-- Bottom illustrations will be populated by JavaScript -->
+            </div>
+        </div>
+
+        <div class="final-cta">
+            <h2>Ready to Lead with Impact in the Digital Age?</h2>
+            <p>Join me and discover how to inspire and guide teams effectively in the virtual world. <span class="emoji">🚀</span></p>
+            <p><strong>Limited spots available for better interaction!</strong></p>
+            <a
+              href="https://lu.ma/digital-leadership-demo"
+              class="cta-button"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Reserve Your Spot Now
+            </a>
+        </div>
+    </section>
+    
+    <script src="config/digital-leadership-config.js"></script>
+    <script src="data/digital-leadership-testimonials.js"></script>
+    <script src="data/digital-leadership-benefits.js"></script>
+    <script src="data/illustrations.js"></script>
+    <script src="js/main.js"></script>
+    
+    <script>
+      function sendHeight() {
+        const height = document.documentElement.scrollHeight || document.body.scrollHeight;
+        parent.postMessage({ type: 'setHeight', height: height }, '*');
+      }
+
+      window.addEventListener('load', sendHeight);
+      window.addEventListener('resize', sendHeight);
+      setInterval(sendHeight, 1000); // fallback for dynamic content changes
+    </script>
+</body>
+</html>
