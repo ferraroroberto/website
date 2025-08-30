@@ -3,8 +3,8 @@
 
 const WORKSHOP_CONFIG = {
     // Event Details
-    eventId: '6wa8dsd1',
-    eventUrl: 'https://lu.ma/6wa8dsd1',
+    eventId: 'o50vf0o8',
+    eventUrl: 'https://lu.ma/o50vf0o8',
     
     // UTM Parameters for tracking
     utmParams: {
