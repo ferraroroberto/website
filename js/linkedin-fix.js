@@ -22,56 +22,6 @@
                (window.self !== window.top && document.referrer.includes('linkedin'));
     }
     
-    // Show notification for embedded browsers
-    function showEmbeddedBrowserNotification() {
-        // Check if notification already exists
-        if (document.getElementById('embedded-browser-notification')) {
-            return;
-        }
-        
-        const notification = document.createElement('div');
-        notification.id = 'embedded-browser-notification';
-        notification.innerHTML = `
-            <div style="
-                position: fixed;
-                top: 20px;
-                right: 20px;
-                background: #0077b5;
-                color: white;
-                padding: 15px 20px;
-                border-radius: 8px;
-                box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-                z-index: 10000;
-                max-width: 300px;
-                font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-                font-size: 14px;
-                line-height: 1.4;
-            ">
-                <div style="font-weight: 600; margin-bottom: 8px;">📱 For Best Experience</div>
-                <div>To access workshop links properly, please open this page in your regular browser.</div>
-                <button onclick="this.parentElement.parentElement.remove()" style="
-                    background: rgba(255,255,255,0.2);
-                    border: none;
-                    color: white;
-                    padding: 5px 10px;
-                    border-radius: 4px;
-                    margin-top: 8px;
-                    cursor: pointer;
-                    font-size: 12px;
-                ">Got it</button>
-            </div>
-        `;
-        
-        document.body.appendChild(notification);
-        
-        // Auto-remove after 10 seconds
-        setTimeout(() => {
-            if (notification.parentElement) {
-                notification.remove();
-            }
-        }, 10000);
-    }
-    
     // Enhanced link handling for embedded browsers
     function enhanceLinksForEmbeddedBrowser() {
         const links = document.querySelectorAll('a[href^="https://lu.ma/"], a.cta-button');
@@ -232,9 +182,6 @@
     function initializeLinkedInFix() {
         if (isEmbeddedBrowser()) {
             console.log('Embedded browser detected, applying LinkedIn fix');
-            
-            // Show notification
-            showEmbeddedBrowserNotification();
             
             // Enhance all links
             enhanceLinksForEmbeddedBrowser();
