@@ -16,7 +16,7 @@ const WORKSHOP_CONFIG = {
     // Workshop Information
     title: 'Master Virtual Meetings: From Boring to Brilliant & Fun',
     subtitle: 'Transform your online meetings and make every interaction count!',
-    date: 'October 14th 16:00 CET',
+    date: 'December 9th 16:00 CET',
     duration: '90 minutes of interactive learning',
     format: 'Small group (max 20 participants)',
     
