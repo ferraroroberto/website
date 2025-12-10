@@ -16,7 +16,7 @@ const WORKSHOPS_INDEX_CONFIG = {
                 'Technical setup optimization',
                 'Interactive learning experience'
             ],
-            date: 'September 2nd 16:00 CET',
+            date: 'February 10th 2026 - 16:00 to 17:30 CET',
             duration: '90 minutes',
             format: 'Small group (max 20 participants)',
             price: 'From €10',
