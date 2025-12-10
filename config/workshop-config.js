@@ -3,8 +3,8 @@
 
 const WORKSHOP_CONFIG = {
     // Event Details
-    eventId: 'neemuhqj',
-    eventUrl: 'https://luma.com/neemuhqj',
+    eventId: 'ds4s0onl',
+    eventUrl: 'https://luma.com/ds4s0onl',
     
     // UTM Parameters for tracking
     utmParams: {
@@ -16,7 +16,7 @@ const WORKSHOP_CONFIG = {
     // Workshop Information
     title: 'Master Virtual Meetings: From Boring to Brilliant & Fun',
     subtitle: 'Transform your online meetings and make every interaction count!',
-    date: 'December 9th 16:00 CET',
+    date: 'February 10th 2026 - 16:00 to 17:30 CET',
     duration: '90 minutes of interactive learning',
     format: 'Small group (max 20 participants)',
     
