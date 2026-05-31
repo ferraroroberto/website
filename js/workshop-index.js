@@ -77,13 +77,6 @@ function populateWorkshopsGrid() {
     }
 }
 
-// Add click tracking for analytics (if needed)
-function trackWorkshopClick(workshopId) {
-    console.log('Workshop clicked:', workshopId);
-    // You can add analytics tracking here
-    // Example: gtag('event', 'workshop_click', { workshop_id: workshopId });
-}
-
 // Add hover effects for workshop cards
 document.addEventListener('mouseover', function(e) {
     if (e.target.closest('.workshop-card')) {

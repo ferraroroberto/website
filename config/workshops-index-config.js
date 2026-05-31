@@ -79,33 +79,10 @@ const WORKSHOPS_INDEX_CONFIG = {
     }
 };
 
-// Helper function to get workshop by ID
-function getWorkshopById(id) {
-    return WORKSHOPS_INDEX_CONFIG.workshops.find(workshop => workshop.id === id);
-}
-
-// Helper function to get workshop by slug
-function getWorkshopBySlug(slug) {
-    return WORKSHOPS_INDEX_CONFIG.workshops.find(workshop => workshop.slug === slug);
-}
-
-// Helper function to get active workshops only
-function getActiveWorkshops() {
-    return WORKSHOPS_INDEX_CONFIG.workshops.filter(workshop => workshop.status === 'active');
-}
-
 // Export for use in other files (if using modules)
 if (typeof module !== 'undefined' && module.exports) {
-    module.exports = { 
-        WORKSHOPS_INDEX_CONFIG, 
-        getWorkshopById, 
-        getWorkshopBySlug, 
-        getActiveWorkshops 
-    };
+    module.exports = { WORKSHOPS_INDEX_CONFIG };
 }
 
 // Make available globally for inline use
 window.WORKSHOPS_INDEX_CONFIG = WORKSHOPS_INDEX_CONFIG;
-window.getWorkshopById = getWorkshopById;
-window.getWorkshopBySlug = getWorkshopBySlug;
-window.getActiveWorkshops = getActiveWorkshops;
