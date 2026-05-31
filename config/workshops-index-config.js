@@ -44,7 +44,7 @@ const WORKSHOPS_INDEX_CONFIG = {
             ctaText: 'Learn More',
             ctaUrl: 'personal-branding.html',
             colorScheme: 'personal-branding',
-            status: 'active'
+            status: 'coming-soon'
         },
         {
             id: 'digital-leadership',
@@ -65,7 +65,7 @@ const WORKSHOPS_INDEX_CONFIG = {
             ctaText: 'Learn More',
             ctaUrl: 'digital-leadership.html',
             colorScheme: 'digital-leadership',
-            status: 'active'
+            status: 'coming-soon'
         }
     ],
     
