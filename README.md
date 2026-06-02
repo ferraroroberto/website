@@ -1,12 +1,15 @@
-# Master Virtual Meetings Workshop - Landing Page
+# Workshop Website - Roberto Ferraro
 
 ## Overview
 
-A modern, **data-driven** landing page for Roberto Ferraro's "Master Virtual Meetings: From Boring to Brilliant" workshop. Built with clean separation of concerns and dynamic content population from modular data files, following web development best practices.
+A multi-workshop landing site for Roberto Ferraro's professional development workshops. Built with clean separation of concerns: a single `workshop.html` template driven by per-workshop config and data files, plus a central index page listing all workshops.
 
-## Live Page
+## Live Pages
 
-🌐 **Live URL**: https://www.robertoferraro.net/virtual-communication-workshop
+🌐 **Workshop index**: https://www.robertoferraro.net
+🌐 **Virtual Communication**: https://www.robertoferraro.net/virtual-communication-workshop
+🌐 **Personal Branding**: https://www.robertoferraro.net/personal-branding-workshop
+🌐 **Digital Leadership**: https://www.robertoferraro.net/digital-leadership-workshop
 
 ## Project Structure
 
@@ -23,7 +26,8 @@ website/
 ├── js/
 │   ├── main.js                         # Dynamic content population for workshop pages
 │   ├── workshop-index.js               # Workshop index page logic
-│   └── iframe-resize.js               # Shared sendHeight() postMessage helper
+│   ├── iframe-resize.js               # Shared sendHeight() postMessage helper
+│   └── linkedin-fix.js                # Embedded-browser (LinkedIn/WebView) link handler
 ├── config/
 │   ├── workshop-base.js               # Shared factory: buildLumaUrl() + createWorkshopConfig()
 │   ├── workshop-config.js             # Virtual Communication per-workshop config
@@ -46,24 +50,20 @@ website/
 
 ## Architecture
 
+> For the full multi-workshop layout, file naming conventions, and step-by-step guide for adding a new workshop, see **[WORKSHOP_STRUCTURE.md](WORKSHOP_STRUCTURE.md)**.
+
 ### Data-Driven Design
-- **HTML**: Minimal structure with placeholder containers
-- **JavaScript**: Dynamically populates content from data files
-- **CSS**: Styling and layout (external file)
-- **Data Files**: Content separated by type for easy maintenance
+- **`workshop.html`**: Single template page — content injected by JS at load time for whichever `?w=<slug>` is requested
+- **Per-workshop configs** (`config/<slug>-config.js`): Override title, dates, pricing, video ID, SEO meta — call `createWorkshopConfig()` from the shared base
+- **Shared base** (`config/workshop-base.js`): `buildLumaUrl()` helper + `createWorkshopConfig()` factory used by every per-workshop config
+- **Data files** (`data/<slug>-testimonials.js`, `data/<slug>-benefits.js`): Content separated by type for easy maintenance
+- **Redirect shims** (`virtual-communication.html`, etc.): Zero-content files that immediately `location.replace` to the template URL — keep old URLs working
 
-### Dynamic Content Population
-- **Workshop Details**: Title, subtitle, dates, pricing from config
-- **Testimonials**: Generated from testimonials data file
-- **Benefits**: Populated from benefits data file
-- **Illustrations**: Images loaded from illustrations data file
-- **Pricing Cards**: Dynamically generated from pricing config
-
-### Modular Design
-- **Configuration**: Centralized workshop settings
-- **Data Files**: Content separated by type (testimonials, benefits, etc.)
-- **CSS Organization**: Logical sections with clear comments
-- **JavaScript**: Dynamic content population with error handling
+### JavaScript Roles
+- **`js/main.js`**: Populates the workshop template with title, subtitle, dates, pricing, benefits, testimonials, and illustrations; sets CTA button `href` via `buildLumaUrl()` — HTML uses `href="#"` as a no-JS fallback only
+- **`js/workshop-index.js`**: Drives the workshop index (`index.html`) — reads `workshops-index-config.js`
+- **`js/iframe-resize.js`**: Shared `sendHeight()` postMessage logic for Squarespace iframe embedding
+- **`js/linkedin-fix.js`**: Detects LinkedIn/WebView embedded browsers and overrides link-click behaviour so CTA buttons open in the system browser
 
 ## Key Features
 
@@ -86,83 +86,31 @@ website/
 
 ## File Descriptions
 
-### Core Files
+See [WORKSHOP_STRUCTURE.md](WORKSHOP_STRUCTURE.md) for the complete annotated file list and how each piece fits together. Key pointers:
 
-#### `index.html`
-- Minimal HTML structure with placeholder containers
-- Semantic markup with IDs for JavaScript targeting
-- External CSS and JS references
-- SEO meta tags
-
-#### `css/styles.css`
-Organized into logical sections:
-- Reset & Base Styles
-- Layout Components
-- Illustrations Section
-- Video Section
-- Benefits Section
-- Testimonials Section
-- Pricing Section
-- Buttons & CTAs
-- Responsive Design
-
-#### `js/main.js`
-- **Dynamic Content Population**: Populates HTML from data files
-- **Workshop Details**: Updates title, subtitle, dates, pricing
-- **Illustrations**: Loads images from data file
-- **Benefits**: Generates benefit cards from data
-- **Testimonials**: Creates testimonial cards dynamically
-- **Pricing**: Generates pricing cards from config
-- **Error Handling**: Graceful fallbacks if data files fail to load
-
-### Configuration & Data
-
-#### `config/workshop-config.js`
-Centralized configuration including:
-- Event details (ID, URL)
-- Workshop information (title, date, duration)
-- Pricing structure with features
-- Video settings
-- SEO meta data
-
-#### `data/testimonials.js`
-- Structured testimonial data
-- Profile photos, names, handles
-- Quote text and author attribution
-
-#### `data/benefits.js`
-- Benefits section content
-- Titles and descriptions
-
-#### `data/illustrations.js`
-- Image URLs and alt text
-- Organized by section (top row, bottom row, group photo)
+- **`config/workshop-base.js`** — shared factory; every per-workshop config calls `createWorkshopConfig()` from here
+- **`config/<slug>-config.js`** — per-workshop overrides (event ID, title, dates, pricing, video, SEO meta)
+- **`data/_export.js`** — `exportData(name, value)` helper that sets both `window[name]` and `module.exports`
+- **`data/illustrations.js`** — shared across all workshops; per-workshop data files follow `<slug>-testimonials.js` / `<slug>-benefits.js` naming
 
 ## Maintenance Guide
 
 ### Updating Workshop Details
-1. Edit `config/workshop-config.js`
-2. Update event ID, dates, pricing
-3. Modify workshop information as needed
-4. **No HTML changes required!**
+1. Edit `config/<slug>-config.js` for the workshop you want to change (e.g. `config/workshop-config.js` for Virtual Communication)
+2. Update event ID, dates, pricing, video ID as needed
+3. **No HTML changes required** — `workshop.html` is a template
 
-### Adding/Editing Testimonials
-1. Edit `data/testimonials.js`
-2. Add new testimonial objects
-3. Include photo URL, name, handle, and quote
-4. **Content updates automatically!**
-
-### Modifying Benefits
-1. Edit `data/benefits.js`
-2. Update titles and descriptions
-3. Add or remove benefit items
-4. **Changes reflect immediately!**
+### Adding/Editing Testimonials or Benefits
+1. Edit `data/<slug>-testimonials.js` or `data/<slug>-benefits.js` for the target workshop
+2. **Content updates automatically!**
 
 ### Changing Images
-1. Update URLs in `data/illustrations.js`
+1. Update URLs in `data/illustrations.js` (shared) or the per-workshop data file
 2. Replace local files in `illustrations/` or `images/`
 3. Update alt text for accessibility
-4. **Images update dynamically!**
+
+### Adding a New Workshop
+See the step-by-step guide in [WORKSHOP_STRUCTURE.md](WORKSHOP_STRUCTURE.md#how-to-add-a-new-workshop).
 
 ### Styling Changes
 1. Edit `css/styles.css`
