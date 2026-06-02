@@ -12,21 +12,36 @@ A modern, **data-driven** landing page for Roberto Ferraro's "Master Virtual Mee
 
 ```
 website/
-├── index.html                 # Main HTML file (minimal structure)
+├── index.html                          # Workshop index (main landing page)
+├── workshop.html                       # Single template for all workshop pages (?w=<slug>)
+├── virtual-communication.html          # Redirect shim → workshop.html?w=virtual-communication
+├── personal-branding.html              # Redirect shim → workshop.html?w=personal-branding
+├── digital-leadership.html             # Redirect shim → workshop.html?w=digital-leadership
 ├── css/
-│   └── styles.css            # All CSS styles (modularly organized)
+│   ├── styles.css                      # Workshop page styles
+│   └── workshop-index.css             # Index page styles
 ├── js/
-│   └── main.js               # Dynamic content population
+│   ├── main.js                         # Dynamic content population for workshop pages
+│   ├── workshop-index.js               # Workshop index page logic
+│   └── iframe-resize.js               # Shared sendHeight() postMessage helper
 ├── config/
-│   └── workshop-config.js    # Workshop configuration (dates, prices, etc.)
+│   ├── workshop-base.js               # Shared factory: buildLumaUrl() + createWorkshopConfig()
+│   ├── workshop-config.js             # Virtual Communication per-workshop config
+│   ├── personal-branding-config.js    # Personal Branding per-workshop config
+│   ├── digital-leadership-config.js   # Digital Leadership per-workshop config
+│   └── workshops-index-config.js      # Workshop index page config
 ├── data/
-│   ├── testimonials.js       # Testimonials data
-│   ├── benefits.js           # Benefits section content
-│   └── illustrations.js      # Image URLs and alt text
-├── illustrations/            # Local illustration assets
-├── images/                   # Local image assets
-├── package.json              # Project documentation
-└── README.md                 # This file
+│   ├── _export.js                     # Shared exportData() helper (window + module.exports)
+│   ├── testimonials.js                # Virtual Communication testimonials
+│   ├── benefits.js                    # Virtual Communication benefits
+│   ├── personal-branding-testimonials.js
+│   ├── personal-branding-benefits.js
+│   ├── digital-leadership-testimonials.js
+│   ├── digital-leadership-benefits.js
+│   └── illustrations.js              # Shared illustrations
+├── illustrations/                     # Local illustration assets
+├── images/                            # Local image assets
+└── README.md                          # This file
 ```
 
 ## Architecture

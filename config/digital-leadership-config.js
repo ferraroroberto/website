@@ -1,99 +1,72 @@
 // Digital Leadership Workshop Configuration
-// Centralized configuration for easy maintenance
+// Only the values that differ from config/workshop-base.js are listed here.
 
-const WORKSHOP_CONFIG = {
+const WORKSHOP_CONFIG = createWorkshopConfig({
     // Event Details
     eventId: 'digital-leadership-demo',
     eventUrl: 'https://lu.ma/digital-leadership-demo',
-    
-    // UTM Parameters for tracking
+
+    // UTM campaign (source/medium come from the base)
     utmParams: {
-        source: 'landing',
-        medium: 'website',
         campaign: 'digital-leadership-workshop'
     },
-    
+
     // Workshop Information
     title: 'Digital Leadership: Lead with Impact in the Virtual World',
     subtitle: 'Master the skills to lead teams and organizations in the digital era!',
     date: 'Coming Soon',
-    duration: '90 minutes of interactive learning',
-    format: 'Small group (max 20 participants)',
-    
+
+    // Intro paragraphs (rendered as separate <p> blocks, may contain markup)
+    intro: [
+        'Leading teams in the digital age can be <strong>challenging</strong>. You know the struggle: trying to maintain team morale through screens, struggling to build trust remotely, or just wishing you could inspire your team as effectively as in person <span class="emoji">😤</span>',
+        '<strong>I\'ve been there too.</strong>',
+        'Over the years, I\'ve worked with leaders across various industries to develop <strong>effective digital leadership strategies</strong>. I\'ve learned that great leadership in the digital world requires new skills and approaches <span class="emoji">🎯</span>',
+        'In this workshop, I\'ll share how to lead teams <strong>effectively, inspirationally, and successfully in the digital era!</strong>'
+    ],
+
+    // Closing call-to-action block
+    finalCta: {
+        heading: 'Ready to Lead with Impact in the Digital Age?',
+        text: 'Join me and discover how to inspire and guide teams effectively in the virtual world. <span class="emoji">🚀</span>'
+    },
+
     // Video
     videoId: 'demo-video-id',
     videoUrl: 'https://www.youtube.com/embed/demo-video-id',
-    
-    // Pricing
+
+    // Pricing — base tiers, with workshop-specific recording/coaching extras
     pricing: {
-        basic: {
-            title: 'Attend The Workshop',
-            price: 10,
-            currency: '€',
-            features: [
-                'Access to Live Session',
-                'Pay a symbolic commitment price'
-            ],
-            buttonText: 'Get Your Ticket'
-        },
         recording: {
-            title: 'With Recording',
-            price: 19,
-            currency: '€',
-            featured: true,
             features: [
                 'Everything in Access to Live Session',
                 'Become a workshop patron',
                 'Session recording',
                 'Leadership action guide'
-            ],
-            buttonText: 'Plus Recording And Resources'
+            ]
         },
         coaching: {
-            title: 'With Coaching',
-            price: 150,
-            currency: '€',
             features: [
                 'Everything in Recording package',
                 '45 minutes personal coaching session',
                 'Personalized leadership strategy'
-            ],
-            buttonText: 'Plus 1:1 Coaching'
+            ]
         }
     },
-    
-    // External Resources
-    favicon: 'https://www.robertoferraro.net/favicon.ico',
-    
+
     // SEO
     meta: {
         title: 'Digital Leadership Workshop - Roberto Ferraro',
         description: 'Master the skills to lead teams and organizations in the digital era. Join Roberto Ferraro\'s workshop to become an effective digital leader.',
         ogTitle: 'Digital Leadership: Lead with Impact in the Virtual World - Roberto Ferraro',
         ogDescription: 'Develop the essential leadership skills needed to inspire, motivate, and guide teams effectively in virtual and hybrid work environments.',
-        ogType: 'website'
+        ogType: 'website',
+        ogUrl: 'https://www.robertoferraro.net/digital-leadership',
+        ogImage: 'https://www.robertoferraro.net/images/digital-leadership-preview.jpg',
+        twitterCard: 'summary_large_image'
     }
-};
-
-// Helper function to build Luma URL with UTM parameters
-function buildLumaUrl() {
-    const baseUrl = WORKSHOP_CONFIG.eventUrl;
-    const params = new URLSearchParams();
-    
-    // Add UTM parameters
-    params.append('utm_source', WORKSHOP_CONFIG.utmParams.source);
-    params.append('utm_medium', WORKSHOP_CONFIG.utmParams.medium);
-    params.append('utm_campaign', WORKSHOP_CONFIG.utmParams.campaign);
-    
-    const queryString = params.toString();
-    return queryString ? `${baseUrl}?${queryString}` : baseUrl;
-}
-
-// Export for use in other files (if using modules)
-if (typeof module !== 'undefined' && module.exports) {
-    module.exports = { WORKSHOP_CONFIG, buildLumaUrl };
-}
+});
 
 // Make available globally for inline use
-window.WORKSHOP_CONFIG = WORKSHOP_CONFIG;
-window.buildLumaUrl = buildLumaUrl;
+if (typeof window !== 'undefined') {
+    window.WORKSHOP_CONFIG = WORKSHOP_CONFIG;
+}

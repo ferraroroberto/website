@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#0077b5">
+    <title>Workshop - Roberto Ferraro</title>
+    <link rel="icon" type="image/x-icon" href="https://www.robertoferraro.net/favicon.ico">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+
+    <!--
+      Single template for every workshop page. The workshop is chosen by the
+      ?w=<slug> query parameter (defaults to virtual-communication). The
+      per-workshop config + data scripts are written synchronously below so the
+      load order matches the old standalone pages; main.js then injects the
+      title, meta, copy, pricing, etc. from the loaded WORKSHOP_CONFIG.
+    -->
+    <script src="config/workshop-base.js"></script>
+    <script src="data/_export.js"></script>
+    <script>
+      (function () {
+        // slug -> the three workshop-specific scripts (config, testimonials, benefits)
+        var WORKSHOPS = {
+          'virtual-communication': {
+            config: 'config/workshop-config.js',
+            testimonials: 'data/testimonials.js',
+            benefits: 'data/benefits.js'
+          },
+          'personal-branding': {
+            config: 'config/personal-branding-config.js',
+            testimonials: 'data/personal-branding-testimonials.js',
+            benefits: 'data/personal-branding-benefits.js'
+          },
+          'digital-leadership': {
+            config: 'config/digital-leadership-config.js',
+            testimonials: 'data/digital-leadership-testimonials.js',
+            benefits: 'data/digital-leadership-benefits.js'
+          }
+        };
+
+        var DEFAULT_SLUG = 'virtual-communication';
+        var params = new URLSearchParams(window.location.search);
+        var slug = params.get('w');
+        if (!WORKSHOPS[slug]) slug = DEFAULT_SLUG;
+
+        var files = WORKSHOPS[slug];
+        // Written during parse so they execute in order, before main.js below.
+        document.write(
+          '<script src="' + files.config + '"><\/script>' +
+          '<script src="' + files.testimonials + '"><\/script>' +
+          '<script src="' + files.benefits + '"><\/script>'
+        );
+      })();
+    </script>
+</head>
+<body>
+    <section class="workshop-section">
+
+        <div class="illustrations-section">
+            <div class="illustrations-grid" id="top-illustrations">
+                <!-- Top illustrations will be populated by JavaScript -->
+            </div>
+        </div>
+
+        <div class="workshop-header">
+            <h1 class="workshop-title" id="workshop-title"></h1>
+            <p class="workshop-subtitle" id="workshop-subtitle"></p>
+            <a
+            href="#"
+            class="cta-button"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Reserve Your Spot Now
+          </a>
+        </div>
+
+        <div class="workshop-intro" id="workshop-intro">
+            <!-- Intro paragraphs will be populated by JavaScript -->
+        </div>
+
+        <div class="video-container">
+            <iframe id="workshop-video"
+                    title="Workshop Teaser"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen>
+            </iframe>
+        </div>
+
+        <div class="benefits-section">
+            <h2 class="benefits-title">What will you get?</h2>
+            <div class="benefits-grid" id="benefits-grid">
+                <!-- Benefits will be populated by JavaScript -->
+            </div>
+        </div>
+
+        <div class="group-photo-section">
+            <div class="group-photo-container">
+                <img id="group-photo" alt="Group Photo" class="group-photo">
+            </div>
+        </div>
+
+        <div class="testimonials-section">
+            <h2 class="testimonials-title">Past Participants Say</h2>
+            <div class="testimonials-grid" id="testimonials-grid">
+                <!-- Testimonials will be populated by JavaScript -->
+            </div>
+        </div>
+
+        <div class="pricing-section">
+            <h2 class="pricing-title">Choose Your Experience</h2>
+            <div class="pricing-grid" id="pricing-grid">
+                <!-- Pricing cards will be populated by JavaScript -->
+            </div>
+        </div>
+
+        <div class="workshop-details">
+            <h3>Workshop Details</h3>
+            <div class="detail-item">📅 <strong>When:</strong> <span id="workshop-date"></span></div>
+            <div class="detail-item">⏰ <strong>Duration:</strong> <span id="workshop-duration"></span></div>
+            <div class="detail-item">👥 <strong>Format:</strong> <span id="workshop-format"></span></div>
+        </div>
+
+        <div class="illustrations-section">
+            <div class="illustrations-grid" id="bottom-illustrations">
+                <!-- Bottom illustrations will be populated by JavaScript -->
+            </div>
+        </div>
+
+        <div class="final-cta">
+            <h2 id="final-cta-heading"></h2>
+            <p id="final-cta-text"></p>
+            <p><strong>Limited spots available for better interaction!</strong></p>
+            <a
+              href="#"
+              class="cta-button"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Reserve Your Spot Now
+            </a>
+        </div>
+    </section>
+
+    <!-- Shared illustrations + the page logic (config/testimonials/benefits
+         were written into <head> above, before these run). -->
+    <script src="data/illustrations.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/linkedin-fix.js"></script>
+    <script src="js/iframe-resize.js"></script>
+</body>
+</html>

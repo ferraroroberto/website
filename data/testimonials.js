@@ -67,10 +67,4 @@ const TESTIMONIALS_DATA = [
     }
 ];
 
-// Export for use in other files (if using modules)
-if (typeof module !== 'undefined' && module.exports) {
-    module.exports = TESTIMONIALS_DATA;
-}
-
-// Make available globally for inline use
-window.TESTIMONIALS_DATA = TESTIMONIALS_DATA; 
+exposeData('TESTIMONIALS_DATA', TESTIMONIALS_DATA);

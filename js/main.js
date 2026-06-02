@@ -29,9 +29,15 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function initializePage() {
+    // Populate document <head> (title + meta) from config
+    populateMeta();
+
     // Populate workshop details from config
     populateWorkshopDetails();
-    
+
+    // Populate intro paragraphs and closing CTA copy from config
+    populateCopy();
+
     // Populate illustrations
     populateIllustrations();
     
@@ -77,6 +83,81 @@ function populateWorkshopDetails() {
             button.target = '_blank';
             button.rel = 'noopener noreferrer';
         });
+    }
+}
+
+function populateMeta() {
+    const config = window.WORKSHOP_CONFIG;
+    if (!config) return;
+
+    // Document title
+    if (config.meta && config.meta.title) {
+        document.title = config.meta.title;
+    }
+
+    // Favicon
+    if (config.favicon) {
+        setLinkTag('icon', config.favicon);
+    }
+
+    if (!config.meta) return;
+    const meta = config.meta;
+
+    // Standard + Open Graph + Twitter meta tags
+    setMetaTag('name', 'description', meta.description);
+    setMetaTag('property', 'og:title', meta.ogTitle);
+    setMetaTag('property', 'og:description', meta.ogDescription);
+    setMetaTag('property', 'og:type', meta.ogType);
+    setMetaTag('property', 'og:url', meta.ogUrl);
+    setMetaTag('property', 'og:image', meta.ogImage);
+    setMetaTag('name', 'twitter:card', meta.twitterCard);
+    setMetaTag('name', 'twitter:title', meta.twitterTitle || meta.ogTitle);
+    setMetaTag('name', 'twitter:description', meta.twitterDescription || meta.ogDescription);
+    setMetaTag('name', 'twitter:image', meta.twitterImage || meta.ogImage);
+}
+
+// Create or update a <meta> tag identified by attr (`name` or `property`).
+function setMetaTag(attr, key, content) {
+    if (content === undefined || content === null) return;
+    let tag = document.head.querySelector(`meta[${attr}="${key}"]`);
+    if (!tag) {
+        tag = document.createElement('meta');
+        tag.setAttribute(attr, key);
+        document.head.appendChild(tag);
+    }
+    tag.setAttribute('content', content);
+}
+
+// Create or update a <link rel="..."> tag.
+function setLinkTag(rel, href) {
+    if (!href) return;
+    let tag = document.head.querySelector(`link[rel="${rel}"]`);
+    if (!tag) {
+        tag = document.createElement('link');
+        tag.setAttribute('rel', rel);
+        document.head.appendChild(tag);
+    }
+    tag.setAttribute('href', href);
+}
+
+function populateCopy() {
+    const config = window.WORKSHOP_CONFIG;
+    if (!config) return;
+
+    // Intro paragraphs — rendered with a <br> between blocks to match layout
+    const introContainer = document.getElementById('workshop-intro');
+    if (introContainer && Array.isArray(config.intro)) {
+        introContainer.innerHTML = config.intro
+            .map(paragraph => `<p>${paragraph}</p>`)
+            .join('\n<br>\n');
+    }
+
+    // Closing call-to-action heading + lead text
+    if (config.finalCta) {
+        const headingEl = document.getElementById('final-cta-heading');
+        const textEl = document.getElementById('final-cta-text');
+        if (headingEl && config.finalCta.heading) headingEl.textContent = config.finalCta.heading;
+        if (textEl && config.finalCta.text) textEl.innerHTML = config.finalCta.text;
     }
 }
 

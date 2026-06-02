@@ -21,7 +21,7 @@ const WORKSHOPS_INDEX_CONFIG = {
             format: 'Small group (max 20 participants)',
             price: 'From €10',
             ctaText: 'Learn More',
-            ctaUrl: 'virtual-communication.html',
+            ctaUrl: 'workshop.html?w=virtual-communication',
             colorScheme: 'virtual-communication',
             status: 'active'
         },
@@ -42,7 +42,7 @@ const WORKSHOPS_INDEX_CONFIG = {
             format: 'Small group (max 20 participants)',
             price: 'From €10',
             ctaText: 'Learn More',
-            ctaUrl: 'personal-branding.html',
+            ctaUrl: 'workshop.html?w=personal-branding',
             colorScheme: 'personal-branding',
             status: 'coming-soon'
         },
@@ -63,7 +63,7 @@ const WORKSHOPS_INDEX_CONFIG = {
             format: 'Small group (max 20 participants)',
             price: 'From €10',
             ctaText: 'Learn More',
-            ctaUrl: 'digital-leadership.html',
+            ctaUrl: 'workshop.html?w=digital-leadership',
             colorScheme: 'digital-leadership',
             status: 'coming-soon'
         }
