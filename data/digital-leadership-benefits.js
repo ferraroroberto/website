@@ -20,10 +20,4 @@ const BENEFITS_DATA = [
     }
 ];
 
-// Export for use in other files (if using modules)
-if (typeof module !== 'undefined' && module.exports) {
-    module.exports = BENEFITS_DATA;
-}
-
-// Make available globally for inline use
-window.BENEFITS_DATA = BENEFITS_DATA;
+exposeData('BENEFITS_DATA', BENEFITS_DATA);

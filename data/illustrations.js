@@ -44,10 +44,4 @@ const ILLUSTRATIONS_DATA = {
     }
 };
 
-// Export for use in other files (if using modules)
-if (typeof module !== 'undefined' && module.exports) {
-    module.exports = ILLUSTRATIONS_DATA;
-}
-
-// Make available globally for inline use
-window.ILLUSTRATIONS_DATA = ILLUSTRATIONS_DATA; 
+exposeData('ILLUSTRATIONS_DATA', ILLUSTRATIONS_DATA);

@@ -1,22 +1,25 @@
 # Workshop Website Structure
 
-This website now supports multiple workshops with a modular structure that makes it easy to add new workshops and maintain existing ones.
+This website supports multiple workshops driven by a single template page (`workshop.html`) and per-workshop config/data files.
 
 ## Structure Overview
 
 ### Main Files
 - `index.html` - Workshop repository page (main landing page)
-- `virtual-communication.html` - Virtual Communication workshop page
-- `personal-branding.html` - Personal Branding workshop page
-- `digital-leadership.html` - Digital Leadership workshop page
+- `workshop.html` - **Single template page** for all workshops — chosen by `?w=<slug>`
+- `virtual-communication.html` - Redirect shim → `workshop.html?w=virtual-communication`
+- `personal-branding.html` - Redirect shim → `workshop.html?w=personal-branding`
+- `digital-leadership.html` - Redirect shim → `workshop.html?w=digital-leadership`
 
 ### Configuration Files
+- `config/workshop-base.js` - **Shared base**: `buildLumaUrl()` helper + `createWorkshopConfig()` factory
 - `config/workshops-index-config.js` - Configuration for the workshop index page
-- `config/workshop-config.js` - Configuration for Virtual Communication workshop
-- `config/personal-branding-config.js` - Configuration for Personal Branding workshop
-- `config/digital-leadership-config.js` - Configuration for Digital Leadership workshop
+- `config/workshop-config.js` - Virtual Communication per-workshop overrides
+- `config/personal-branding-config.js` - Personal Branding per-workshop overrides
+- `config/digital-leadership-config.js` - Digital Leadership per-workshop overrides
 
 ### Data Files
+- `data/_export.js` - **Shared export helper**: `exportData(name, value)` — sets `window[name]` and `module.exports` in one call
 - `data/benefits.js` - Benefits for Virtual Communication workshop
 - `data/testimonials.js` - Testimonials for Virtual Communication workshop
 - `data/personal-branding-benefits.js` - Benefits for Personal Branding workshop
@@ -27,7 +30,8 @@ This website now supports multiple workshops with a modular structure that makes
 
 ### JavaScript Files
 - `js/workshop-index.js` - JavaScript for the workshop index page
-- `js/main.js` - JavaScript for individual workshop pages
+- `js/main.js` - Dynamic content population for individual workshop pages
+- `js/iframe-resize.js` - **Shared** `sendHeight()` postMessage logic (referenced by all pages)
 
 ### CSS Files
 - `css/styles.css` - Main styles (shared across all pages)
@@ -35,70 +39,60 @@ This website now supports multiple workshops with a modular structure that makes
 
 ## How to Add a New Workshop
 
-### 1. Create the Workshop Page
-Create a new HTML file (e.g., `new-workshop.html`) based on the structure of existing workshop pages.
-
-### 2. Create Configuration File
-Create `config/new-workshop-config.js` with the workshop-specific configuration:
+### 1. Create the config file
+Create `config/new-workshop-config.js` using `createWorkshopConfig()` from the base:
 
 ```javascript
-const WORKSHOP_CONFIG = {
+// config/new-workshop-config.js
+(function () {
+  var base = createWorkshopConfig({
     eventId: 'your-event-id',
-    eventUrl: 'https://lu.ma/your-event-id',
-    utmParams: {
-        source: 'landing',
-        medium: 'website',
-        campaign: 'new-workshop'
-    },
+    utmCampaign: 'new-workshop',
     title: 'Your Workshop Title',
     subtitle: 'Your workshop subtitle',
     date: 'Your workshop date',
-    duration: '90 minutes of interactive learning',
-    format: 'Small group (max 20 participants)',
     videoId: 'your-video-id',
-    videoUrl: 'https://www.youtube.com/embed/your-video-id',
-    pricing: {
-        // Define your pricing tiers
-    },
-    meta: {
-        // SEO metadata
-    }
-};
+    meta: { /* SEO metadata */ }
+  });
+  window.WORKSHOP_CONFIG = base;
+  if (typeof module !== 'undefined') module.exports = base;
+})();
 ```
 
-### 3. Create Data Files
-Create the benefits and testimonials files:
-- `data/new-workshop-benefits.js`
-- `data/new-workshop-testimonials.js`
-
-### 4. Update Workshop Index Configuration
-Add your workshop to `config/workshops-index-config.js`:
+### 2. Create data files
+Create the benefits and testimonials files using `exportData()`:
 
 ```javascript
-{
-    id: 'new-workshop',
-    slug: 'new-workshop',
-    title: 'Your Workshop Title',
-    subtitle: 'Your workshop subtitle',
-    description: 'Your workshop description',
-    features: [
-        'Feature 1',
-        'Feature 2',
-        'Feature 3',
-        'Feature 4'
-    ],
-    date: 'Your workshop date',
-    duration: '90 minutes',
-    format: 'Small group (max 20 participants)',
-    price: 'From €10',
-    ctaText: 'Learn More',
-    ctaUrl: 'new-workshop.html',
-    colorScheme: 'new-workshop',
-    status: 'active' // or 'coming-soon'
+// data/new-workshop-benefits.js
+var benefits = [ /* ... */ ];
+exportData('BENEFITS', benefits);
+```
+
+### 3. Register the slug in workshop.html
+Add the slug and its three script paths to the `WORKSHOPS` map inside `workshop.html`:
+
+```javascript
+'new-workshop': {
+  config: 'config/new-workshop-config.js',
+  testimonials: 'data/new-workshop-testimonials.js',
+  benefits: 'data/new-workshop-benefits.js'
 }
 ```
 
-### 5. Add CSS Classes (Optional)
+### 4. Add a redirect shim
+Create `new-workshop.html` for backward-compatible URLs:
+
+```html
+<!DOCTYPE html>
+<html><head><meta charset="UTF-8">
+<script>window.location.replace('workshop.html?w=new-workshop');</script>
+</head><body></body></html>
+```
+
+### 5. Update Workshop Index Configuration
+Add your workshop to `config/workshops-index-config.js` with the `ctaUrl` pointing to `workshop.html?w=new-workshop`.
+
+### 6. Add CSS Classes (Optional)
 If you want custom styling for your workshop, add CSS classes in `css/workshop-index.css`:
 
 ```css
