@@ -6,10 +6,10 @@ A multi-workshop landing site for Roberto Ferraro's professional development wor
 
 ## Live Pages
 
-🌐 **Workshop index**: https://www.robertoferraro.net
-🌐 **Virtual Communication**: https://www.robertoferraro.net/virtual-communication-workshop
-🌐 **Personal Branding**: https://www.robertoferraro.net/personal-branding-workshop
-🌐 **Digital Leadership**: https://www.robertoferraro.net/digital-leadership-workshop
+🌐 **Workshop index**: https://www.robertoferraro.net/workshops
+🌐 **Virtual Communication**: https://www.robertoferraro.net/virtual-communication
+🌐 **Personal Branding**: https://www.robertoferraro.net/personal-branding
+🌐 **Digital Leadership**: https://www.robertoferraro.net/digital-leadership
 
 ## Project Structure
 
@@ -35,7 +35,7 @@ website/
 │   ├── digital-leadership-config.js   # Digital Leadership per-workshop config
 │   └── workshops-index-config.js      # Workshop index page config
 ├── data/
-│   ├── _export.js                     # Shared exportData() helper (window + module.exports)
+│   ├── _export.js                     # Shared exposeData() helper (window + module.exports)
 │   ├── testimonials.js                # Virtual Communication testimonials
 │   ├── benefits.js                    # Virtual Communication benefits
 │   ├── personal-branding-testimonials.js
@@ -90,7 +90,7 @@ See [WORKSHOP_STRUCTURE.md](WORKSHOP_STRUCTURE.md) for the complete annotated fi
 
 - **`config/workshop-base.js`** — shared factory; every per-workshop config calls `createWorkshopConfig()` from here
 - **`config/<slug>-config.js`** — per-workshop overrides (event ID, title, dates, pricing, video, SEO meta)
-- **`data/_export.js`** — `exportData(name, value)` helper that sets both `window[name]` and `module.exports`
+- **`data/_export.js`** — `exposeData(name, value)` helper that sets both `window[name]` and `module.exports`
 - **`data/illustrations.js`** — shared across all workshops; per-workshop data files follow `<slug>-testimonials.js` / `<slug>-benefits.js` naming
 
 ## Maintenance Guide
@@ -117,48 +117,6 @@ See the step-by-step guide in [WORKSHOP_STRUCTURE.md](WORKSHOP_STRUCTURE.md#how-
 2. Follow the organized section structure
 3. Test responsive behavior
 
-## Development Best Practices
-
-### JavaScript Principles
-- **Dynamic Content**: All content populated from data files
-- **Error Handling**: Graceful fallbacks for missing data
-- **Modular Functions**: Separate functions for each content type
-- **No jQuery Dependencies**: Vanilla JavaScript only
-- **Progressive Enhancement**: Works even if JavaScript fails
-
-### CSS Organization
-- Logical section grouping
-- Clear comments for each section
-- Mobile-first responsive design
-- Consistent naming conventions
-
-### HTML Standards
-- Semantic markup with placeholder containers
-- Accessibility considerations
-- SEO optimization
-- Clean, minimal structure
-
-## Performance Considerations
-
-### Optimization
-- External CSS for caching
-- Minimal JavaScript with efficient DOM manipulation
-- Optimized images (CDN hosted)
-- Efficient font loading
-
-### Loading Strategy
-- Critical CSS inlined (if needed)
-- Non-blocking JavaScript
-- Lazy loading for images
-- Progressive enhancement
-
-## Browser Support
-
-- **Modern Browsers**: Full support (Chrome, Firefox, Safari, Edge)
-- **CSS Grid**: IE11+ support
-- **Flexbox**: Broad support
-- **JavaScript**: ES6+ features with fallbacks
-
 ## Deployment
 
 ### File Structure
@@ -182,7 +140,7 @@ See the step-by-step guide in [WORKSHOP_STRUCTURE.md](WORKSHOP_STRUCTURE.md#how-
 ### Basic Embed
 ```html
 <iframe 
-    src="https://www.robertoferraro.net/virtual-communication-workshop" 
+    src="https://www.robertoferraro.net/virtual-communication" 
     width="100%" 
     height="800" 
     frameborder="0" 
@@ -195,7 +153,7 @@ See the step-by-step guide in [WORKSHOP_STRUCTURE.md](WORKSHOP_STRUCTURE.md#how-
 ```html
 <div style="position: relative; width: 100%; height: 0; padding-bottom: 75%;">
     <iframe 
-        src="https://www.robertoferraro.net/virtual-communication-workshop"
+        src="https://www.robertoferraro.net/virtual-communication"
         style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;"
         title="Master Virtual Meetings Workshop">
     </iframe>
@@ -223,7 +181,7 @@ Add this code to a Squarespace Code Block:
 <div id="iframe-container" style="width: 100%;">
   <iframe 
     id="autoResizingIframe"
-    src="https://virtualcommunication.robertoferraro.net/index.html"
+    src="https://www.robertoferraro.net/virtual-communication"
     style="width: 100%; border: none;"
     scrolling="no"
     allowfullscreen
@@ -248,26 +206,8 @@ Add this code to a Squarespace Code Block:
 - Listens for messages from the iframe content that report actual content height
 - Enables seamless integration without scrollbars
 
-#### Step 2: Send iframe height from the Netlify page
-Add this script before `</body>` in the Netlify-hosted page (`index.html`):
-
-```html
-<script>
-  function sendHeight() {
-    const height = document.documentElement.scrollHeight || document.body.scrollHeight;
-    parent.postMessage({ type: 'setHeight', height: height }, '*');
-  }
-
-  window.addEventListener('load', sendHeight);
-  window.addEventListener('resize', sendHeight);
-  setInterval(sendHeight, 1000); // fallback for dynamic content changes
-</script>
-```
-
-**Features:**
-- Measures the height of the entire page and sends it to the parent site
-- Uses `postMessage` for secure cross-origin communication
-- `setInterval` ensures height stays updated even with dynamic content changes
+#### Step 2: Send iframe height from the hosted page
+No action needed — every page already loads [`js/iframe-resize.js`](js/iframe-resize.js), which reports the page's content height to the parent via `postMessage({ type: 'setHeight', height })` on `load`, `resize`, and a 1-second interval. The listener in Step 1 is the matching half on the Squarespace side. See `js/iframe-resize.js` for the implementation rather than copying it here (so this doc can't drift from the shipped code).
 
 ### Result
 - ✅ Seamless integration of Netlify content in Squarespace
@@ -287,25 +227,7 @@ Add this script before `</body>` in the Netlify-hosted page (`index.html`):
 
 ## Contributing
 
-### Code Style
-- Use consistent indentation (2 spaces)
-- Follow existing naming conventions
-- Add comments for complex logic
-- Keep functions small and focused
-
-### File Organization
-- Maintain modular structure
-- Update documentation when adding files
-- Follow established patterns
-- Test changes across devices
-
-### Data Management
-- Keep data files clean and organized
-- Use consistent data structures
-- Validate data before committing
-- Test dynamic population
-
----
-
-*Last Updated: January 2025*
-*For technical questions, contact the development team.* 
+- Follow the existing patterns and naming conventions (see [WORKSHOP_STRUCTURE.md](WORKSHOP_STRUCTURE.md) and `CLAUDE.md`).
+- JavaScript uses 4-space indentation, vanilla JS only (no jQuery, no framework).
+- Keep the site data-driven: change a workshop by editing its `config/<slug>-config.js` and `data/<slug>-*.js`, not `workshop.html`.
+- Test that content still populates and the page degrades gracefully with JS disabled before committing.

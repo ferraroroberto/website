@@ -19,7 +19,7 @@ This website supports multiple workshops driven by a single template page (`work
 - `config/digital-leadership-config.js` - Digital Leadership per-workshop overrides
 
 ### Data Files
-- `data/_export.js` - **Shared export helper**: `exportData(name, value)` — sets `window[name]` and `module.exports` in one call
+- `data/_export.js` - **Shared export helper**: `exposeData(name, value)` — sets `window[name]` and `module.exports` in one call
 - `data/benefits.js` - Benefits for Virtual Communication workshop
 - `data/testimonials.js` - Testimonials for Virtual Communication workshop
 - `data/personal-branding-benefits.js` - Benefits for Personal Branding workshop
@@ -40,32 +40,41 @@ This website supports multiple workshops driven by a single template page (`work
 ## How to Add a New Workshop
 
 ### 1. Create the config file
-Create `config/new-workshop-config.js` using `createWorkshopConfig()` from the base:
+Create `config/new-workshop-config.js` using `createWorkshopConfig()` from the base. Only list the values that differ from `config/workshop-base.js`. The UTM campaign goes inside `utmParams.campaign` (source/medium come from the base); a flat `utmCampaign` is silently dropped by `buildLumaUrl()`.
 
 ```javascript
 // config/new-workshop-config.js
-(function () {
-  var base = createWorkshopConfig({
+const WORKSHOP_CONFIG = createWorkshopConfig({
     eventId: 'your-event-id',
-    utmCampaign: 'new-workshop',
+    eventUrl: 'https://luma.com/your-event-id',
+
+    // UTM campaign (source/medium come from the base)
+    utmParams: {
+        campaign: 'new-workshop'
+    },
+
     title: 'Your Workshop Title',
     subtitle: 'Your workshop subtitle',
     date: 'Your workshop date',
     videoId: 'your-video-id',
-    meta: { /* SEO metadata */ }
-  });
-  window.WORKSHOP_CONFIG = base;
-  if (typeof module !== 'undefined') module.exports = base;
-})();
+    videoUrl: 'https://www.youtube.com/embed/your-video-id',
+    meta: { /* SEO metadata: title, description, ogUrl, ogImage, ... */ }
+});
+
+// Make available globally for inline use
+if (typeof window !== 'undefined') {
+    window.WORKSHOP_CONFIG = WORKSHOP_CONFIG;
+}
 ```
 
 ### 2. Create data files
-Create the benefits and testimonials files using `exportData()`:
+Create the benefits and testimonials files using `exposeData()` from `data/_export.js`. The name passed to `exposeData()` is the global `main.js` reads — use `BENEFITS_DATA` and `TESTIMONIALS_DATA`:
 
 ```javascript
 // data/new-workshop-benefits.js
-var benefits = [ /* ... */ ];
-exportData('BENEFITS', benefits);
+const BENEFITS_DATA = [ /* { title, description }, ... */ ];
+
+exposeData('BENEFITS_DATA', BENEFITS_DATA);
 ```
 
 ### 3. Register the slug in workshop.html
