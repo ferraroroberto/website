@@ -69,4 +69,6 @@ const WORKSHOP_CONFIG = createWorkshopConfig({
 // Make available globally for inline use
 if (typeof window !== 'undefined') {
     window.WORKSHOP_CONFIG = WORKSHOP_CONFIG;
+    // Named export for the workshop index (single source of truth for shared fields).
+    window.WORKSHOP_CONFIG_DIGITAL_LEADERSHIP = WORKSHOP_CONFIG;
 }
