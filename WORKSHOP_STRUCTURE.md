@@ -148,10 +148,10 @@ To update workshop content:
    - Focus: Mastering virtual meetings and online communication
    - Status: Available for booking
 
-2. **Personal Branding** - Active
+2. **Personal Branding** - Coming soon
    - Focus: Building authentic personal brands in the digital age
-   - Status: Available for booking
+   - Status: Coming soon (set `status: 'coming-soon'` in `config/workshops-index-config.js`)
 
-3. **Digital Leadership** - Active
+3. **Digital Leadership** - Coming soon
    - Focus: Leading teams effectively in virtual environments
-   - Status: Available for booking
+   - Status: Coming soon (set `status: 'coming-soon'` in `config/workshops-index-config.js`)
