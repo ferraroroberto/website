@@ -14,7 +14,7 @@ This website supports multiple workshops driven by a single template page (`work
 ### Configuration Files
 - `config/workshop-base.js` - **Shared base**: `buildLumaUrl()` helper + `createWorkshopConfig()` factory
 - `config/workshops-index-config.js` - Configuration for the workshop index page
-- `config/workshop-config.js` - Virtual Communication per-workshop overrides
+- `config/virtual-communication-config.js` - Virtual Communication per-workshop overrides
 - `config/personal-branding-config.js` - Personal Branding per-workshop overrides
 - `config/digital-leadership-config.js` - Digital Leadership per-workshop overrides
 
