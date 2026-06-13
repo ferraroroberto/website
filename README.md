@@ -30,7 +30,7 @@ website/
 │   └── linkedin-fix.js                # Embedded-browser (LinkedIn/WebView) link handler
 ├── config/
 │   ├── workshop-base.js               # Shared factory: buildLumaUrl() + createWorkshopConfig()
-│   ├── workshop-config.js             # Virtual Communication per-workshop config
+│   ├── virtual-communication-config.js # Virtual Communication per-workshop config
 │   ├── personal-branding-config.js    # Personal Branding per-workshop config
 │   ├── digital-leadership-config.js   # Digital Leadership per-workshop config
 │   └── workshops-index-config.js      # Workshop index page config
@@ -96,7 +96,7 @@ See [WORKSHOP_STRUCTURE.md](WORKSHOP_STRUCTURE.md) for the complete annotated fi
 ## Maintenance Guide
 
 ### Updating Workshop Details
-1. Edit `config/<slug>-config.js` for the workshop you want to change (e.g. `config/workshop-config.js` for Virtual Communication)
+1. Edit `config/<slug>-config.js` for the workshop you want to change (e.g. `config/virtual-communication-config.js` for Virtual Communication)
 2. Update event ID, dates, pricing, video ID as needed
 3. **No HTML changes required** — `workshop.html` is a template
 
