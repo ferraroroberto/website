@@ -1,7 +1,7 @@
 {
-  "name": "master-virtual-meetings-workshop",
+  "name": "roberto-ferraro-workshops",
   "version": "1.0.0",
-  "description": "Landing page for Roberto Ferraro's Master Virtual Meetings workshop",
+  "description": "Multi-workshop landing site for Roberto Ferraro's professional-development workshops",
   "main": "index.html",
   "scripts": {
     "start": "python -m http.server 8000",
@@ -13,8 +13,7 @@
   "keywords": [
     "workshop",
     "landing-page",
-    "virtual-meetings",
-    "communication",
+    "professional-development",
     "roberto-ferraro"
   ],
   "author": "Roberto Ferraro",
@@ -27,7 +26,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/robertoferraro/notion-automation.git"
+    "url": "https://github.com/ferraroroberto/website.git"
   },
-  "homepage": "https://www.robertoferraro.net/virtual-communication"
+  "homepage": "https://www.robertoferraro.net/workshops"
 } 
