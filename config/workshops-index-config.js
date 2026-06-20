@@ -4,7 +4,7 @@
 // Title, subtitle, and date are derived from the per-workshop config globals
 // (loaded before this file in index.html via workshop-base.js and the three
 // per-workshop configs). This makes those fields a single source of truth:
-// editing config/workshop-config.js (or its siblings) automatically updates
+// editing config/virtual-communication-config.js (or its siblings) automatically updates
 // what the index card shows, with no second copy to drift.
 //
 // Fields that are index-specific summaries with no direct equivalent in the
@@ -23,7 +23,7 @@ const WORKSHOPS_INDEX_CONFIG = {
         {
             id: 'virtual-communication',
             slug: 'virtual-communication',
-            // Derived from config/workshop-config.js — single source of truth.
+            // Derived from config/virtual-communication-config.js — single source of truth.
             title: _field(window.WORKSHOP_CONFIG_VIRTUAL_COMMUNICATION, 'title',
                 'Master Virtual Meetings: From Boring to Brilliant & Fun'),
             subtitle: _field(window.WORKSHOP_CONFIG_VIRTUAL_COMMUNICATION, 'subtitle',
