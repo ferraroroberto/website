@@ -34,25 +34,6 @@ const WORKSHOP_CONFIG = createWorkshopConfig({
     videoId: 'ojPvNyMOFZg',
     videoUrl: 'https://www.youtube.com/embed/ojPvNyMOFZg',
 
-    // Pricing — base tiers, with workshop-specific recording/coaching extras
-    pricing: {
-        recording: {
-            features: [
-                'Everything in Access to Live Session',
-                'Become a workshop patron',
-                'Session recording',
-                'Action guide with key highlights'
-            ]
-        },
-        coaching: {
-            features: [
-                'Everything in Recording package',
-                '45 minutes personal coaching session',
-                'Personalized feedback'
-            ]
-        }
-    },
-
     // SEO
     meta: {
         title: 'Master Virtual Meetings Workshop - Roberto Ferraro',
