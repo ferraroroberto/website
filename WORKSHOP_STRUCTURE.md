@@ -64,6 +64,9 @@ const WORKSHOP_CONFIG = createWorkshopConfig({
 // Make available globally for inline use
 if (typeof window !== 'undefined') {
     window.WORKSHOP_CONFIG = WORKSHOP_CONFIG;
+    // Named export for the workshop index (single source of truth for shared fields).
+    // Slug converted to UPPER_CASE: e.g. 'new-workshop' → WORKSHOP_CONFIG_NEW_WORKSHOP.
+    window.WORKSHOP_CONFIG_NEW_WORKSHOP = WORKSHOP_CONFIG;
 }
 ```
 
@@ -99,7 +102,38 @@ Create `new-workshop.html` for backward-compatible URLs:
 ```
 
 ### 5. Update Workshop Index Configuration
-Add your workshop to `config/workshops-index-config.js` with the `ctaUrl` pointing to `workshop.html?w=new-workshop`.
+Two edits are required: **index.html** and **workshops-index-config.js**.
+
+**5a. Add the config script to index.html** before `workshops-index-config.js` (so the named global is available when that file runs):
+
+```html
+<script src="config/new-workshop-config.js"></script>
+<script src="config/workshops-index-config.js"></script>  <!-- already there -->
+```
+
+**5b. Add the workshop entry to `config/workshops-index-config.js`**. The `title`, `subtitle`, and `date` fields are derived automatically from the named global you set in Step 1 via the `_field()` helper — do not duplicate them here. Only index-specific fields (`description`, `features`, `price`, `ctaText`, `ctaUrl`, `colorScheme`, `status`) belong in this entry:
+
+```javascript
+{
+    id: 'new-workshop',
+    slug: 'new-workshop',
+    // title/subtitle/date come from window.WORKSHOP_CONFIG_NEW_WORKSHOP via _field() —
+    // they are the single source of truth in the per-workshop config.
+    title: _field(window.WORKSHOP_CONFIG_NEW_WORKSHOP, 'title', 'Fallback Title'),
+    subtitle: _field(window.WORKSHOP_CONFIG_NEW_WORKSHOP, 'subtitle', 'Fallback subtitle.'),
+    date: _field(window.WORKSHOP_CONFIG_NEW_WORKSHOP, 'date', 'Coming Soon'),
+    // Index-specific summary fields (not in the per-workshop config shape).
+    description: 'One-sentence description for the index card.',
+    features: ['Feature 1', 'Feature 2', 'Feature 3', 'Feature 4'],
+    duration: '90 minutes',
+    format: 'Small group (max 20 participants)',
+    price: 'From €10',
+    ctaText: 'Learn More',
+    ctaUrl: 'workshop.html?w=new-workshop',
+    colorScheme: 'new-workshop',
+    status: 'coming-soon'
+}
+```
 
 ### 6. Add CSS Classes (Optional)
 If you want custom styling for your workshop, add CSS classes in `css/workshop-index.css`:
