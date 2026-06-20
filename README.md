@@ -36,8 +36,8 @@ website/
 │   └── workshops-index-config.js      # Workshop index page config
 ├── data/
 │   ├── _export.js                     # Shared exposeData() helper (window + module.exports)
-│   ├── testimonials.js                # Virtual Communication testimonials
-│   ├── benefits.js                    # Virtual Communication benefits
+│   ├── virtual-communication-testimonials.js # Virtual Communication testimonials
+│   ├── virtual-communication-benefits.js    # Virtual Communication benefits
 │   ├── personal-branding-testimonials.js
 │   ├── personal-branding-benefits.js
 │   ├── digital-leadership-testimonials.js

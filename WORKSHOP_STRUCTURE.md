@@ -20,8 +20,8 @@ This website supports multiple workshops driven by a single template page (`work
 
 ### Data Files
 - `data/_export.js` - **Shared export helper**: `exposeData(name, value)` — sets `window[name]` and `module.exports` in one call
-- `data/benefits.js` - Benefits for Virtual Communication workshop
-- `data/testimonials.js` - Testimonials for Virtual Communication workshop
+- `data/virtual-communication-benefits.js` - Benefits for Virtual Communication workshop
+- `data/virtual-communication-testimonials.js` - Testimonials for Virtual Communication workshop
 - `data/personal-branding-benefits.js` - Benefits for Personal Branding workshop
 - `data/personal-branding-testimonials.js` - Testimonials for Personal Branding workshop
 - `data/digital-leadership-benefits.js` - Benefits for Digital Leadership workshop
