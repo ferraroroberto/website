@@ -32,7 +32,7 @@ A multi-workshop landing site for Roberto Ferraro's professional-development wor
 - Every per-workshop config **calls `createWorkshopConfig()`** from `config/workshop-base.js`; don't hand-roll a config object.
 - Data files export via **`exposeData(name, value)`** from `data/_export.js` — preserve the dual `window` / `module.exports` export.
 - **Progressive enhancement:** HTML ships `href="#"` / placeholder fallbacks; JS populates real content and CTA hrefs (`buildLumaUrl()`). The page must degrade gracefully if JS fails.
-- **All paths relative** (Netlify hosting + iframe embedding). Mobile-first; design system is black/white with yellow accent `#FFCC00`, Poppins for headers.
+- **All paths relative** (Netlify hosting + iframe embedding). Mobile-first; workshop pages use black/white with yellow accent `#FFCC00`, Poppins for headers. The workshop index uses per-workshop accent gradients (blue/red/green) — see `css/workshop-index.css`.
 - **Adding a workshop:** follow the step-by-step guide in `WORKSHOP_STRUCTURE.md` (new config + data files + redirect shim, then link from the index).
 
 ## Running locally

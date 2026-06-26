@@ -57,7 +57,7 @@ website/
 - **Per-workshop configs** (`config/<slug>-config.js`): Override title, dates, pricing, video ID, SEO meta — call `createWorkshopConfig()` from the shared base
 - **Shared base** (`config/workshop-base.js`): `buildLumaUrl()` helper + `createWorkshopConfig()` factory used by every per-workshop config
 - **Data files** (`data/<slug>-testimonials.js`, `data/<slug>-benefits.js`): Content separated by type for easy maintenance
-- **Redirect shims** (`virtual-communication.html`, etc.): Zero-content files that immediately `location.replace` to the template URL — keep old URLs working
+- **Redirect shims** (`virtual-communication.html`, etc.): Thin redirect shims that carry per-page SEO meta (canonical + Open Graph + Twitter tags, `http-equiv="refresh"` fallback, and a "Continue" link) and immediately `location.replace` to the template URL — keep old URLs working
 
 ### JavaScript Roles
 - **`js/main.js`**: Populates the workshop template with title, subtitle, dates, pricing, benefits, testimonials, and illustrations; sets CTA button `href` via `buildLumaUrl()` — HTML uses `href="#"` as a no-JS fallback only
@@ -68,7 +68,7 @@ website/
 ## Key Features
 
 ### Design System
-- **Color Scheme**: Black/white with yellow accent (#FFCC00)
+- **Color Scheme**: Black/white with yellow accent (#FFCC00) for workshop pages. The workshop index uses per-workshop accent gradients (blue for Virtual Communication, red/orange for Personal Branding, green for Digital Leadership) — see `css/workshop-index.css` and the "Color Schemes" section in WORKSHOP_STRUCTURE.md
 - **Typography**: Poppins for headers, system fonts for body
 - **Layout**: CSS Grid and Flexbox for responsive design
 - **Mobile-First**: Responsive design with mobile breakpoints

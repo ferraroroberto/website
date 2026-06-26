@@ -92,13 +92,39 @@ Add the slug and its three script paths to the `WORKSHOPS` map inside `workshop.
 ```
 
 ### 4. Add a redirect shim
-Create `new-workshop.html` for backward-compatible URLs:
+Create `new-workshop.html` for backward-compatible URLs. Include the full SEO `<head>` so link previews and search indexing work on the short URL before the redirect fires — omitting it loses the per-page Open Graph/Twitter meta that the shipped shims carry:
 
 ```html
 <!DOCTYPE html>
-<html><head><meta charset="UTF-8">
-<script>window.location.replace('workshop.html?w=new-workshop');</script>
-</head><body></body></html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="index, follow">
+    <title>Your Workshop Title - Roberto Ferraro</title>
+    <meta name="description" content="Your workshop description for SEO.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.robertoferraro.net/new-workshop">
+    <meta property="og:title" content="Your Workshop Title - Roberto Ferraro">
+    <meta property="og:description" content="Your workshop description for social sharing.">
+    <meta property="og:image" content="https://www.robertoferraro.net/images/new-workshop-preview.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Your Workshop Title - Roberto Ferraro">
+    <meta name="twitter:description" content="Your workshop description for social sharing.">
+    <meta name="twitter:image" content="https://www.robertoferraro.net/images/new-workshop-preview.jpg">
+    <link rel="canonical" href="workshop.html?w=new-workshop">
+    <!--
+      Redirect shim: keeps the short URL working and redirects to the template.
+      The SEO <head> above ensures link previews and search indexing work on
+      the canonical URL before the redirect fires.
+    -->
+    <meta http-equiv="refresh" content="0; url=workshop.html?w=new-workshop">
+    <script>window.location.replace('workshop.html?w=new-workshop');</script>
+</head>
+<body>
+    <p>Redirecting to the workshop page&hellip; <a href="workshop.html?w=new-workshop">Continue</a>.</p>
+</body>
+</html>
 ```
 
 ### 5. Update Workshop Index Configuration
