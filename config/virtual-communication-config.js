@@ -1,6 +1,7 @@
 // Virtual Communication Workshop Configuration
 // Only the values that differ from config/workshop-base.js are listed here.
 
+(function () {
 const WORKSHOP_CONFIG = createWorkshopConfig({
     // Event Details
     eventId: 'neemuhqj',
@@ -53,3 +54,4 @@ if (typeof window !== 'undefined') {
     // Named export for the workshop index (single source of truth for shared fields).
     window.WORKSHOP_CONFIG_VIRTUAL_COMMUNICATION = WORKSHOP_CONFIG;
 }
+})();
