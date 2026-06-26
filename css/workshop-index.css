@@ -67,11 +67,11 @@
     background: linear-gradient(90deg, #27ae60, #2ecc71);
 }
 
-.workshop-header {
+.workshop-card-header {
     margin-bottom: 1.5rem;
 }
 
-.workshop-title {
+.workshop-card-title {
     font-size: 1.5rem;
     font-weight: 700;
     color: #2c3e50;
@@ -79,7 +79,7 @@
     line-height: 1.3;
 }
 
-.workshop-subtitle {
+.workshop-card-subtitle {
     font-size: 1rem;
     color: #7f8c8d;
     line-height: 1.5;
@@ -216,7 +216,7 @@
         font-size: 1.8rem;
     }
     
-    .workshop-title {
+    .workshop-card-title {
         font-size: 1.3rem;
     }
     
