@@ -24,7 +24,7 @@
     
     // Enhanced link handling for embedded browsers
     function enhanceLinksForEmbeddedBrowser() {
-        const links = document.querySelectorAll('a[href^="https://lu.ma/"], a.cta-button');
+        const links = document.querySelectorAll('a.cta-button');
         
         links.forEach(link => {
             // Remove existing event listeners to avoid conflicts
@@ -181,8 +181,6 @@
     // Initialize the fix when DOM is ready
     function initializeLinkedInFix() {
         if (isEmbeddedBrowser()) {
-            console.log('Embedded browser detected, applying LinkedIn fix');
-            
             // Enhance all links
             enhanceLinksForEmbeddedBrowser();
             

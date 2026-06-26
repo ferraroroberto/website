@@ -4,28 +4,6 @@
 document.addEventListener('DOMContentLoaded', function() {
     // Initialize the page with data
     initializePage();
-    
-    // Add smooth scrolling for anchor links (if any are added in the future)
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
-            if (target) {
-                target.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
-            }
-        });
-    });
-    
-    // Track CTA button clicks for analytics (if needed)
-    document.querySelectorAll('.cta-button').forEach(button => {
-        button.addEventListener('click', function() {
-            // You can add analytics tracking here
-            console.log('CTA button clicked:', this.textContent.trim());
-        });
-    });
 });
 
 function initializePage() {
@@ -52,8 +30,6 @@ function initializePage() {
     
     // Populate video
     populateVideo();
-    
-    console.log('Workshop landing page initialized successfully');
 }
 
 function populateWorkshopDetails() {
