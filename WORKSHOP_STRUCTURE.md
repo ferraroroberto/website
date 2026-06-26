@@ -44,6 +44,10 @@ Create `config/new-workshop-config.js` using `createWorkshopConfig()` from the b
 
 ```javascript
 // config/new-workshop-config.js
+// Wrap in an IIFE so the local `const WORKSHOP_CONFIG` is scoped here and does
+// not collide with the same declaration in the other per-workshop config files
+// that index.html loads back-to-back in the same page scope.
+(function () {
 const WORKSHOP_CONFIG = createWorkshopConfig({
     eventId: 'your-event-id',
     eventUrl: 'https://luma.com/your-event-id',
@@ -68,6 +72,7 @@ if (typeof window !== 'undefined') {
     // Slug converted to UPPER_CASE: e.g. 'new-workshop' → WORKSHOP_CONFIG_NEW_WORKSHOP.
     window.WORKSHOP_CONFIG_NEW_WORKSHOP = WORKSHOP_CONFIG;
 }
+})();
 ```
 
 ### 2. Create data files
@@ -137,7 +142,9 @@ Two edits are required: **index.html** and **workshops-index-config.js**.
 <script src="config/workshops-index-config.js"></script>  <!-- already there -->
 ```
 
-**5b. Add the workshop entry to `config/workshops-index-config.js`**. The `title`, `subtitle`, and `date` fields are derived automatically from the named global you set in Step 1 via the `_field()` helper — do not duplicate them here. Only index-specific fields (`description`, `features`, `price`, `ctaText`, `ctaUrl`, `colorScheme`, `status`) belong in this entry:
+> **Important — IIFE required.** `index.html` loads all per-workshop config files back-to-back as classic `<script>` tags in the same page scope. Each file declares a local `const WORKSHOP_CONFIG`; without an IIFE wrapper the 2nd and 3rd `const` throw `SyntaxError: Identifier 'WORKSHOP_CONFIG' has already been declared`, leaving their `window.WORKSHOP_CONFIG_*` globals undefined. The template in Step 1 already uses an IIFE — keep it when copying to your new config file.
+
+**5b. Add the workshop entry to `config/workshops-index-config.js`**. The `title`, `subtitle`, and `date` fields are derived automatically from the named global you set in Step 1 via the `_field()` helper — do not duplicate them here. Only index-specific fields (`description`, `features`, `price`, `ctaText`, `ctaUrl`, `colorScheme`, `status`) belong in this entry. (The `_field()` derivation relies on `window.WORKSHOP_CONFIG_NEW_WORKSHOP` being defined — which only works if the config file uses the IIFE wrapper described in Step 5a above.)
 
 ```javascript
 {

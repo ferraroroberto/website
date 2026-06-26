@@ -1,6 +1,7 @@
 // Digital Leadership Workshop Configuration
 // Only the values that differ from config/workshop-base.js are listed here.
 
+(function () {
 const WORKSHOP_CONFIG = createWorkshopConfig({
     // Event Details
     eventId: 'digital-leadership-demo',
@@ -72,3 +73,4 @@ if (typeof window !== 'undefined') {
     // Named export for the workshop index (single source of truth for shared fields).
     window.WORKSHOP_CONFIG_DIGITAL_LEADERSHIP = WORKSHOP_CONFIG;
 }
+})();
