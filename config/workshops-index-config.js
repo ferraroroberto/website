@@ -12,7 +12,8 @@
 // remain here.
 
 // Derive a field from a per-workshop config global; fall back to the default
-// if the config global isn't available (e.g. standalone Node.js requires).
+// if the per-workshop config script hasn't loaded (e.g. wrong script order,
+// or the file missing during local preview).
 function _field(config, key, fallback) {
     return (config && config[key] !== undefined) ? config[key] : fallback;
 }
@@ -107,11 +108,6 @@ const WORKSHOPS_INDEX_CONFIG = {
         ogType: 'website'
     }
 };
-
-// Export for use in other files (if using modules)
-if (typeof module !== 'undefined' && module.exports) {
-    module.exports = { WORKSHOPS_INDEX_CONFIG };
-}
 
 // Make available globally for inline use
 window.WORKSHOPS_INDEX_CONFIG = WORKSHOPS_INDEX_CONFIG;

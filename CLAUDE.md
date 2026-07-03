@@ -22,7 +22,7 @@ A multi-workshop landing site for Roberto Ferraro's professional-development wor
   - `<slug>-config.js` — per-workshop overrides (event ID, title, dates, pricing, video, SEO meta); each calls `createWorkshopConfig()`.
   - `workshops-index-config.js` — index page config.
 - `data/`
-  - `_export.js` — `exposeData(name, value)` helper (sets both `window[name]` and `module.exports`).
+  - `_export.js` — `exposeData(name, value)` helper (sets `window[name]`; browser-only, no CommonJS/`module.exports` path).
   - `<slug>-testimonials.js`, `<slug>-benefits.js` — per-workshop content; `illustrations.js` is shared.
 - `js/` — `main.js` (populates the template), `workshop-index.js`, `iframe-resize.js` (`sendHeight()` postMessage for Squarespace embedding), `linkedin-fix.js` (opens CTAs in the system browser from LinkedIn/WebView).
 
@@ -30,7 +30,7 @@ A multi-workshop landing site for Roberto Ferraro's professional-development wor
 
 - **Data-driven, no HTML edits for content.** To change a workshop, edit `config/<slug>-config.js` and `data/<slug>-*.js` — `workshop.html` is a template and stays untouched.
 - Every per-workshop config **calls `createWorkshopConfig()`** from `config/workshop-base.js`; don't hand-roll a config object.
-- Data files export via **`exposeData(name, value)`** from `data/_export.js` — preserve the dual `window` / `module.exports` export.
+- Data files export via **`exposeData(name, value)`** from `data/_export.js` — sets `window[name]` only; there is no CommonJS export path, so don't add a `require()`-based consumer without first making `_export.js` support it for real.
 - **Progressive enhancement:** HTML ships `href="#"` / placeholder fallbacks; JS populates real content and CTA hrefs (`buildLumaUrl()`). The page must degrade gracefully if JS fails.
 - **All paths relative** (Netlify hosting + iframe embedding). Mobile-first; workshop pages use black/white with yellow accent `#FFCC00`, Poppins for headers. The workshop index uses per-workshop accent gradients (blue/red/green) — see `css/workshop-index.css`.
 - **Adding a workshop:** follow the step-by-step guide in `WORKSHOP_STRUCTURE.md` (new config + data files + redirect shim, then link from the index).
