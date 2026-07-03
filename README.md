@@ -35,7 +35,7 @@ website/
 │   ├── digital-leadership-config.js   # Digital Leadership per-workshop config
 │   └── workshops-index-config.js      # Workshop index page config
 ├── data/
-│   ├── _export.js                     # Shared exposeData() helper (window + module.exports)
+│   ├── _export.js                     # Shared exposeData() helper (window, browser-only)
 │   ├── virtual-communication-testimonials.js # Virtual Communication testimonials
 │   ├── virtual-communication-benefits.js    # Virtual Communication benefits
 │   ├── personal-branding-testimonials.js
@@ -90,7 +90,7 @@ See [WORKSHOP_STRUCTURE.md](WORKSHOP_STRUCTURE.md) for the complete annotated fi
 
 - **`config/workshop-base.js`** — shared factory; every per-workshop config calls `createWorkshopConfig()` from here
 - **`config/<slug>-config.js`** — per-workshop overrides (event ID, title, dates, pricing, video, SEO meta)
-- **`data/_export.js`** — `exposeData(name, value)` helper that sets both `window[name]` and `module.exports`
+- **`data/_export.js`** — `exposeData(name, value)` helper that sets `window[name]` (browser-only; no CommonJS/`module.exports` path — nothing requires these files directly)
 - **`data/illustrations.js`** — shared across all workshops; per-workshop data files follow `<slug>-testimonials.js` / `<slug>-benefits.js` naming
 
 ## Maintenance Guide

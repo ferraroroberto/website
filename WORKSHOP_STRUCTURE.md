@@ -19,7 +19,7 @@ This website supports multiple workshops driven by a single template page (`work
 - `config/digital-leadership-config.js` - Digital Leadership per-workshop overrides
 
 ### Data Files
-- `data/_export.js` - **Shared export helper**: `exposeData(name, value)` — sets `window[name]` and `module.exports` in one call
+- `data/_export.js` - **Shared export helper**: `exposeData(name, value)` — sets `window[name]` (browser-only; no `module.exports`/CommonJS path)
 - `data/virtual-communication-benefits.js` - Benefits for Virtual Communication workshop
 - `data/virtual-communication-testimonials.js` - Testimonials for Virtual Communication workshop
 - `data/personal-branding-benefits.js` - Benefits for Personal Branding workshop
