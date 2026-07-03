@@ -52,13 +52,7 @@ function populateWorkshopDetails() {
         if (durationElement) durationElement.textContent = config.duration;
         if (formatElement) formatElement.textContent = config.format;
         
-        // Update all CTA buttons with the correct event URL
-        document.querySelectorAll('.cta-button').forEach(button => {
-            const urlWithUtm = window.buildLumaUrl();
-            button.href = urlWithUtm;
-            button.target = '_blank';
-            button.rel = 'noopener noreferrer';
-        });
+        updateCtaButtons(config);
     }
 }
 
@@ -134,6 +128,11 @@ function populateCopy() {
         const textEl = document.getElementById('final-cta-text');
         if (headingEl && config.finalCta.heading) headingEl.textContent = config.finalCta.heading;
         if (textEl && config.finalCta.text) textEl.innerHTML = config.finalCta.text;
+    }
+
+    const availabilityEl = document.getElementById('final-cta-availability');
+    if (availabilityEl && !isBookingOpen(config)) {
+        availabilityEl.textContent = config.comingSoonMessage || 'Registration details will be published here soon.';
     }
 }
 
@@ -212,6 +211,19 @@ function populatePricing() {
         if (pricingContainer) {
             const pricing = window.WORKSHOP_CONFIG.pricing;
             const config = window.WORKSHOP_CONFIG;
+
+            if (!isBookingOpen(config)) {
+                const pricingTitle = document.querySelector('.pricing-title');
+                if (pricingTitle) pricingTitle.textContent = 'Registration Opens Soon';
+                pricingContainer.innerHTML = `
+                <div class="coming-soon-notice">
+                    <h3>Coming Soon</h3>
+                    <p>${config.comingSoonMessage || 'This workshop is being prepared. Check back soon for registration details.'}</p>
+                </div>
+            `;
+                updateCtaButtons(config);
+                return;
+            }
             
             pricingContainer.innerHTML = Object.values(pricing).map(plan => `
                 <div class="pricing-card ${plan.featured ? 'featured' : ''}">
@@ -231,6 +243,7 @@ function populatePricing() {
                     </a>
                 </div>
             `).join('');
+            updateCtaButtons(config);
         }
     }
 }
@@ -238,8 +251,40 @@ function populatePricing() {
 function populateVideo() {
     if (window.WORKSHOP_CONFIG) {
         const videoElement = document.getElementById('workshop-video');
-        if (videoElement) {
-            videoElement.src = window.WORKSHOP_CONFIG.videoUrl;
+        const videoContainer = videoElement ? videoElement.closest('.video-container') : null;
+        const videoUrl = window.WORKSHOP_CONFIG.videoUrl;
+        if (videoElement && videoUrl) {
+            videoElement.src = videoUrl;
+            if (videoContainer) videoContainer.hidden = false;
+        } else if (videoContainer) {
+            videoContainer.hidden = true;
         }
     }
-} 
+}
+
+function isBookingOpen(config) {
+    return config && config.status !== 'coming-soon' && Boolean(window.buildLumaUrl(config));
+}
+
+function updateCtaButtons(config) {
+    const bookingUrl = window.buildLumaUrl(config);
+    const bookingOpen = isBookingOpen(config);
+
+    document.querySelectorAll('.cta-button').forEach(button => {
+        if (bookingOpen) {
+            button.href = bookingUrl;
+            button.target = '_blank';
+            button.rel = 'noopener noreferrer';
+            button.removeAttribute('aria-disabled');
+            button.classList.remove('is-disabled');
+            return;
+        }
+
+        button.removeAttribute('href');
+        button.removeAttribute('target');
+        button.removeAttribute('rel');
+        button.setAttribute('aria-disabled', 'true');
+        button.classList.add('is-disabled');
+        button.textContent = 'Coming Soon';
+    });
+}

@@ -4,8 +4,8 @@
 (function () {
 const WORKSHOP_CONFIG = createWorkshopConfig({
     // Event Details
-    eventId: 'personal-branding-demo',
-    eventUrl: 'https://lu.ma/personal-branding-demo',
+    status: 'coming-soon',
+    comingSoonMessage: 'This workshop is being prepared. Check back soon for dates, pricing, and registration details.',
 
     // UTM campaign (source/medium come from the base)
     utmParams: {
@@ -32,8 +32,8 @@ const WORKSHOP_CONFIG = createWorkshopConfig({
     },
 
     // Video
-    videoId: 'demo-video-id',
-    videoUrl: 'https://www.youtube.com/embed/demo-video-id',
+    videoId: '',
+    videoUrl: '',
 
     // Pricing — base tiers, with workshop-specific recording/coaching extras
     pricing: {
@@ -62,7 +62,7 @@ const WORKSHOP_CONFIG = createWorkshopConfig({
         ogDescription: 'Discover how to build a powerful personal brand that authentically represents you and helps you achieve your professional goals.',
         ogType: 'website',
         ogUrl: 'https://www.robertoferraro.net/personal-branding',
-        ogImage: 'https://www.robertoferraro.net/images/personal-branding-preview.jpg',
+        ogImage: 'https://www.robertoferraro.net/images/group.png',
         twitterCard: 'summary_large_image'
     }
 });
