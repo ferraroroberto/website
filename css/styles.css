@@ -103,6 +103,10 @@ body {
     border: none;
 }
 
+.video-container[hidden] {
+    display: none;
+}
+
 /* ===== BENEFITS SECTION ===== */
 .benefits-section {
     background-color: #f2f2f2;
@@ -296,6 +300,22 @@ body {
     transition: transform 0.3s ease;
 }
 
+.coming-soon-notice {
+    grid-column: 1 / -1;
+    max-width: 640px;
+    margin: 0 auto;
+    background: white;
+    color: #1a1a1a;
+    padding: 40px 30px;
+    border-radius: 12px;
+    text-align: center;
+}
+
+.coming-soon-notice h3 {
+    font-size: 1.3em;
+    margin-bottom: 10px;
+}
+
 .pricing-card:hover {
     transform: translateY(-5px);
 }
@@ -377,6 +397,13 @@ body {
 .cta-button:hover {
     background: #FFCC00;
     color: #1a1a1a;
+}
+
+.cta-button.is-disabled,
+.cta-button.is-disabled:hover {
+    background: #8c8c8c;
+    color: white;
+    cursor: not-allowed;
 }
 
 .pricing-card:not(.featured) .cta-button:hover {
@@ -478,4 +505,4 @@ body {
         padding-left: 20px;
         padding-right: 20px;
     }
-} 
+}

@@ -43,7 +43,7 @@ const WORKSHOP_CONFIG = createWorkshopConfig({
         ogDescription: 'Learn to communicate effectively in virtual settings with practical tools you can use right away.',
         ogType: 'website',
         ogUrl: 'https://www.robertoferraro.net/virtual-communication',
-        ogImage: 'https://www.robertoferraro.net/images/virtual-communication-preview.jpg',
+        ogImage: 'https://www.robertoferraro.net/images/group.png',
         twitterCard: 'summary_large_image'
     }
 });
