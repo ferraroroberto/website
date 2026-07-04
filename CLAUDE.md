@@ -26,6 +26,10 @@ A multi-workshop landing site for Roberto Ferraro's professional-development wor
   - `<slug>-testimonials.js`, `<slug>-benefits.js` — per-workshop content; `illustrations.js` is shared.
 - `js/` — `main.js` (populates the template), `workshop-index.js`, `iframe-resize.js` (`sendHeight()` postMessage for Squarespace embedding), `linkedin-fix.js` (opens CTAs in the system browser from LinkedIn/WebView).
 
+## Internal architecture
+
+[`docs/architecture.mmd`](docs/architecture.mmd) is a hand-authored Mermaid diagram of this repo's own internal structure (entry pages, `config/`, `data/`, `js/`, `css/`, and external dependencies like Luma/Netlify/Squarespace). Update it in the same PR as any material structural change (a new workshop slug, a renamed data/config file, a new external dependency) — same anti-staleness contract as this repo's own `.fleet.toml` `description` field. It is not auto-generated and not covered by any test suite.
+
 ## Conventions
 
 - **Data-driven, no HTML edits for content.** To change a workshop, edit `config/<slug>-config.js` and `data/<slug>-*.js` — `workshop.html` is a template and stays untouched.
