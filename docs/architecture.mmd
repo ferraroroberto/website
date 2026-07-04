@@ -1,0 +1,82 @@
+%% docs/architecture.mmd — this repo's own internal structure.
+%% Hand-authored, not generated — unlike a fleet-wide aggregated map, this
+%% repo's own internal shape is semantic and can't be crawled the same way.
+%% Update this diagram in the same PR as any material structural change (a
+%% new workshop slug, a renamed data/config file, a new external dependency)
+%% — same anti-staleness contract as this repo's own `.fleet.toml`
+%% `description` field. See global-CLAUDE.md's "Every repo carries a
+%% `.fleet.toml`" section for the general convention.
+
+flowchart TB
+  subgraph entry["Entry pages"]
+    INDEX["index.html\nworkshop index / landing page"]
+    SHIMS["virtual-communication.html · personal-branding.html ·\ndigital-leadership.html\nthin redirect shims"]
+  end
+
+  TEMPLATE["workshop.html\nsingle template, selects per-slug scripts\nfrom the ?w=&lt;slug&gt; query param"]
+  SHIMS -->|window.location.replace| TEMPLATE
+
+  subgraph config["config/"]
+    BASE["workshop-base.js\ncreateWorkshopConfig() deep-merge + buildLumaUrl()"]
+    WCONFIG["&lt;slug&gt;-config.js\nper-workshop overrides: dates, pricing,\nvideo, SEO meta, Luma eventUrl"]
+    IDXCONFIG["workshops-index-config.js\nindex-page card data"]
+  end
+  WCONFIG -->|calls| BASE
+
+  subgraph data["data/"]
+    EXPORT["_export.js\nexposeData(name, value) sets window[name]"]
+    CONTENT["&lt;slug&gt;-testimonials.js · &lt;slug&gt;-benefits.js"]
+    ILLUS["illustrations.js\nshared across all workshops"]
+  end
+  CONTENT -->|uses| EXPORT
+
+  TEMPLATE -->|script src, in order| BASE
+  TEMPLATE -->|script src| EXPORT
+  TEMPLATE -->|document.write, per slug| WCONFIG
+  TEMPLATE -->|document.write, per slug| CONTENT
+  TEMPLATE --> ILLUS
+  INDEX --> BASE
+  INDEX --> WCONFIG
+  INDEX --> IDXCONFIG
+
+  subgraph js["js/"]
+    MAIN["main.js\nreads window.WORKSHOP_CONFIG + data globals,\npopulates DOM: meta, copy, illustrations,\nbenefits, testimonials, pricing, video"]
+    IDXJS["workshop-index.js\nreads window.WORKSHOPS_INDEX_CONFIG,\nrenders the workshops grid"]
+    LIFIX["linkedin-fix.js\nopens CTA links in the system browser\nwhen loaded inside LinkedIn's in-app webview"]
+    RESIZE["iframe-resize.js\npostMessage(setHeight) to the parent frame"]
+  end
+  TEMPLATE --> MAIN
+  TEMPLATE --> LIFIX
+  TEMPLATE --> RESIZE
+  INDEX --> IDXJS
+  INDEX --> LIFIX
+  INDEX --> RESIZE
+  MAIN -->|reads| WCONFIG
+  MAIN -->|reads| CONTENT
+  MAIN -->|reads| ILLUS
+  IDXJS -->|reads| IDXCONFIG
+
+  subgraph css["css/"]
+    STYLES["styles.css\nshared workshop page styles,\nblack/white + yellow #FFCC00 accent"]
+    IDXCSS["workshop-index.css\nper-workshop accent gradients"]
+  end
+  TEMPLATE --> STYLES
+  INDEX --> STYLES
+  INDEX --> IDXCSS
+
+  subgraph external["External dependencies"]
+    LUMA["Luma\nticketing/checkout — buildLumaUrl() target"]
+    YT["YouTube\nembedded workshop teaser video"]
+    GFONTS["Google Fonts\nPoppins"]
+    NETLIFY["Netlify\nstatic hosting — robertoferraro.net"]
+    SQSP["Squarespace\nparent page embeds via iframe"]
+    LINKEDIN["LinkedIn in-app webview\nsource of the linkedin-fix.js redirect"]
+  end
+  BASE -->|eventUrl + utm params| LUMA
+  MAIN --> YT
+  TEMPLATE -.-> GFONTS
+  INDEX -.-> GFONTS
+  NETLIFY -->|serves| INDEX
+  NETLIFY -->|serves| TEMPLATE
+  SQSP -->|embeds, receives postMessage| RESIZE
+  LINKEDIN -->|detected by| LIFIX
