@@ -1,14 +1,10 @@
 # Project Instructions
 
-Canonical instructions for AI coding agents working in this repository. Claude Code reads this file directly as project memory. Other agents (Cursor, Codex, etc.) reach it via the one-line `AGENTS.md` pointer.
-
-> Universal dev-workflow directives (plan mode, asking, before/while editing, branch & PR pipeline, documentation discipline) live once in the machine config (`~/.claude/CLAUDE.md`) and are not restated here. This file owns only what is specific to this project's shape. The `## Git` section below is the deliberate exception: it is restated because agents that reach this repo through `AGENTS.md` alone never see the machine config.
-
 ## What this project is
 
 A multi-workshop landing site for Roberto Ferraro's professional-development workshops, deployed on **Netlify** (`robertoferraro.net`) and embedded into Squarespace via a dynamic-height iframe. **Data-driven:** one `workshop.html` template renders any workshop from per-slug config + data files. No framework, no jQuery — vanilla HTML/CSS/JS only (a `package.json` exists but the site is static, all paths relative).
 
-> For the full annotated layout and the step-by-step "add a new workshop" guide, see `WORKSHOP_STRUCTURE.md`.
+> Full annotated layout and the step-by-step "add a new workshop" guide: `WORKSHOP_STRUCTURE.md`.
 
 ## Stack & layout
 
@@ -49,5 +45,6 @@ python -m http.server 8000   # then http://localhost:8000/
 Preview a workshop via `http://localhost:8000/workshop.html?w=virtual-communication`.
 
 ## Git
+*Restated deliberately: agents reaching this repo through `AGENTS.md` alone never see the machine config.*
 
 Conventional commit prefixes (`feat:` `fix:` `refactor:` `docs:` `chore:`). Never add `Co-Authored-By: Claude` or any AI-attribution trailer. Don't commit or push unless asked.
