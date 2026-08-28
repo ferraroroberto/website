@@ -2,15 +2,15 @@
 
 ## What this project is
 
-A multi-workshop landing site for Roberto Ferraro's professional-development workshops, deployed on **Netlify** (`robertoferraro.net`) and embedded into Squarespace via a dynamic-height iframe. **Data-driven:** one `workshop.html` template renders any workshop from per-slug config + data files. No framework, no jQuery — vanilla HTML/CSS/JS only (a `package.json` exists but the site is static, all paths relative).
+Multi-workshop landing site for Roberto Ferraro's professional-development workshops, deployed on **Netlify** (`robertoferraro.net`), embedded into Squarespace via dynamic-height iframe. **Data-driven:** one `workshop.html` template renders any workshop from per-slug config + data files. No framework, no jQuery — vanilla HTML/CSS/JS only (`package.json` exists but the site is static; all paths relative).
 
-> Full annotated layout and the step-by-step "add a new workshop" guide: `WORKSHOP_STRUCTURE.md`.
+> Full layout + "add a new workshop" guide: `WORKSHOP_STRUCTURE.md`.
 
 ## Stack & layout
 
 - `index.html` — workshop index landing page.
 - `workshop.html` — **single template** for every workshop, selected by `?w=<slug>`.
-- `virtual-communication.html`, `personal-branding.html`, `digital-leadership.html` — thin **redirect shims** → `workshop.html?w=<slug>` (keep legacy URLs working).
+- `virtual-communication.html`, `personal-branding.html`, `digital-leadership.html` — **redirect shims** → `workshop.html?w=<slug>` (keep legacy URLs working).
 - `config/`
   - `workshop-base.js` — shared factory: `createWorkshopConfig()` + `buildLumaUrl()`.
   - `<slug>-config.js` — per-workshop overrides (event ID, title, dates, pricing, video, SEO meta); each calls `createWorkshopConfig()`.
@@ -22,16 +22,16 @@ A multi-workshop landing site for Roberto Ferraro's professional-development wor
 
 ## Internal architecture
 
-[`docs/architecture.mmd`](docs/architecture.mmd) is a hand-authored Mermaid diagram of this repo's own internal structure (entry pages, `config/`, `data/`, `js/`, `css/`, and external dependencies like Luma/Netlify/Squarespace). Update it in the same PR as any material structural change (a new workshop slug, a renamed data/config file, a new external dependency) — same anti-staleness contract as this repo's own `.fleet.toml` `description` field. It is not auto-generated and not covered by any test suite.
+[`docs/architecture.mmd`](docs/architecture.mmd) — hand-authored Mermaid diagram of this repo's internal structure (entry pages, `config/`, `data/`, `js/`, `css/`, external deps: Luma/Netlify/Squarespace). Update in the same PR as any structural change (new slug, renamed data/config file, new external dependency) — anti-staleness contract, same as `.fleet.toml`'s `description`. Not auto-generated; no test coverage.
 
 ## Conventions
 
-- **Data-driven, no HTML edits for content.** To change a workshop, edit `config/<slug>-config.js` and `data/<slug>-*.js` — `workshop.html` is a template and stays untouched.
-- Every per-workshop config **calls `createWorkshopConfig()`** from `config/workshop-base.js`; don't hand-roll a config object.
-- Data files export via **`exposeData(name, value)`** from `data/_export.js` — sets `window[name]` only; there is no CommonJS export path, so don't add a `require()`-based consumer without first making `_export.js` support it for real.
-- **Progressive enhancement:** HTML ships `href="#"` / placeholder fallbacks; JS populates real content and CTA hrefs (`buildLumaUrl()`). The page must degrade gracefully if JS fails.
-- **All paths relative** (Netlify hosting + iframe embedding). Mobile-first; workshop pages use black/white with yellow accent `#FFCC00`, Poppins for headers. The workshop index uses per-workshop accent gradients (blue/red/green) — see `css/workshop-index.css`.
-- **Adding a workshop:** follow the step-by-step guide in `WORKSHOP_STRUCTURE.md` (new config + data files + redirect shim, then link from the index).
+- **Data-driven, no HTML edits for content.** Edit `config/<slug>-config.js` and `data/<slug>-*.js` — `workshop.html` stays untouched.
+- Every per-workshop config **calls `createWorkshopConfig()`**; don't hand-roll a config object.
+- Data files export via **`exposeData(name, value)`** (`data/_export.js`) — `window[name]` only, no CommonJS path; don't add a `require()`-based consumer without first extending `_export.js`.
+- **Progressive enhancement:** HTML ships `href="#"` / placeholder fallbacks; JS populates real content and CTA hrefs (`buildLumaUrl()`). Must degrade gracefully if JS fails.
+- **All paths relative** (Netlify + iframe embedding). Mobile-first; workshop pages: black/white, yellow accent `#FFCC00`, Poppins headers. Index page: per-workshop accent gradients (blue/red/green) — `css/workshop-index.css`.
+- **Adding a workshop:** follow `WORKSHOP_STRUCTURE.md` (new config + data files + redirect shim, then link from the index).
 
 ## Running locally
 
