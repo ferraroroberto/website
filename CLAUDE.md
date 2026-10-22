@@ -32,6 +32,7 @@ Multi-workshop landing site for Roberto Ferraro's professional-development works
 - **Progressive enhancement:** HTML ships `href="#"` / placeholder fallbacks; JS populates real content and CTA hrefs (`buildLumaUrl()`). Must degrade gracefully if JS fails.
 - **All paths relative** (Netlify + iframe embedding). Mobile-first; workshop pages: black/white, yellow accent `#FFCC00`, Poppins headers. Index page: per-workshop accent gradients (blue/red/green) — `css/workshop-index.css`.
 - **Adding a workshop:** follow `WORKSHOP_STRUCTURE.md` (new config + data files + redirect shim, then link from the index).
+- **A structure ratchet gates the repo.** `scripts/verify-before-ship.ps1` runs the vendored `scripts/structure_ratchet.py` (byte-for-byte from project-scaffolding; re-vendor with `/propagate-vendored structure_ratchet`, never edit) and fails when a file passes 1,000 lines, a function 100 lines or a flat directory 40 modules and is new or above its entry in `.structure-ratchet-baseline.json` (today only the 205-line anonymous function in `js/linkedin-fix.js`, recorded at its real size), or when the root folders do not match `shape = "static-site"` plus `extra_roots` in `.fleet.toml`. A new root folder is declared in `extra_roots` and `docs/layout.md`, not allowed by default. Burn the baseline down with `--update-baseline`; only `--allow-additions` adds. Exit 3 (could not measure) is NOT CONFIRMED and fails. Layout: [`docs/layout.md`](docs/layout.md).
 
 ## Running locally
 
