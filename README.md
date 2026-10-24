@@ -48,7 +48,7 @@ website/
 └── README.md                          # This file
 ```
 
-Where each folder's content goes, and the declared root exceptions: [docs/layout.md](docs/layout.md). `scripts/verify-before-ship.ps1` runs the structure ratchet, then the instruction ratchet (the prompt audit's deterministic rules over `CLAUDE.md` and `AGENTS.md`).
+Where each folder's content goes, and the declared root exceptions: [docs/layout.md](docs/layout.md). `scripts/verify-before-ship.ps1` runs the structure ratchet, then the instruction ratchet (the prompt audit's deterministic rules over `CLAUDE.md` and `AGENTS.md`), then the doc refs ratchet (paths and links the docs name that no longer exist).
 
 ## Architecture
 
