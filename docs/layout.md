@@ -13,7 +13,7 @@ website/
 ├── illustrations/              # illustration images referenced from data/illustrations.js
 ├── images/                     # testimonial portraits and the group photo, referenced from the testimonial data files
 ├── docs/                       # architecture.mmd and this file
-└── scripts/                    # verify-before-ship.ps1 (the gate) and the vendored structure_ratchet.py
+└── scripts/                    # verify-before-ship.ps1 (the gate) and the vendored ratchet scripts
 ```
 
 ## Declared exceptions
@@ -22,7 +22,7 @@ website/
 
 - `config/` and `data/`: the data-driven design keeps every workshop's settings and content out of `workshop.html`, so they sit beside `js/` as plain scripts the pages include with relative paths.
 - `illustrations/` and `images/`: the image files the data files point at by relative path. They stay at the root so those paths, and the embedded Squarespace pages that load them, keep resolving.
-- `scripts/`: the gate (`verify-before-ship.ps1`) and the vendored `structure_ratchet.py`. Nothing in it ships to the browser.
+- `scripts/`: the gate (`verify-before-ship.ps1`) and the vendored `structure_ratchet.py` and `instruction_ratchet.py`. Nothing in it ships to the browser.
 
 ## Where new code goes
 
