@@ -16,7 +16,10 @@
     link or module that does not exist, beyond the committed .doc-refs-ratchet-baseline.json,
     same exit contract. Then the static ratchet (scripts/static_ratchet.py): duplicated
     code (jscpd, run through npx) beyond the committed .static-ratchet-baseline.json, same
-    exit contract. Run from anywhere:  & .\scripts\verify-before-ship.ps1
+    exit contract. Then the docs ratchet (scripts/docs_ratchet.py): the README's size and
+    the history markers (issue references, dated or changelog headings) in README.md and
+    docs/, beyond the committed .docs-ratchet-baseline.json, same exit contract. Run from
+    anywhere:  & .\scripts\verify-before-ship.ps1
 #>
 [CmdletBinding()]
 param()
@@ -60,6 +63,13 @@ Write-Host "==> static ratchet" -ForegroundColor Cyan
 & $py "scripts/static_ratchet.py"
 if ($LASTEXITCODE -ne 0) {
     Write-Host "[FAIL] static ratchet (exit $LASTEXITCODE)" -ForegroundColor Red
+    exit 1
+}
+
+Write-Host "==> docs ratchet" -ForegroundColor Cyan
+& $py "scripts/docs_ratchet.py"
+if ($LASTEXITCODE -ne 0) {
+    Write-Host "[FAIL] docs ratchet (exit $LASTEXITCODE)" -ForegroundColor Red
     exit 1
 }
 
