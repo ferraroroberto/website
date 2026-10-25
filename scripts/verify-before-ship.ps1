@@ -18,8 +18,10 @@
     code (jscpd, run through npx) beyond the committed .static-ratchet-baseline.json, same
     exit contract. Then the docs ratchet (scripts/docs_ratchet.py): the README's size and
     the history markers (issue references, dated or changelog headings) in README.md and
-    docs/, beyond the committed .docs-ratchet-baseline.json, same exit contract. Run from
-    anywhere:  & .\scripts\verify-before-ship.ps1
+    docs/, beyond the committed .docs-ratchet-baseline.json, same exit contract. Then the
+    comment ratchet (scripts/comment_ratchet.py): issue references in JavaScript, CSS and
+    PowerShell comments, beyond the committed .comment-ratchet-baseline.json, same exit
+    contract. Run from anywhere:  & .\scripts\verify-before-ship.ps1
 #>
 [CmdletBinding()]
 param()
@@ -70,6 +72,13 @@ Write-Host "==> docs ratchet" -ForegroundColor Cyan
 & $py "scripts/docs_ratchet.py"
 if ($LASTEXITCODE -ne 0) {
     Write-Host "[FAIL] docs ratchet (exit $LASTEXITCODE)" -ForegroundColor Red
+    exit 1
+}
+
+Write-Host "==> comment ratchet" -ForegroundColor Cyan
+& $py "scripts/comment_ratchet.py"
+if ($LASTEXITCODE -ne 0) {
+    Write-Host "[FAIL] comment ratchet (exit $LASTEXITCODE)" -ForegroundColor Red
     exit 1
 }
 
