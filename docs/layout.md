@@ -22,7 +22,7 @@ website/
 
 - `config/` and `data/`: the data-driven design keeps every workshop's settings and content out of `workshop.html`, so they sit beside `js/` as plain scripts the pages include with relative paths.
 - `illustrations/` and `images/`: the image files the data files point at by relative path. They stay at the root so those paths, and the embedded Squarespace pages that load them, keep resolving.
-- `scripts/`: the gate (`verify-before-ship.ps1`) and the vendored `structure_ratchet.py`, `instruction_ratchet.py` and `doc_refs_ratchet.py`. Nothing in it ships to the browser.
+- `scripts/`: the gate (`verify-before-ship.ps1`) and the vendored `structure_ratchet.py`, `instruction_ratchet.py`, `doc_refs_ratchet.py` and `static_ratchet.py`. Nothing in it ships to the browser.
 
 ## Where new code goes
 

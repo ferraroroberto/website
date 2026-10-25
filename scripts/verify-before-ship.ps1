@@ -14,7 +14,9 @@
     committed .instruction-ratchet-baseline.json, same exit contract. Then the doc refs
     ratchet (scripts/doc_refs_ratchet.py): README.md, CLAUDE.md and docs/ naming a path,
     link or module that does not exist, beyond the committed .doc-refs-ratchet-baseline.json,
-    same exit contract. Run from anywhere:  & .\scripts\verify-before-ship.ps1
+    same exit contract. Then the static ratchet (scripts/static_ratchet.py): duplicated
+    code (jscpd, run through npx) beyond the committed .static-ratchet-baseline.json, same
+    exit contract. Run from anywhere:  & .\scripts\verify-before-ship.ps1
 #>
 [CmdletBinding()]
 param()
@@ -51,6 +53,13 @@ Write-Host "==> doc refs ratchet" -ForegroundColor Cyan
 & $py "scripts/doc_refs_ratchet.py"
 if ($LASTEXITCODE -ne 0) {
     Write-Host "[FAIL] doc refs ratchet (exit $LASTEXITCODE)" -ForegroundColor Red
+    exit 1
+}
+
+Write-Host "==> static ratchet" -ForegroundColor Cyan
+& $py "scripts/static_ratchet.py"
+if ($LASTEXITCODE -ne 0) {
+    Write-Host "[FAIL] static ratchet (exit $LASTEXITCODE)" -ForegroundColor Red
     exit 1
 }
 
