@@ -48,7 +48,7 @@ website/
 └── README.md                          # This file
 ```
 
-Where each folder's content goes, and the declared root exceptions: [docs/layout.md](docs/layout.md). `scripts/verify-before-ship.ps1` runs the structure ratchet, then the instruction ratchet (the prompt audit's deterministic rules over `CLAUDE.md` and `AGENTS.md`), then the doc refs ratchet (paths and links the docs name that no longer exist), then the static ratchet (duplicated code; needs Node for `npx`), then the docs ratchet (README size and history markers in the docs), then the comment ratchet (issue references in code comments), then the dead code ratchet (Python definitions nothing references).
+Where each folder's content goes, and the declared root exceptions: [docs/layout.md](docs/layout.md). `scripts/verify-before-ship.ps1` runs the structure ratchet, then the instruction ratchet (the prompt audit's deterministic rules over `CLAUDE.md` and `AGENTS.md`), then the doc refs ratchet (paths and links the docs name that no longer exist), then the static ratchet (duplicated code; needs Node for `npx`), then the docs ratchet (README size and history markers in the docs), then the comment ratchet (issue references in code comments), then the dead code ratchet (Python definitions nothing references), then the conventions ratchet (Python spawns that show a console window, and hardcoded drive paths).
 
 ## Architecture
 

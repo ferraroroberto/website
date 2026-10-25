@@ -23,7 +23,9 @@
     PowerShell comments, beyond the committed .comment-ratchet-baseline.json, same exit
     contract. Then the dead code ratchet (scripts/dead_code_ratchet.py): Python definitions
     nothing references, beyond the committed .dead-code-ratchet-baseline.json, same exit
-    contract. Run from anywhere:  & .\scripts\verify-before-ship.ps1
+    contract. Then the conventions ratchet (scripts/conventions_ratchet.py): the no-window and
+    no-drive-path rules over tracked Python, beyond the committed
+    .conventions-ratchet-baseline.json, same exit contract. Run from anywhere:  & .\scripts\verify-before-ship.ps1
 #>
 [CmdletBinding()]
 param()
@@ -88,6 +90,13 @@ Write-Host "==> dead code ratchet" -ForegroundColor Cyan
 & $py "scripts/dead_code_ratchet.py"
 if ($LASTEXITCODE -ne 0) {
     Write-Host "[FAIL] dead code ratchet (exit $LASTEXITCODE)" -ForegroundColor Red
+    exit 1
+}
+
+Write-Host "==> conventions ratchet" -ForegroundColor Cyan
+& $py "scripts/conventions_ratchet.py"
+if ($LASTEXITCODE -ne 0) {
+    Write-Host "[FAIL] conventions ratchet (exit $LASTEXITCODE)" -ForegroundColor Red
     exit 1
 }
 
