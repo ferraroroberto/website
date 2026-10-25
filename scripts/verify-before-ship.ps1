@@ -21,6 +21,8 @@
     docs/, beyond the committed .docs-ratchet-baseline.json, same exit contract. Then the
     comment ratchet (scripts/comment_ratchet.py): issue references in JavaScript, CSS and
     PowerShell comments, beyond the committed .comment-ratchet-baseline.json, same exit
+    contract. Then the dead code ratchet (scripts/dead_code_ratchet.py): Python definitions
+    nothing references, beyond the committed .dead-code-ratchet-baseline.json, same exit
     contract. Run from anywhere:  & .\scripts\verify-before-ship.ps1
 #>
 [CmdletBinding()]
@@ -79,6 +81,13 @@ Write-Host "==> comment ratchet" -ForegroundColor Cyan
 & $py "scripts/comment_ratchet.py"
 if ($LASTEXITCODE -ne 0) {
     Write-Host "[FAIL] comment ratchet (exit $LASTEXITCODE)" -ForegroundColor Red
+    exit 1
+}
+
+Write-Host "==> dead code ratchet" -ForegroundColor Cyan
+& $py "scripts/dead_code_ratchet.py"
+if ($LASTEXITCODE -ne 0) {
+    Write-Host "[FAIL] dead code ratchet (exit $LASTEXITCODE)" -ForegroundColor Red
     exit 1
 }
 
