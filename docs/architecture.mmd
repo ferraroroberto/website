@@ -43,10 +43,16 @@ flowchart TB
     MAIN["main.js\nreads window.WORKSHOP_CONFIG + data globals,\npopulates DOM: meta, copy, illustrations,\nbenefits, testimonials, pricing, video"]
     IDXJS["workshop-index.js\nreads window.WORKSHOPS_INDEX_CONFIG,\nrenders the workshops grid"]
     LIFIX["linkedin-fix.js\nopens CTA links in the system browser\nwhen loaded inside LinkedIn's in-app webview"]
+    LIOPEN["link-opener.js
+tries ways to open a URL outside the webview"]
+    LIINSTR["link-instruction.js
+copy-the-link modal when none works"]
     RESIZE["iframe-resize.js\npostMessage(setHeight) to the parent frame"]
   end
   TEMPLATE --> MAIN
   TEMPLATE --> LIFIX
+  LIFIX --> LIOPEN
+  LIFIX --> LIINSTR
   TEMPLATE --> RESIZE
   INDEX --> IDXJS
   INDEX --> LIFIX

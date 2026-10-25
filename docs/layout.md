@@ -7,7 +7,7 @@ website/
 ├── index.html, workshop.html   # the pages: the index and the one workshop template (?w=<slug>)
 ├── <slug>.html                 # redirect shim to workshop.html?w=<slug>, so legacy URLs keep working
 ├── css/                        # styles.css (workshop pages), workshop-index.css (index page)
-├── js/                         # browser scripts: main.js fills the template, workshop-index.js the index, iframe-resize.js and linkedin-fix.js are shared helpers
+├── js/                         # browser scripts: main.js fills the template, workshop-index.js the index, iframe-resize.js and linkedin-fix.js (with link-opener.js and link-instruction.js, loaded before it) are shared helpers
 ├── config/                     # workshop-base.js factory plus one <slug>-config.js per workshop, and workshops-index-config.js
 ├── data/                       # _export.js helper, one <slug>-testimonials.js and <slug>-benefits.js per workshop, shared illustrations.js
 ├── illustrations/              # illustration images referenced from data/illustrations.js
