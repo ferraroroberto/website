@@ -27,7 +27,9 @@ website/
 │   ├── main.js                         # Dynamic content population for workshop pages
 │   ├── workshop-index.js               # Workshop index page logic
 │   ├── iframe-resize.js               # Shared sendHeight() postMessage helper
-│   └── linkedin-fix.js                # Embedded-browser (LinkedIn/WebView) link handler
+│   ├── linkedin-fix.js                # Embedded-browser (LinkedIn/WebView) link handler
+│   ├── link-opener.js                 # Tries ways to open a URL outside an embedded browser
+│   └── link-instruction.js            # Copy-the-link modal when none of them works
 ├── config/
 │   ├── workshop-base.js               # Shared factory: buildLumaUrl() + createWorkshopConfig()
 │   ├── virtual-communication-config.js # Virtual Communication per-workshop config
@@ -66,6 +68,7 @@ Where each folder's content goes, and the declared root exceptions: [docs/layout
 - **`js/workshop-index.js`**: Drives the workshop index (`index.html`) — reads `workshops-index-config.js`
 - **`js/iframe-resize.js`**: Shared `sendHeight()` postMessage logic for Squarespace iframe embedding
 - **`js/linkedin-fix.js`**: Detects LinkedIn/WebView embedded browsers and overrides link-click behaviour so CTA buttons open in the system browser
+- **`js/link-opener.js`** / **`js/link-instruction.js`**: helpers `linkedin-fix.js` calls — try each way of opening the URL outside the embedded browser, then fall back to a modal that lets the visitor copy the link; load both before `linkedin-fix.js`
 
 ## Key Features
 
