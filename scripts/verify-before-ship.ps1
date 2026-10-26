@@ -44,6 +44,8 @@ if (-not (Test-Path $py)) {
     $py = $found.Source
 }
 
+. (Join-Path $PSScriptRoot "box_lock_gate.ps1"); Enter-BoxLockGate
+
 Write-Host "==> structure ratchet" -ForegroundColor Cyan
 & $py "scripts/structure_ratchet.py"
 if ($LASTEXITCODE -ne 0) {
