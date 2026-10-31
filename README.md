@@ -13,44 +13,9 @@ A multi-workshop landing site for Roberto Ferraro's professional development wor
 
 ## Project Structure
 
-```
-website/
-├── index.html                          # Workshop index (main landing page)
-├── workshop.html                       # Single template for all workshop pages (?w=<slug>)
-├── virtual-communication.html          # Redirect shim → workshop.html?w=virtual-communication
-├── personal-branding.html              # Redirect shim → workshop.html?w=personal-branding
-├── digital-leadership.html             # Redirect shim → workshop.html?w=digital-leadership
-├── css/
-│   ├── styles.css                      # Workshop page styles
-│   └── workshop-index.css             # Index page styles
-├── js/
-│   ├── main.js                         # Dynamic content population for workshop pages
-│   ├── workshop-index.js               # Workshop index page logic
-│   ├── iframe-resize.js               # Shared sendHeight() postMessage helper
-│   ├── linkedin-fix.js                # Embedded-browser (LinkedIn/WebView) link handler
-│   ├── link-opener.js                 # Tries ways to open a URL outside an embedded browser
-│   └── link-instruction.js            # Copy-the-link modal when none of them works
-├── config/
-│   ├── workshop-base.js               # Shared factory: buildLumaUrl() + createWorkshopConfig()
-│   ├── virtual-communication-config.js # Virtual Communication per-workshop config
-│   ├── personal-branding-config.js    # Personal Branding per-workshop config
-│   ├── digital-leadership-config.js   # Digital Leadership per-workshop config
-│   └── workshops-index-config.js      # Workshop index page config
-├── data/
-│   ├── _export.js                     # Shared exposeData() helper (window, browser-only)
-│   ├── virtual-communication-testimonials.js # Virtual Communication testimonials
-│   ├── virtual-communication-benefits.js    # Virtual Communication benefits
-│   ├── personal-branding-testimonials.js
-│   ├── personal-branding-benefits.js
-│   ├── digital-leadership-testimonials.js
-│   ├── digital-leadership-benefits.js
-│   └── illustrations.js              # Shared illustrations
-├── illustrations/                     # Local illustration assets
-├── images/                            # Local image assets
-└── README.md                          # This file
-```
+The annotated layout (pages, `css/`, `js/`, `config/`, `data/`, images, `scripts/`) lives in one place: [docs/layout.md](docs/layout.md).
 
-Where each folder's content goes, and the declared root exceptions: [docs/layout.md](docs/layout.md). `scripts/verify-before-ship.ps1` runs the structure ratchet, then the instruction ratchet (the prompt audit's deterministic rules over `CLAUDE.md` and `AGENTS.md`), then the doc refs ratchet (paths and links the docs name that no longer exist), then the static ratchet (duplicated code; needs Node for `npx`), then the docs ratchet (README size and history markers in the docs), then the comment ratchet (issue references in code comments), then the dead code ratchet (Python definitions nothing references), then the conventions ratchet (Python spawns that show a console window, and hardcoded drive paths).
+`scripts/verify-before-ship.ps1` runs the structure ratchet, then the instruction ratchet (the prompt audit's deterministic rules over `CLAUDE.md` and `AGENTS.md`), then the doc refs ratchet (paths and links the docs name that no longer exist), then the static ratchet (duplicated code; needs Node for `npx`), then the docs ratchet (README size and history markers in the docs), then the comment ratchet (issue references in code comments), then the dead code ratchet (Python definitions nothing references), then the conventions ratchet (Python spawns that show a console window, and hardcoded drive paths).
 
 ## Architecture
 
@@ -102,8 +67,9 @@ See [WORKSHOP_STRUCTURE.md](WORKSHOP_STRUCTURE.md) for the complete annotated fi
 
 ### Updating Workshop Details
 1. Edit `config/<slug>-config.js` for the workshop you want to change (e.g. `config/virtual-communication-config.js` for Virtual Communication)
-2. Update event ID, dates, pricing, video ID as needed
-3. **No HTML changes required** — `workshop.html` is a template
+2. Update event URL, dates, pricing, video URL as needed
+3. To open or close registration, set `status` in that file: `'coming-soon'` (with an optional `comingSoonMessage`) disables the booking buttons and replaces pricing with the notice; leave `status` out (or `'active'`) for a bookable workshop. The index card's `status` is a separate field in `config/workshops-index-config.js` (see [WORKSHOP_STRUCTURE.md](WORKSHOP_STRUCTURE.md#workshop-status))
+4. **No HTML changes required** — `workshop.html` is a template
 
 ### Adding/Editing Testimonials or Benefits
 1. Edit `data/<slug>-testimonials.js` or `data/<slug>-benefits.js` for the target workshop
@@ -121,6 +87,14 @@ See the step-by-step guide in [WORKSHOP_STRUCTURE.md](WORKSHOP_STRUCTURE.md#how-
 1. Edit `css/styles.css`
 2. Follow the organized section structure
 3. Test responsive behavior
+
+## Run Locally
+
+```bash
+python -m http.server 8000   # then open http://localhost:8000/
+```
+
+Preview a workshop at `http://localhost:8000/workshop.html?w=<slug>` (for example `?w=virtual-communication`). The pre-ship gate is `& .\scripts\verify-before-ship.ps1`.
 
 ## Deployment
 

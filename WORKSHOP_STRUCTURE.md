@@ -4,38 +4,7 @@ This website supports multiple workshops driven by a single template page (`work
 
 ## Structure Overview
 
-### Main Files
-- `index.html` - Workshop repository page (main landing page)
-- `workshop.html` - **Single template page** for all workshops — chosen by `?w=<slug>`
-- `virtual-communication.html` - Redirect shim → `workshop.html?w=virtual-communication`
-- `personal-branding.html` - Redirect shim → `workshop.html?w=personal-branding`
-- `digital-leadership.html` - Redirect shim → `workshop.html?w=digital-leadership`
-
-### Configuration Files
-- `config/workshop-base.js` - **Shared base**: `buildLumaUrl()` helper + `createWorkshopConfig()` factory
-- `config/workshops-index-config.js` - Configuration for the workshop index page
-- `config/virtual-communication-config.js` - Virtual Communication per-workshop overrides
-- `config/personal-branding-config.js` - Personal Branding per-workshop overrides
-- `config/digital-leadership-config.js` - Digital Leadership per-workshop overrides
-
-### Data Files
-- `data/_export.js` - **Shared export helper**: `exposeData(name, value)` — sets `window[name]` (browser-only; no `module.exports`/CommonJS path)
-- `data/virtual-communication-benefits.js` - Benefits for Virtual Communication workshop
-- `data/virtual-communication-testimonials.js` - Testimonials for Virtual Communication workshop
-- `data/personal-branding-benefits.js` - Benefits for Personal Branding workshop
-- `data/personal-branding-testimonials.js` - Testimonials for Personal Branding workshop
-- `data/digital-leadership-benefits.js` - Benefits for Digital Leadership workshop
-- `data/digital-leadership-testimonials.js` - Testimonials for Digital Leadership workshop
-- `data/illustrations.js` - Shared illustrations (used across all workshops)
-
-### JavaScript Files
-- `js/workshop-index.js` - JavaScript for the workshop index page
-- `js/main.js` - Dynamic content population for individual workshop pages
-- `js/iframe-resize.js` - **Shared** `sendHeight()` postMessage logic (referenced by all pages)
-
-### CSS Files
-- `css/styles.css` - Main styles (shared across all pages)
-- `css/workshop-index.css` - Styles for the workshop index page
+The annotated file layout is kept in one place: [docs/layout.md](docs/layout.md). This file covers the workshop-specific parts: the per-workshop config and data shapes, the steps to add a workshop, and the status switches.
 
 ## How to Add a New Workshop
 
@@ -183,9 +152,13 @@ If you want custom styling for your workshop, add CSS classes in `css/workshop-i
 
 ## Workshop Status
 
-Each workshop can have one of two statuses:
+Two places carry a status, and both take one of two values:
 - `'active'` - Workshop is available and can be booked
 - `'coming-soon'` - Workshop is planned but not yet available
+
+**Workshop page** - `status` and `comingSoonMessage` in `config/<slug>-config.js`. `js/main.js` `isBookingOpen()` reads `status`: when it is `'coming-soon'` (or no event URL is set) the booking buttons are disabled and the pricing is replaced by `comingSoonMessage`. To open registration, remove `status` (or set `'active'`) here and set the real event URL.
+
+**Index card** - `status` on the entry in `config/workshops-index-config.js` decides the card's button and badge on the index page. Change both places when a workshop opens, or the index card and the workshop page disagree.
 
 ## Color Schemes
 
@@ -217,8 +190,8 @@ To update workshop content:
 
 2. **Personal Branding** - Coming soon
    - Focus: Building authentic personal brands in the digital age
-   - Status: Coming soon (set `status: 'coming-soon'` in `config/workshops-index-config.js`)
+   - Status: Coming soon (`status: 'coming-soon'` in `config/<slug>-config.js` and in `config/workshops-index-config.js`)
 
 3. **Digital Leadership** - Coming soon
    - Focus: Leading teams effectively in virtual environments
-   - Status: Coming soon (set `status: 'coming-soon'` in `config/workshops-index-config.js`)
+   - Status: Coming soon (`status: 'coming-soon'` in `config/<slug>-config.js` and in `config/workshops-index-config.js`)
