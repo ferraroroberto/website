@@ -10,8 +10,12 @@
         const methods = [
             // Method 1: Try to open in new window
             () => {
-                const newWindow = window.open(url, '_blank', 'noopener,noreferrer');
+                // No 'noopener' feature: it makes window.open() return null even when
+                // the tab opened, which sent every click on to Methods 2-3. The opener
+                // link is cut on the handle instead.
+                const newWindow = window.open(url, '_blank');
                 if (newWindow) {
+                    newWindow.opener = null;
                     newWindow.focus();
                     return true;
                 }

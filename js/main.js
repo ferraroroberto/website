@@ -184,6 +184,11 @@ function populateBenefits() {
 }
 
 function populateTestimonials() {
+    const section = document.querySelector('.testimonials-section');
+    if (section) {
+        section.hidden = !(window.TESTIMONIALS_DATA && window.TESTIMONIALS_DATA.length);
+    }
+
     if (window.TESTIMONIALS_DATA) {
         const testimonialsContainer = document.getElementById('testimonials-grid');
         if (testimonialsContainer) {
