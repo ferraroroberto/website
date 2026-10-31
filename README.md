@@ -68,7 +68,7 @@ See [WORKSHOP_STRUCTURE.md](WORKSHOP_STRUCTURE.md) for the complete annotated fi
 ### Updating Workshop Details
 1. Edit `config/<slug>-config.js` for the workshop you want to change (e.g. `config/virtual-communication-config.js` for Virtual Communication)
 2. Update event URL, dates, pricing, video URL as needed
-3. To open or close registration, set `status` in that file: `'coming-soon'` (with an optional `comingSoonMessage`) disables the booking buttons and replaces pricing with the notice; leave `status` out (or `'active'`) for a bookable workshop. The index card's `status` is a separate field in `config/workshops-index-config.js` (see [WORKSHOP_STRUCTURE.md](WORKSHOP_STRUCTURE.md#workshop-status))
+3. To open or close registration, set `status` in that file: `'coming-soon'` (with an optional `comingSoonMessage`) disables the booking buttons and replaces pricing with the notice; leave `status` out (or `'active'`) for a bookable workshop. The index card reads the same field (see [WORKSHOP_STRUCTURE.md](WORKSHOP_STRUCTURE.md#workshop-status))
 4. **No HTML changes required** — `workshop.html` is a template
 
 ### Adding/Editing Testimonials or Benefits

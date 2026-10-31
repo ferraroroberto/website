@@ -113,13 +113,13 @@ Two edits are required: **index.html** and **workshops-index-config.js**.
 
 > **Important — IIFE required.** `index.html` loads all per-workshop config files back-to-back as classic `<script>` tags in the same page scope. Each file declares a local `const WORKSHOP_CONFIG`; without an IIFE wrapper the 2nd and 3rd `const` throw `SyntaxError: Identifier 'WORKSHOP_CONFIG' has already been declared`, leaving their `window.WORKSHOP_CONFIG_*` globals undefined. The template in Step 1 already uses an IIFE — keep it when copying to your new config file.
 
-**5b. Add the workshop entry to `config/workshops-index-config.js`**. The `title`, `subtitle`, and `date` fields are derived automatically from the named global you set in Step 1 via the `_field()` helper — do not duplicate them here. Only index-specific fields (`description`, `features`, `price`, `ctaText`, `ctaUrl`, `colorScheme`, `status`) belong in this entry. (The `_field()` derivation relies on `window.WORKSHOP_CONFIG_NEW_WORKSHOP` being defined — which only works if the config file uses the IIFE wrapper described in Step 5a above.)
+**5b. Add the workshop entry to `config/workshops-index-config.js`**. The `title`, `subtitle`, `date`, `duration`, `format`, and `status` fields are derived automatically from the named global you set in Step 1 via the `_field()` helper — do not duplicate them here. Only index-specific fields (`description`, `features`, `price`, `ctaText`, `ctaUrl`, `colorScheme`) belong in this entry. (The `_field()` derivation relies on `window.WORKSHOP_CONFIG_NEW_WORKSHOP` being defined — which only works if the config file uses the IIFE wrapper described in Step 5a above.)
 
 ```javascript
 {
     id: 'new-workshop',
     slug: 'new-workshop',
-    // title/subtitle/date come from window.WORKSHOP_CONFIG_NEW_WORKSHOP via _field() —
+    // title/subtitle/date/duration/format/status come from window.WORKSHOP_CONFIG_NEW_WORKSHOP via _field() —
     // they are the single source of truth in the per-workshop config.
     title: _field(window.WORKSHOP_CONFIG_NEW_WORKSHOP, 'title', 'Fallback Title'),
     subtitle: _field(window.WORKSHOP_CONFIG_NEW_WORKSHOP, 'subtitle', 'Fallback subtitle.'),
@@ -127,13 +127,13 @@ Two edits are required: **index.html** and **workshops-index-config.js**.
     // Index-specific summary fields (not in the per-workshop config shape).
     description: 'One-sentence description for the index card.',
     features: ['Feature 1', 'Feature 2', 'Feature 3', 'Feature 4'],
-    duration: '90 minutes',
-    format: 'Small group (max 20 participants)',
+    duration: _field(window.WORKSHOP_CONFIG_NEW_WORKSHOP, 'duration', '90 minutes'),
+    format: _field(window.WORKSHOP_CONFIG_NEW_WORKSHOP, 'format', 'Small group (max 20 participants)'),
     price: 'From €10',
     ctaText: 'Learn More',
     ctaUrl: 'workshop.html?w=new-workshop',
     colorScheme: 'new-workshop',
-    status: 'coming-soon'
+    status: _field(window.WORKSHOP_CONFIG_NEW_WORKSHOP, 'status', 'active')
 }
 ```
 
@@ -152,13 +152,13 @@ If you want custom styling for your workshop, add CSS classes in `css/workshop-i
 
 ## Workshop Status
 
-Two places carry a status, and both take one of two values:
+The per-workshop config carries a status with one of two values:
 - `'active'` - Workshop is available and can be booked
 - `'coming-soon'` - Workshop is planned but not yet available
 
 **Workshop page** - `status` and `comingSoonMessage` in `config/<slug>-config.js`. `js/main.js` `isBookingOpen()` reads `status`: when it is `'coming-soon'` (or no event URL is set) the booking buttons are disabled and the pricing is replaced by `comingSoonMessage`. To open registration, remove `status` (or set `'active'`) here and set the real event URL.
 
-**Index card** - `status` on the entry in `config/workshops-index-config.js` decides the card's button and badge on the index page. Change both places when a workshop opens, or the index card and the workshop page disagree.
+**Index card** - the entry in `config/workshops-index-config.js` reads the same `status` (default `'active'`) from the per-workshop config, so one edit opens registration on the workshop page and the index card together.
 
 ## Color Schemes
 
@@ -190,8 +190,8 @@ To update workshop content:
 
 2. **Personal Branding** - Coming soon
    - Focus: Building authentic personal brands in the digital age
-   - Status: Coming soon (`status: 'coming-soon'` in `config/<slug>-config.js` and in `config/workshops-index-config.js`)
+   - Status: Coming soon (`status: 'coming-soon'` in `config/<slug>-config.js`)
 
 3. **Digital Leadership** - Coming soon
    - Focus: Leading teams effectively in virtual environments
-   - Status: Coming soon (`status: 'coming-soon'` in `config/<slug>-config.js` and in `config/workshops-index-config.js`)
+   - Status: Coming soon (`status: 'coming-soon'` in `config/<slug>-config.js`)

@@ -1,7 +1,7 @@
 // Workshops Index Configuration
 // Centralized configuration for all available workshops.
 //
-// Title, subtitle, and date are derived from the per-workshop config globals
+// Title, subtitle, date, duration, format and status are derived from the per-workshop config globals
 // (loaded before this file in index.html via workshop-base.js and the three
 // per-workshop configs). This makes those fields a single source of truth:
 // editing config/virtual-communication-config.js (or its siblings) automatically updates
@@ -9,7 +9,10 @@
 //
 // Fields that are index-specific summaries with no direct equivalent in the
 // per-workshop config shape (description, features, price, ctaText, etc.)
-// remain here.
+// remain here. A workshop config with no `status` is bookable ('active'), the
+// same reading js/main.js isBookingOpen() applies; the fallback passed to
+// _field() only applies when the config script did not load, so it matches
+// each workshop's current state.
 
 // Derive a field from a per-workshop config global; fall back to the default
 // if the per-workshop config script hasn't loaded (e.g. wrong script order,
@@ -39,13 +42,13 @@ const WORKSHOPS_INDEX_CONFIG = {
                 'Technical setup optimization',
                 'Interactive learning experience'
             ],
-            duration: '90 minutes',
-            format: 'Small group (max 20 participants)',
+            duration: _field(window.WORKSHOP_CONFIG_VIRTUAL_COMMUNICATION, 'duration', '90 minutes'),
+            format: _field(window.WORKSHOP_CONFIG_VIRTUAL_COMMUNICATION, 'format', 'Small group (max 20 participants)'),
             price: 'From €10',
             ctaText: 'Learn More',
             ctaUrl: 'workshop.html?w=virtual-communication',
             colorScheme: 'virtual-communication',
-            status: 'active'
+            status: _field(window.WORKSHOP_CONFIG_VIRTUAL_COMMUNICATION, 'status', 'active')
         },
         {
             id: 'personal-branding',
@@ -64,13 +67,13 @@ const WORKSHOPS_INDEX_CONFIG = {
                 'Build authentic connections',
                 'Strategic content planning'
             ],
-            duration: '90 minutes',
-            format: 'Small group (max 20 participants)',
+            duration: _field(window.WORKSHOP_CONFIG_PERSONAL_BRANDING, 'duration', '90 minutes'),
+            format: _field(window.WORKSHOP_CONFIG_PERSONAL_BRANDING, 'format', 'Small group (max 20 participants)'),
             price: 'From €10',
             ctaText: 'Learn More',
             ctaUrl: 'workshop.html?w=personal-branding',
             colorScheme: 'personal-branding',
-            status: 'coming-soon'
+            status: _field(window.WORKSHOP_CONFIG_PERSONAL_BRANDING, 'status', 'coming-soon')
         },
         {
             id: 'digital-leadership',
@@ -89,13 +92,13 @@ const WORKSHOPS_INDEX_CONFIG = {
                 'Remote collaboration tools',
                 'Building trust in digital spaces'
             ],
-            duration: '90 minutes',
-            format: 'Small group (max 20 participants)',
+            duration: _field(window.WORKSHOP_CONFIG_DIGITAL_LEADERSHIP, 'duration', '90 minutes'),
+            format: _field(window.WORKSHOP_CONFIG_DIGITAL_LEADERSHIP, 'format', 'Small group (max 20 participants)'),
             price: 'From €10',
             ctaText: 'Learn More',
             ctaUrl: 'workshop.html?w=digital-leadership',
             colorScheme: 'digital-leadership',
-            status: 'coming-soon'
+            status: _field(window.WORKSHOP_CONFIG_DIGITAL_LEADERSHIP, 'status', 'coming-soon')
         }
     ],
 
