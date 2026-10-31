@@ -4,7 +4,6 @@
 (function () {
 const WORKSHOP_CONFIG = createWorkshopConfig({
     // Event Details
-    eventId: 'neemuhqj',
     eventUrl: 'https://luma.com/neemuhqj',
 
     // UTM campaign (source/medium come from the base)
@@ -32,7 +31,6 @@ const WORKSHOP_CONFIG = createWorkshopConfig({
     },
 
     // Video
-    videoId: 'ojPvNyMOFZg',
     videoUrl: 'https://www.youtube.com/embed/ojPvNyMOFZg',
 
     // SEO

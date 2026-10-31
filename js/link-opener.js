@@ -1,5 +1,6 @@
 // Tries a series of ways to open a URL outside an embedded browser.
-// Returns true as soon as one works, false if all of them fail.
+// Returns true as soon as one works, false if all of them fail, which makes the
+// caller show the copy-the-link modal instead of navigating the current page.
 
 (function() {
     'use strict';
@@ -9,8 +10,12 @@
         const methods = [
             // Method 1: Try to open in new window
             () => {
-                const newWindow = window.open(url, '_blank', 'noopener,noreferrer');
+                // No 'noopener' feature: it makes window.open() return null even when
+                // the tab opened, which sent every click on to Methods 2-3. The opener
+                // link is cut on the handle instead.
+                const newWindow = window.open(url, '_blank');
                 if (newWindow) {
+                    newWindow.opener = null;
                     newWindow.focus();
                     return true;
                 }
@@ -33,12 +38,6 @@
                     return true;
                 }
                 return false;
-            },
-
-            // Method 4: Try to navigate current window
-            () => {
-                window.location.href = url;
-                return true;
             }
         ];
 

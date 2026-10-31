@@ -126,11 +126,6 @@ function buildLumaUrl(config) {
     return queryString ? `${baseUrl}?${queryString}` : baseUrl;
 }
 
-// Export for use in other files (if using modules)
-if (typeof module !== 'undefined' && module.exports) {
-    module.exports = { WORKSHOP_DEFAULTS, createWorkshopConfig, buildLumaUrl };
-}
-
 // Make available globally for inline use
 if (typeof window !== 'undefined') {
     window.createWorkshopConfig = createWorkshopConfig;

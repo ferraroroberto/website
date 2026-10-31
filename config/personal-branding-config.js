@@ -32,7 +32,6 @@ const WORKSHOP_CONFIG = createWorkshopConfig({
     },
 
     // Video
-    videoId: '',
     videoUrl: '',
 
     // Pricing — base tiers, with workshop-specific recording/coaching extras
