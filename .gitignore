@@ -1,2 +1,6 @@
 # Launcher scratch (ephemeral images/logs written by the tray launcher)
 .launcher-tmp/
+
+# Python bytecode written by the gate scripts
+__pycache__/
+*.pyc
