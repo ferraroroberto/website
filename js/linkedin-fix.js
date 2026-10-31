@@ -15,13 +15,6 @@
         return isInApp || isWebView || isInFrame;
     }
     
-    // Check if we're in LinkedIn specifically
-    function isLinkedInBrowser() {
-        const userAgent = navigator.userAgent.toLowerCase();
-        return /linkedin/i.test(userAgent) || 
-               (window.self !== window.top && document.referrer.includes('linkedin'));
-    }
-    
     // Enhanced link handling for embedded browsers
     function enhanceLinksForEmbeddedBrowser() {
         const links = document.querySelectorAll('a.cta-button');

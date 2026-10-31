@@ -13,7 +13,7 @@ Multi-workshop landing site for Roberto Ferraro's professional-development works
 - `virtual-communication.html`, `personal-branding.html`, `digital-leadership.html` — **redirect shims** → `workshop.html?w=<slug>` (keep legacy URLs working).
 - `config/`
   - `workshop-base.js` — shared factory: `createWorkshopConfig()` + `buildLumaUrl()`.
-  - `<slug>-config.js` — per-workshop overrides (event ID, title, dates, pricing, video, SEO meta); each calls `createWorkshopConfig()`.
+  - `<slug>-config.js` — per-workshop overrides (event URL, title, dates, pricing, video, SEO meta); each calls `createWorkshopConfig()`.
   - `workshops-index-config.js` — index page config.
 - `data/`
   - `_export.js` — `exposeData(name, value)` helper (sets `window[name]`; browser-only, no CommonJS/`module.exports` path).

@@ -23,7 +23,7 @@ The annotated layout (pages, `css/`, `js/`, `config/`, `data/`, images, `scripts
 
 ### Data-Driven Design
 - **`workshop.html`**: Single template page — content injected by JS at load time for whichever `?w=<slug>` is requested
-- **Per-workshop configs** (`config/<slug>-config.js`): Override title, dates, pricing, video ID, SEO meta — call `createWorkshopConfig()` from the shared base
+- **Per-workshop configs** (`config/<slug>-config.js`): Override title, dates, pricing, video URL, SEO meta — call `createWorkshopConfig()` from the shared base
 - **Shared base** (`config/workshop-base.js`): `buildLumaUrl()` helper + `createWorkshopConfig()` factory used by every per-workshop config
 - **Data files** (`data/<slug>-testimonials.js`, `data/<slug>-benefits.js`): Content separated by type for easy maintenance
 - **Redirect shims** (`virtual-communication.html`, etc.): Thin redirect shims that carry per-page SEO meta (canonical + Open Graph + Twitter tags, `http-equiv="refresh"` fallback, and a "Continue" link) and immediately `location.replace` to the template URL — keep old URLs working
@@ -44,7 +44,7 @@ The annotated layout (pages, `css/`, `js/`, `config/`, `data/`, images, `scripts
 - **Mobile-First**: Responsive design with mobile breakpoints
 
 ### Content Management
-- **Centralized Configuration**: Easy updates to dates, prices, event IDs
+- **Centralized Configuration**: Easy updates to dates, prices, event URLs
 - **Modular Data**: Testimonials, benefits, and images in separate files
 - **Dynamic Population**: Content loaded from data files via JavaScript
 - **SEO Optimized**: Meta tags, semantic HTML, proper heading structure
@@ -59,7 +59,7 @@ The annotated layout (pages, `css/`, `js/`, `config/`, `data/`, images, `scripts
 See [WORKSHOP_STRUCTURE.md](WORKSHOP_STRUCTURE.md) for the complete annotated file list and how each piece fits together. Key pointers:
 
 - **`config/workshop-base.js`** — shared factory; every per-workshop config calls `createWorkshopConfig()` from here
-- **`config/<slug>-config.js`** — per-workshop overrides (event ID, title, dates, pricing, video, SEO meta)
+- **`config/<slug>-config.js`** — per-workshop overrides (event URL, title, dates, pricing, video, SEO meta)
 - **`data/_export.js`** — `exposeData(name, value)` helper that sets `window[name]` (browser-only; no CommonJS/`module.exports` path — nothing requires these files directly)
 - **`data/illustrations.js`** — shared across all workshops; per-workshop data files follow `<slug>-testimonials.js` / `<slug>-benefits.js` naming
 

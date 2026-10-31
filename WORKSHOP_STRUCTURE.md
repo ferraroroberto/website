@@ -18,7 +18,6 @@ Create `config/new-workshop-config.js` using `createWorkshopConfig()` from the b
 // that index.html loads back-to-back in the same page scope.
 (function () {
 const WORKSHOP_CONFIG = createWorkshopConfig({
-    eventId: 'your-event-id',
     eventUrl: 'https://luma.com/your-event-id',
 
     // UTM campaign (source/medium come from the base)
@@ -29,7 +28,6 @@ const WORKSHOP_CONFIG = createWorkshopConfig({
     title: 'Your Workshop Title',
     subtitle: 'Your workshop subtitle',
     date: 'Your workshop date',
-    videoId: 'your-video-id',
     videoUrl: 'https://www.youtube.com/embed/your-video-id',
     meta: { /* SEO metadata: title, description, ogUrl, ogImage, ... */ }
 });

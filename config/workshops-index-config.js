@@ -100,16 +100,7 @@ const WORKSHOPS_INDEX_CONFIG = {
             colorScheme: 'digital-leadership',
             status: _field(window.WORKSHOP_CONFIG_DIGITAL_LEADERSHIP, 'status', 'coming-soon')
         }
-    ],
-
-    // Page metadata
-    meta: {
-        title: 'Professional Workshops - Roberto Ferraro',
-        description: 'Transform your professional skills with Roberto Ferraro\'s interactive workshops. Master virtual communication, personal branding, and digital leadership.',
-        ogTitle: 'Professional Workshops - Roberto Ferraro',
-        ogDescription: 'Interactive workshops to enhance your virtual communication, personal branding, and digital leadership skills.',
-        ogType: 'website'
-    }
+    ]
 };
 
 // Make available globally for inline use
