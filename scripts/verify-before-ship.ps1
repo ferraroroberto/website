@@ -25,7 +25,9 @@
     nothing references, beyond the committed .dead-code-ratchet-baseline.json, same exit
     contract. Then the conventions ratchet (scripts/conventions_ratchet.py): the no-window and
     no-drive-path rules over tracked Python, beyond the committed
-    .conventions-ratchet-baseline.json, same exit contract. Run from anywhere:  & .\scripts\verify-before-ship.ps1
+    .conventions-ratchet-baseline.json, same exit contract. Then the runtime write ratchet
+    (scripts/runtime_write_ratchet.py): Python write targets resolving under a code folder,
+    beyond the committed .runtime-write-ratchet-baseline.json, same exit contract. Run from anywhere:  & .\scripts\verify-before-ship.ps1
 #>
 [CmdletBinding()]
 param()
@@ -99,6 +101,13 @@ Write-Host "==> conventions ratchet" -ForegroundColor Cyan
 & $py "scripts/conventions_ratchet.py"
 if ($LASTEXITCODE -ne 0) {
     Write-Host "[FAIL] conventions ratchet (exit $LASTEXITCODE)" -ForegroundColor Red
+    exit 1
+}
+
+Write-Host "==> runtime write ratchet" -ForegroundColor Cyan
+& $py "scripts/runtime_write_ratchet.py"
+if ($LASTEXITCODE -ne 0) {
+    Write-Host "[FAIL] runtime write ratchet (exit $LASTEXITCODE)" -ForegroundColor Red
     exit 1
 }
 
