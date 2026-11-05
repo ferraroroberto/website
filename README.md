@@ -1,5 +1,7 @@
 # Workshop Website - Roberto Ferraro
 
+> **This repo is dormant.** The workshop pages now live at https://www.robertoferraro.net/workshops, and the three legacy workshop URLs redirect there. The code here is kept for history only.
+
 ## Overview
 
 A multi-workshop landing site for Roberto Ferraro's professional development workshops. Built with clean separation of concerns: a single `workshop.html` template driven by per-workshop config and data files, plus a central index page listing all workshops.
