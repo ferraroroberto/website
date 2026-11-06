@@ -4,7 +4,7 @@
   "root_extras": ["config", "data", "illustrations", "images"],
   "shape_contract": {
     "root_files": ["WORKSHOP_STRUCTURE.md"],
-    "redundant": ["scripts/"],
+    "redundant": [],
     "folder_types": {
       "config": 5
     }

@@ -6,10 +6,10 @@ layer       = "working-web"
 icon        = "🌐"
 description = "Multi-workshop landing site."
 shape       = "static-site"
-# Root folders beyond the static-site preset (css, js, assets, games): the per-workshop
-# config, the per-workshop content data, the two image folders the pages load by
-# relative path, and the gate scripts. docs/layout.md describes each.
-extra_roots = ["config", "data", "illustrations", "images", "scripts"]
+# Root folders beyond the static-site preset (css, js, assets, games, scripts): the
+# per-workshop config, the per-workshop content data and the two image folders the
+# pages load by relative path. docs/layout.md describes each.
+extra_roots = ["config", "data", "illustrations", "images"]
 
 # [vendored] -- components copied byte-for-byte from project-scaffolding, with the
 # scaffold commit each came from. Re-vendor through /propagate-vendored, never by hand.
