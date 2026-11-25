@@ -31,81 +31,81 @@ runtime_write_resolve = { src = "scripts/runtime_write_resolve.py", sha = "55051
 # [structure_ratchet] -- the scaffold's baseline-and-ratchet layout stage.
 # scripts/verify-before-ship.ps1 runs scripts/structure_ratchet.py, which fails when a
 # new file passes 1,000 lines, a new function 100 lines or a flat directory 40 modules,
-# when a baselined offender grows past its size in .structure-ratchet-baseline.json,
+# when a baselined offender grows past its size in .ratchets/structure.json,
 # and when the root folders do not match `shape` plus `extra_roots`. Existing
 # offenders are baselined at today's size, never excluded. Exit 3 (git unusable, an
 # unparseable file, an unknown shape) fails the gate. Procedure: project-scaffolding
 # docs/structure-ratchet.md.
 [structure_ratchet]
 enabled  = true
-baseline = ".structure-ratchet-baseline.json"
+baseline = ".ratchets/structure.json"
 
 # [instruction_ratchet] -- the scaffold's baseline-and-ratchet stage for the deterministic
 # rules of the weekly prompt audit, run over CLAUDE.md and AGENTS.md (this repo ships no
 # skills or rules files). scripts/verify-before-ship.ps1 runs scripts/instruction_ratchet.py,
-# which fails when a violation-cap hit count rises above .instruction-ratchet-baseline.json
+# which fails when a violation-cap hit count rises above .ratchets/instruction.json
 # or a file passes its size cap. Existing hits are baselined at today's count, never
 # excluded. Exit 3 (git unusable, an unreadable file) fails the gate. Procedure:
 # project-scaffolding docs/instruction-ratchet.md.
 [instruction_ratchet]
 enabled  = true
-baseline = ".instruction-ratchet-baseline.json"
+baseline = ".ratchets/instruction.json"
 
 # [doc_refs_ratchet] -- the scaffold's baseline-and-ratchet stage for stale documentation
 # references. scripts/verify-before-ship.ps1 runs scripts/doc_refs_ratchet.py, which fails
 # when README.md, CLAUDE.md or docs/**/*.md names a repo path, relative link or module that
-# does not exist and .doc-refs-ratchet-baseline.json does not already record it. The site
+# does not exist and .ratchets/doc-refs.json does not already record it. The site
 # declares no `port`, so loopback ports in the docs are not checked. Existing dangling
 # references are baselined at today's count, never excluded. Exit 3 (git unusable, a file
 # that is not UTF-8) fails the gate. Procedure: project-scaffolding docs/doc-refs-ratchet.md.
 [doc_refs_ratchet]
 enabled  = true
-baseline = ".doc-refs-ratchet-baseline.json"
+baseline = ".ratchets/doc-refs.json"
 
 # [static_ratchet] -- the scaffold's baseline-and-ratchet stage for duplicated code. The site
 # ships no Python, so ruff finds nothing to report; jscpd (pinned, run through npx) checks
 # the JavaScript for exact clones. scripts/verify-before-ship.ps1 runs
-# scripts/static_ratchet.py, which fails on a finding .static-ratchet-baseline.json does
+# scripts/static_ratchet.py, which fails on a finding .ratchets/static.json does
 # not already record. The vendored scripts are excluded automatically. Existing findings are
 # baselined at today's count, never excluded. Exit 3 (no Node, no network on the first npx,
 # ruff missing, an unparseable report) fails the gate. Procedure: project-scaffolding
 # docs/static-ratchet.md.
 [static_ratchet]
 enabled  = true
-baseline = ".static-ratchet-baseline.json"
+baseline = ".ratchets/static.json"
 
 # [docs_ratchet] -- the scaffold's baseline-and-ratchet stage for the README and docs convention.
 # scripts/verify-before-ship.ps1 runs scripts/docs_ratchet.py, which fails when README.md
 # passes its size budget or README.md or docs/**/*.md carries more history markers (an issue
-# reference, a dated or changelog heading) than .docs-ratchet-baseline.json records. Existing
+# reference, a dated or changelog heading) than .ratchets/docs.json records. Existing
 # markers are baselined at today's count, never excluded. Exit 3 (git unusable, a file that is
 # not UTF-8, a fence or comment that never closes) fails the gate. Procedure:
 # project-scaffolding docs/docs-ratchet.md.
 [docs_ratchet]
 enabled  = true
-baseline = ".docs-ratchet-baseline.json"
+baseline = ".ratchets/docs.json"
 
 # [comment_ratchet] -- the scaffold's baseline-and-ratchet stage for history comments.
 # scripts/verify-before-ship.ps1 runs scripts/comment_ratchet.py, which fails when a
 # JavaScript, CSS or PowerShell file carries more issue references (#NNN) in its comments
-# than .comment-ratchet-baseline.json records. Existing references are baselined at
+# than .ratchets/comment.json records. Existing references are baselined at
 # today's count, never excluded. Exit 3 (git unusable, a file that cannot be scanned)
 # fails the gate. Procedure: project-scaffolding docs/comment-ratchet.md.
 [comment_ratchet]
 enabled  = true
-baseline = ".comment-ratchet-baseline.json"
+baseline = ".ratchets/comment.json"
 
 # [dead_code_ratchet] -- the scaffold's baseline-and-ratchet stage for definitions nothing
 # references. The site ships no Python of its own: the only tracked .py files are the vendored
 # ratchet scripts, which are read for references and never reported, so the stage guards
 # against the first uncalled Python helper landing in scripts/. scripts/verify-before-ship.ps1
 # runs scripts/dead_code_ratchet.py, which fails on a dead definition
-# .dead-code-ratchet-baseline.json does not already record. Exit 3 (git unusable, a tracked
+# .ratchets/dead-code.json does not already record. Exit 3 (git unusable, a tracked
 # .py file that does not parse) fails the gate. Procedure: project-scaffolding
 # docs/dead-code-ratchet.md.
 [dead_code_ratchet]
 enabled  = true
-baseline = ".dead-code-ratchet-baseline.json"
+baseline = ".ratchets/dead-code.json"
 
 # [conventions_ratchet] -- the scaffold's baseline-and-ratchet stage for fleet conventions held
 # as Python rules. The site ships no Python of its own (the vendored ratchet scripts are
@@ -114,21 +114,21 @@ baseline = ".dead-code-ratchet-baseline.json"
 # window. no-drive-path: no hardcoded drive paths. Left out: logging-not-print (it scans app/
 # and src/, which a static site does not have), secret-compare and git-wrapper (the repo has
 # no such helper). scripts/verify-before-ship.ps1 runs scripts/conventions_ratchet.py, which
-# fails when a file carries more hits of a rule than .conventions-ratchet-baseline.json
+# fails when a file carries more hits of a rule than .ratchets/conventions.json
 # records. Exit 3 (git unusable, a tracked .py file that does not parse) fails the gate.
 # Procedure: project-scaffolding docs/conventions-ratchet.md.
 [conventions_ratchet]
 enabled  = true
-baseline = ".conventions-ratchet-baseline.json"
+baseline = ".ratchets/conventions.json"
 rules    = ["no-window", "no-drive-path"]
 
 # [runtime_write_ratchet] -- scripts/runtime_write_ratchet.py fails when a tracked
 # Python file gains a write target (open for writing, Path.write_*, mkdir, a log
 # FileHandler, sqlite3.connect, a copy destination) whose path resolves under a code
-# folder, beyond .runtime-write-ratchet-baseline.json; a new target it cannot resolve
+# folder, beyond .ratchets/runtime-write.json; a new target it cannot resolve
 # is "not confirmed" (exit 3), never clean. The same script brackets the test stages
 # (--snapshot before, --probe after) and fails on any untracked or ignored file the
 # run left under a code folder. Mechanism: project-scaffolding docs/runtime-write-ratchet.md.
 [runtime_write_ratchet]
 enabled  = true
-baseline = ".runtime-write-ratchet-baseline.json"
+baseline = ".ratchets/runtime-write.json"

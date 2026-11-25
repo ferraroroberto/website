@@ -1,6 +1,6 @@
 # Layout
 
-Where code and content go. `scripts/structure_ratchet.py` checks the root folders against `shape = "static-site"` plus `extra_roots` in `.fleet.toml`, and caps file size (1,000 lines), function length (100 lines) and flat directories (40 modules) beyond `.structure-ratchet-baseline.json`.
+Where code and content go. `scripts/structure_ratchet.py` checks the root folders against `shape = "static-site"` plus `extra_roots` in `.fleet.toml`, and caps file size (1,000 lines), function length (100 lines) and flat directories (40 modules) beyond `.ratchets/structure.json`.
 
 ```
 website/
