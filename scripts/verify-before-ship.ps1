@@ -6,28 +6,28 @@
 .DESCRIPTION
     Runs the structure ratchet (scripts/structure_ratchet.py): file size, function
     length, flat directories and the root layout against .fleet.toml's `shape` and
-    `extra_roots`, beyond the committed .structure-ratchet-baseline.json. The site is
+    `extra_roots`, beyond the committed .ratchets/structure.json. The site is
     static, so the ratchets are the whole gate; it exits non-zero on any non-zero ratchet
     exit, exit 3 ("not confirmed": git unusable, an unparseable file, an unknown
     shape) included. Then the instruction ratchet (scripts/instruction_ratchet.py): the
     weekly prompt audit's deterministic rules over CLAUDE.md and AGENTS.md, beyond the
-    committed .instruction-ratchet-baseline.json, same exit contract. Then the doc refs
+    committed .ratchets/instruction.json, same exit contract. Then the doc refs
     ratchet (scripts/doc_refs_ratchet.py): README.md, CLAUDE.md and docs/ naming a path,
-    link or module that does not exist, beyond the committed .doc-refs-ratchet-baseline.json,
+    link or module that does not exist, beyond the committed .ratchets/doc-refs.json,
     same exit contract. Then the static ratchet (scripts/static_ratchet.py): duplicated
-    code (jscpd, run through npx) beyond the committed .static-ratchet-baseline.json, same
+    code (jscpd, run through npx) beyond the committed .ratchets/static.json, same
     exit contract. Then the docs ratchet (scripts/docs_ratchet.py): the README's size and
     the history markers (issue references, dated or changelog headings) in README.md and
-    docs/, beyond the committed .docs-ratchet-baseline.json, same exit contract. Then the
+    docs/, beyond the committed .ratchets/docs.json, same exit contract. Then the
     comment ratchet (scripts/comment_ratchet.py): issue references in JavaScript, CSS and
-    PowerShell comments, beyond the committed .comment-ratchet-baseline.json, same exit
+    PowerShell comments, beyond the committed .ratchets/comment.json, same exit
     contract. Then the dead code ratchet (scripts/dead_code_ratchet.py): Python definitions
-    nothing references, beyond the committed .dead-code-ratchet-baseline.json, same exit
+    nothing references, beyond the committed .ratchets/dead-code.json, same exit
     contract. Then the conventions ratchet (scripts/conventions_ratchet.py): the no-window and
     no-drive-path rules over tracked Python, beyond the committed
-    .conventions-ratchet-baseline.json, same exit contract. Then the runtime write ratchet
+    .ratchets/conventions.json, same exit contract. Then the runtime write ratchet
     (scripts/runtime_write_ratchet.py): Python write targets resolving under a code folder,
-    beyond the committed .runtime-write-ratchet-baseline.json, same exit contract. Run from anywhere:  & .\scripts\verify-before-ship.ps1
+    beyond the committed .ratchets/runtime-write.json, same exit contract. Run from anywhere:  & .\scripts\verify-before-ship.ps1
 #>
 [CmdletBinding()]
 param()
